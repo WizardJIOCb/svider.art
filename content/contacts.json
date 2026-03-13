@@ -1,0 +1,42 @@
+[
+  {
+    "id": "phone-main",
+    "type": "phone",
+    "label": "Телефон",
+    "value": "+7 904 947-40-55",
+    "href": "tel:+79049474055",
+    "primary": true
+  },
+  {
+    "id": "email-main",
+    "type": "email",
+    "label": "Email",
+    "value": "gravcab@yandex.ru",
+    "href": "mailto:gravcab@yandex.ru",
+    "primary": true
+  },
+  {
+    "id": "telegram-main",
+    "type": "telegram",
+    "label": "Telegram",
+    "value": "chelengravcab",
+    "href": "https://t.me/chelengravcab",
+    "primary": false
+  },
+  {
+    "id": "vk-main",
+    "type": "vk",
+    "label": "VK",
+    "value": "gravcab",
+    "href": "https://vk.com/gravcab",
+    "primary": false
+  },
+  {
+    "id": "address-main",
+    "type": "address",
+    "label": "Адрес",
+    "value": "Кировка 112 (кинотеатр ЗНАМЯ), кабинет 33, Челябинск",
+    "href": "",
+    "primary": false
+  }
+]

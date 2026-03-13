@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Сергей Михайлович Свидер</title>
+    <meta
+      name="description"
+      content="Авторская гравюрная мастерская Сергея Михайловича Свидера. Коллекции, каталог гравюр, заказ, информация о мастерской и контакты."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page-grain" aria-hidden="true"></div>
+    <div class="page-shell">
+      <header class="site-header">
+        <a class="brand" href="#top">
+          <span class="brand__eyebrow">Гравюрная мастерская</span>
+          <span class="brand__name">Сергей Михайлович Свидер</span>
+        </a>
+        <button
+          class="menu-toggle"
+          id="menuToggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="siteNav"
+          aria-label="Открыть меню"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <nav class="site-nav" id="siteNav">
+          <a href="#featured">Избранное</a>
+          <a href="#catalog">Каталог</a>
+          <a href="#collections">Коллекции</a>
+          <a href="#order">Заказать</a>
+          <a href="#workshop">О мастерской</a>
+          <a href="#contacts">Контакты</a>
+        </nav>
+      </header>
+
+      <main id="top">
+        <section class="detail-view" id="detailView" hidden></section>
+
+        <div id="overviewView">
+          <section class="hero">
+            <div class="hero__copy">
+              <p class="section-kicker" id="heroKicker">Авторская печатная графика</p>
+              <h1 class="hero__title" id="heroTitle">
+                Гравюра как пространство линии, времени и ручного отпечатка
+              </h1>
+              <p class="hero__text" id="heroText"></p>
+              <p class="hero__support" id="heroSupport"></p>
+              <div class="hero__points" id="heroPoints"></div>
+              <div class="hero__meta" id="heroMeta"></div>
+              <div class="hero__actions">
+                <a class="button button--primary" href="#catalog" id="heroPrimaryCta">Смотреть каталог</a>
+                <a class="button button--ghost" href="#order" id="heroSecondaryCta">Заказать гравюру</a>
+              </div>
+            </div>
+            <div class="hero__visual" id="heroVisual"></div>
+          </section>
+
+          <section class="hero-notes" aria-label="Ключевые акценты мастерской">
+            <div class="hero-note">
+              <span class="hero-note__label">Подход</span>
+              <p>Камерная подача, ручной процесс и уважение к материалу вместо коммерческого шума.</p>
+            </div>
+            <div class="hero-note">
+              <span class="hero-note__label">Коллекции</span>
+              <p>Работы раскрываются не только поодиночке, но и через сезоны, серии и переходы между образами.</p>
+            </div>
+          </section>
+
+          <section class="section" id="featured">
+            <div class="section-head">
+              <p class="section-kicker" id="catalogKicker">РљР°С‚Р°Р»РѕРі</p>
+              <h2 id="catalogTitle">РР·Р±СЂР°РЅРЅС‹Рµ СЂР°Р±РѕС‚С‹</h2>
+              <p id="catalogText">
+                РџРµСЂРІР°СЏ РІРµСЂСЃРёСЏ РєР°С‚Р°Р»РѕРіР° СЃРѕР±СЂР°РЅР° РёР· РїРѕРґС‚РІРµСЂР¶РґРµРЅРЅС‹С… РґР°РЅРЅС‹С…: РЅР°Р·РІР°РЅРёР№, РґР°С‚, СЂР°Р·РјРµСЂРѕРІ Рё РїСЂРёРЅР°РґР»РµР¶РЅРѕСЃС‚Рё Рє
+                СЃРµР·РѕРЅР°Рј.
+              </p>
+            </div>
+            <div class="catalog-toolbar">
+              <div class="catalog-stat" id="catalogStat"></div>
+            </div>
+            <div class="work-grid" id="workGrid"></div>
+          </section>
+
+          <section class="featured-collections section" aria-labelledby="featuredCollectionsTitle">
+            <div class="section-head section-head--wide">
+              <p class="section-kicker">Коллекции</p>
+              <h2 id="featuredCollectionsTitle">Сезоны, серии и ключевые циклы</h2>
+              <p>
+                Работы Сергея Свидера раскрываются не только как отдельные листы, но и как цельные серии, связанные
+                общими темами, состояниями и внутренним ритмом.
+              </p>
+            </div>
+            <div class="featured-collections__rail" id="featuredCollectionsRail"></div>
+          </section>
+
+          <section class="intro-grid">
+            <article class="intro-card intro-card--accent">
+              <p class="section-kicker" id="introArtistKicker">О мастере</p>
+              <div id="artistSummary"></div>
+            </article>
+            <article class="intro-card">
+              <p class="section-kicker" id="introWorkshopKicker">О мастерской</p>
+              <div id="workshopSummary"></div>
+            </article>
+            <article class="intro-card">
+              <p class="section-kicker" id="introExhibitionsKicker">Выставки</p>
+              <div id="exhibitionSummary"></div>
+            </article>
+          </section>
+
+          <section class="section" id="collections">
+            <div class="section-head">
+              <p class="section-kicker" id="collectionsKicker">Коллекции</p>
+              <h2 id="collectionsTitle">Сезоны, серии и авторские циклы</h2>
+              <p id="collectionsText">
+                Основной способ знакомства с творчеством мастера: не только отдельные листы, но и смысловые связи между
+                ними.
+              </p>
+            </div>
+            <div class="collection-grid" id="collectionGrid"></div>
+          </section>
+
+          
+          <section class="section section--split" id="order">
+            <div class="section-head">
+              <p class="section-kicker" id="orderKicker">Заказать</p>
+              <h2 id="orderTitle">Готовая работа или индивидуальный запрос</h2>
+              <p id="orderText">
+                Заказ строится через прямой контакт с мастерской: можно выбрать работу из каталога или обсудить тему,
+                формат и сроки отдельно.
+              </p>
+            </div>
+            <div class="order-panel">
+              <div class="order-steps" id="orderSteps">
+                <div><span class="order-step__index">1</span><span>Обсуждение задачи</span></div>
+                <div><span class="order-step__index">2</span><span>Выбор работы или идеи</span></div>
+                <div><span class="order-step__index">3</span><span>Согласование формата и сроков</span></div>
+                <div><span class="order-step__index">4</span><span>Печать и передача готового листа</span></div>
+              </div>
+              <div class="contact-stack" id="orderContacts"></div>
+            </div>
+            <p class="section-note" id="orderNote"></p>
+          </section>
+
+          <section class="section section--dark" id="workshop">
+            <div class="section-head">
+              <p class="section-kicker" id="workshopKicker">О мастерской</p>
+              <h2 id="workshopTitle">Камерное пространство глубокой печати</h2>
+            </div>
+            <div class="workshop-layout">
+              <div class="workshop-layout__text" id="workshopDetail"></div>
+              <div class="workshop-layout__media" id="workshopMedia"></div>
+            </div>
+          </section>
+
+          <section class="section" id="contacts">
+            <div class="section-head">
+              <p class="section-kicker" id="contactsKicker">Контакты</p>
+              <h2 id="contactsTitle">Связаться с мастерской</h2>
+              <p id="contactsText"></p>
+            </div>
+            <div class="contacts-grid" id="contactGrid"></div>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <div class="lightbox" id="lightbox" hidden aria-hidden="true">
+      <button class="lightbox__backdrop" id="lightboxBackdrop" type="button" aria-label="Закрыть просмотр"></button>
+      <div class="lightbox__dialog" role="dialog" aria-modal="true" aria-label="Просмотр гравюры">
+        <button class="lightbox__close" id="lightboxClose" type="button" aria-label="Закрыть просмотр">×</button>
+        <img class="lightbox__image" id="lightboxImage" alt="" />
+      </div>
+    </div>
+
+    <script src="./app.js" type="module"></script>
+  </body>
+</html>

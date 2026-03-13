@@ -1,0 +1,2032 @@
+{
+  "generatedAt": "2026-03-13T10:38:10.189Z",
+  "summary": {
+    "works": 61,
+    "collections": 11,
+    "media": 74,
+    "localMedia": 74,
+    "worksWithImages": 61
+  },
+  "collections": [
+    {
+      "id": "collection-druzhba",
+      "title": "Дружба",
+      "slug": "druzhba",
+      "workCount": 10
+    },
+    {
+      "id": "collection-materinstvo",
+      "title": "Материнство",
+      "slug": "materinstvo",
+      "workCount": 9
+    },
+    {
+      "id": "collection-zhivaya-priroda",
+      "title": "Живая природа",
+      "slug": "zhivaya-priroda",
+      "workCount": 7
+    },
+    {
+      "id": "collection-ottsovstvo",
+      "title": "Отцовство",
+      "slug": "ottsovstvo",
+      "workCount": 7
+    },
+    {
+      "id": "collection-staryy-gorod",
+      "title": "Старый город",
+      "slug": "staryy-gorod",
+      "workCount": 6
+    },
+    {
+      "id": "collection-koshki",
+      "title": "Кошки",
+      "slug": "koshki",
+      "workCount": 5
+    },
+    {
+      "id": "collection-liki-zhizni",
+      "title": "Лики жизни",
+      "slug": "liki-zhizni",
+      "workCount": 5
+    },
+    {
+      "id": "collection-detstvo",
+      "title": "Детство",
+      "slug": "detstvo",
+      "workCount": 4
+    },
+    {
+      "id": "collection-provinciya",
+      "title": "Провинция",
+      "slug": "provinciya",
+      "workCount": 4
+    },
+    {
+      "id": "collection-tsvety",
+      "title": "Цветы",
+      "slug": "tsvety",
+      "workCount": 4
+    },
+    {
+      "id": "collection-pisateli",
+      "title": "Писатели",
+      "slug": "pisateli",
+      "workCount": 0
+    }
+  ],
+  "works": [
+    {
+      "id": "work-okhotniche-pomestye",
+      "slug": "okhotniche-pomestye",
+      "title": "Охотничье поместье",
+      "collectionId": "collection-staryy-gorod",
+      "collectionTitle": "Старый город",
+      "year": 2020,
+      "technique": "сухая игла",
+      "dimensionsText": "19 см х 16 см",
+      "status": "unknown",
+      "sourceLinks": [
+        "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+      ],
+      "imageIds": [
+        "media-work-okhotniche-pomestye"
+      ],
+      "imagePaths": [
+        "assets/media/works/media-work-okhotniche-pomestye.webp"
+      ],
+      "images": [
+        {
+          "id": "media-work-okhotniche-pomestye",
+          "title": "Охотничье поместье",
+          "src": "assets/media/works/media-work-okhotniche-pomestye.webp",
+          "thumbnail": "assets/media/works/media-work-okhotniche-pomestye.webp",
+          "width": null,
+          "height": null,
+          "sourceLink": "https://fliphtml5.com/jhcib/qalq/%D0%A1%D1%82%D0%B0%D1%80%D0%B8%D0%BD%D0%BD%D1%8B%D0%B5_%D1%80%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B5_%D0%BF%D0%B5%D0%B9%D0%B7%D0%B0%D0%B6%D0%B8%3A_%D0%B3%D1%80%D0%B0%D0%B2%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D1%8B%D0%B5_%D1%81%D0%B5%D0%B7%D0%BE%D0%BD%D1%8B./4/",
+          "copyrightStatus": "source_reference"
+        }
+      ]
+    },
+    {
+      "id": "work-ruka-v-ruke",
+      "slug": "ruka-v-ruke",
+      "title": "Рука в руке",
+      "collectionId": "collection-ottsovstvo",
+      "collectionTitle": "Отцовство",
+      "year": 2022,
+      "technique": "сухая игла",
+      "dimensionsText": "12,7 см х 15 см",
+      "status": "unknown",
+      "sourceLinks": [
+        "https://fliphtml5.com/jhcib/hnsh/%D0%9F%D0%A0%D0%9E%D0%91%D0%9D%D0%98%D0%9A_%D0%A7%D0%93%D0%9A_%D0%9E%D1%82%D1%86%D0%BE%D0%B2%D1%81%D1%82%D0%B2%D0%BE_%28%D0%BD%D0%B5%D1%82_2025%29/"
+      ],
+      "imageIds": [
+        "media-work-ruka-v-ruke"
+      ],
+      "imagePaths": [
+        "assets/media/works/media-work-ruka-v-ruke.webp"
+      ],
+      "images": [
+        {
+          "id": "media-work-ruka-v-ruke",
+          "title": "Рука в руке",
+          "src": "assets/media/works/media-work-ruka-v-ruke.webp",
+          "thumbnail": "assets/media/works/media-work-ruka-v-ruke.webp",
+          "width": null,
+          "height": null,
+          "sourceLink": "https://fliphtml5.com/jhcib/hnsh/%D0%9F%D0%A0%D0%9E%D0%91%D0%9D%D0%98%D0%9A_%D0%A7%D0%93%D0%9A_%D0%9E%D1%82%D1%86%D0%BE%D0%B2%D1%81%D1%82%D0%B2%D0%BE_%28%D0%BD%D0%B5%D1%82_2025%29/3/",
+          "copyrightStatus": "source_reference"
+        }
+      ]
+    },
+    {
+      "id": "work-v-rukakh-ottsa",
+      "slug": "v-rukakh-ottsa",
+      "title": "В руках отца",
+      "collectionId": "collection-ottsovstvo",
+      "collectionTitle": "Отцовство",
+      "year": 2023,
+      "technique": "сухая игла",
+      "dimensionsText": "13 см х 18 см",
+      "status": "unknown",
+      "sourceLinks": [
+        "https://fliphtml5.com/jhcib/hnsh/%D0%9F%D0%A0%D0%9E%D0%91%D0%9D%D0%98%D0%9A_%D0%A7%D0%93%D0%9A_%D0%9E%D1%82%D1%86%D0%BE%D0%B2%D1%81%D1%82%D0%B2%D0%BE_%28%D0%BD%D0%B5%D1%82_2025%29/"
+      ],
+      "imageIds": [
+        "media-work-v-rukakh-ottsa"
+      ],
+      "imagePaths": [
+        "assets/media/works/media-work-v-rukakh-ottsa.webp"
+      ],
+      "images": [
+        {
+          "id": "media-work-v-rukakh-ottsa",
+          "title": "В руках отца",
+          "src": "assets/media/works/media-work-v-rukakh-ottsa.webp",
+          "thumbnail": "assets/media/works/media-work-v-rukakh-ottsa.webp",
+          "width": null,
+          "height": null,
+          "sourceLink": "https://fliphtml5.com/jhcib/hnsh/%D0%9F%D0%A0%D0%9E%D0%91%D0%9D%D0%98%D0%9A_%D0%A7%D0%93%D0%9A_%D0%9E%D1%82%D1%86%D0%BE%D0%B2%D1%81%D1%82%D0%B2%D0%BE_%28%D0%BD%D0%B5%D1%82_2025%29/4/",
+          "copyrightStatus": "source_reference"
+        }
+      ]
+    },
+    {
+      "id": "work-blizost",
+      "slug": "blizost",
+      "title": "Близость",
+      "collectionId": "collection-ottsovstvo",
+      "collectionTitle": "Отцовство",
+      "year": 2023,
+      "technique": "сухая игла",
+      "dimensionsText": "13 см х 18 см",
+      "status": "unknown",
+      "sourceLinks": [
+        "https://fliphtml5.com/jhcib/hnsh/%D0%9F%D0%A0%D0%9E%D0%91%D0%9D%D0%98%D0%9A_%D0%A7%D0%93%D0%9A_%D0%9E%D1%82%D1%86%D0%BE%D0%B2%D1%81%D1%82%D0%B2%D0%BE_%28%D0%BD%D0%B5%D1%82_2025%29/"
+      ],
+      "imageIds": [
+        "media-work-blizost"
+      ],
+      "imagePaths": [
+        "assets/media/works/media-work-blizost.webp"
+      ],
+      "images": [
+        {
+          "id": "media-work-blizost",
+          "title": "Близость",
+          "src": "assets/media/works/media-work-blizost.webp",
+          "thumbnail": "assets/media/works/media-work-blizost.webp",
+          "width": null,
+          "height": null,
+          "sourceLink": "https://fliphtml5.com/jhcib/hnsh/%D0%9F%D0%A0%D0%9E%D0%91%D0%9D%D0%98%D0%9A_%D0%A7%D0%93%D0%9A_%D0%9E%D1%82%D1%86%D0%BE%D0%B2%D1%81%D1%82%D0%B2%D0%BE_%28%D0%BD%D0%B5%D1%82_2025%29/5/",
+          "copyrightStatus": "source_reference"
+        }
+      ]
+    },
+    {
+      "id": "work-dve-gitary",
+      "slug": "dve-gitary",
+      "title": "Две гитары",
+      "collectionId": "collection-ottsovstvo",
+      "collectionTitle": "Отцовство",
+      "year": 2023,
+      "technique": "сухая игла",
+      "dimensionsText": "12 см х 17 см",
+      "status": "unknown",
+      "sourceLinks": [
+        "https://fliphtml5.com/jhcib/hnsh/%D0%9F%D0%A0%D0%9E%D0%91%D0%9D%D0%98%D0%9A_%D0%A7%D0%93%D0%9A_%D0%9E%D1%82%D1%86%D0%BE%D0%B2%D1%81%D1%82%D0%B2%D0%BE_%28%D0%BD%D0%B5%D1%82_2025%29/"
+      ],
+      "imageIds": [
+        "media-work-dve-gitary"
+      ],
+      "imagePaths": [
+        "assets/media/works/media-work-dve-gitary.webp"
+      ],
+      "images": [
+        {
+          "id": "media-work-dve-gitary",
+          "title": "Две гитары",
+          "src": "assets/media/works/media-work-dve-gitary.webp",
+          "thumbnail": "assets/media/works/media-work-dve-gitary.webp",
+          "width": null,
+          "height": null,
+          "sourceLink": "https://fliphtml5.com/jhcib/hnsh/%D0%9F%D0%A0%D0%9E%D0%91%D0%9D%D0%98%D0%9A_%D0%A7%D0%93%D0%9A_%D0%9E%D1%82%D1%86%D0%BE%D0%B2%D1%81%D1%82%D0%B2%D0%BE_%28%D0%BD%D0%B5%D1%82_2025%29/6/",
+          "copyrightStatus": "source_reference"
+        }
+      ]
+    },
+    {
+      "id": "work-dad-and-i-sledding",
+      "slug": "dad-and-i-sledding",
+      "title": "Dad and I sledding",
+      "collectionId": "collection-ottsovstvo",
+      "collectionTitle": "Отцовство",
+      "year": 2023,
+      "technique": "сухая игла",
+      "dimensionsText": "13,5 см х 17,5 см",
+      "status": "unknown",
+      "sourceLinks": [
+        "https://fliphtml5.com/jhcib/hnsh/%D0%9F%D0%A0%D0%9E%D0%91%D0%9D%D0%98%D0%9A_%D0%A7%D0%93%D0%9A_%D0%9E%D1%82%D1%86%D0%BE%D0%B2%D1%81%D1%82%D0%B2%D0%BE_%28%D0%BD%D0%B5%D1%82_2025%29/"
+      ],
+      "imageIds": [
+        "media-work-dad-and-i-sledding"
+      ],
+      "imagePaths": [
+        "assets/media/works/media-work-dad-and-i-sledding.webp"
+      ],
+      "images": [
+        {
+          "id": "media-work-dad-and-i-sledding",
+          "title": "Dad and I sledding",
+          "src": "assets/media/works/media-work-dad-and-i-sledding.webp",
+          "thumbnail": "assets/media/works/media-work-dad-and-i-sledding.webp",
+          "width": null,
+          "height": null,
+          "sourceLink": "https://fliphtml5.com/jhcib/hnsh/%D0%9F%D0%A0%D0%9E%D0%91%D0%9D%D0%98%D0%9A_%D0%A7%D0%93%D0%9A_%D0%9E%D1%82%D1%86%D0%BE%D0%B2%D1%81%D1%82%D0%B2%D0%BE_%28%D0%BD%D0%B5%D1%82_2025%29/7/",
+          "copyrightStatus": "source_reference"
+        }
+      ]
+    },
+    {
+      "id": "work-ne-otpuskay-menya",
+      "slug": "ne-otpuskay-menya",
+      "title": "Не отпускай меня",
+      "collectionId": "collection-ottsovstvo",
+      "collectionTitle": "Отцовство",
+      "year": 2025,
+      "technique": "сухая игла",
+      "dimensionsText": "13 см х 17 см",
+      "status": "unknown",
+      "sourceLinks": [
+        "https://fliphtml5.com/jhcib/hnsh/%D0%9F%D0%A0%D0%9E%D0%91%D0%9D%D0%98%D0%9A_%D0%A7%D0%93%D0%9A_%D0%9E%D1%82%D1%86%D0%BE%D0%B2%D1%81%D1%82%D0%B2%D0%BE_%28%D0%BD%D0%B5%D1%82_2025%29/"
+      ],
+      "imageIds": [
+        "media-work-ne-otpuskay-menya"
+      ],
+      "imagePaths": [
+        "assets/media/works/media-work-ne-otpuskay-menya.webp"
+      ],
+      "images": [
+        {
+          "id": "media-work-ne-otpuskay-menya",
+          "title": "Не отпускай меня",
+          "src": "assets/media/works/media-work-ne-otpuskay-menya.webp",
+          "thumbnail": "assets/media/works/media-work-ne-otpuskay-menya.webp",
+          "width": null,
+          "height": null,
+          "sourceLink": "https://fliphtml5.com/jhcib/hnsh/%D0%9F%D0%A0%D0%9E%D0%91%D0%9D%D0%98%D0%9A_%D0%A7%D0%93%D0%9A_%D0%9E%D1%82%D1%86%D0%BE%D0%B2%D1%81%D1%82%D0%B2%D0%BE_%28%D0%BD%D0%B5%D1%82_2025%29/8/",
+          "copyrightStatus": "source_reference"
+        }
+      ]
+    },
+    {
+      "id": "work-vmeste-navsegda",
+      "slug": "vmeste-navsegda",
+      "title": "Вместе навсегда",
+      "collectionId": "collection-ottsovstvo",
+      "collectionTitle": "Отцовство",
+      "year": 2025,
+      "technique": "сухая игла",
+      "dimensionsText": "13 см х 17 см",
+      "status": "unknown",
+      "sourceLinks": [
+        "https://fliphtml5.com/jhcib/hnsh/%D0%9F%D0%A0%D0%9E%D0%91%D0%9D%D0%98%D0%9A_%D0%A7%D0%93%D0%9A_%D0%9E%D1%82%D1%86%D0%BE%D0%B2%D1%81%D1%82%D0%B2%D0%BE_%28%D0%BD%D0%B5%D1%82_2025%29/"
+      ],
+      "imageIds": [
+        "media-work-vmeste-navsegda"
+      ],
+      "imagePaths": [
+        "assets/media/works/media-work-vmeste-navsegda.webp"
+      ],
+      "images": [
+        {
+          "id": "media-work-vmeste-navsegda",
+          "title": "Вместе навсегда",
+          "src": "assets/media/works/media-work-vmeste-navsegda.webp",
+          "thumbnail": "assets/media/works/media-work-vmeste-navsegda.webp",
+          "width": null,
+          "height": null,
+          "sourceLink": "https://fliphtml5.com/jhcib/hnsh/%D0%9F%D0%A0%D0%9E%D0%91%D0%9D%D0%98%D0%9A_%D0%A7%D0%93%D0%9A_%D0%9E%D1%82%D1%86%D0%BE%D0%B2%D1%81%D1%82%D0%B2%D0%BE_%28%D0%BD%D0%B5%D1%82_2025%29/9/",
+          "copyrightStatus": "source_reference"
+        }
+      ]
+    },
+    {
+      "id": "work-nezhnost",
+      "slug": "nezhnost",
+      "title": "Нежность",
+      "collectionId": "collection-materinstvo",
+      "collectionTitle": "Материнство",
+      "year": 2020,
+      "technique": "сухая игла",
+      "dimensionsText": "15 см х 10,5 см",
+      "status": "unknown",
+      "sourceLinks": [
+        "https://fliphtml5.com/duiub/lnmm/%21%D0%A7%D0%93%D0%9A_%D0%9A%D0%B0%D1%82%D0%B0%D0%9B%D0%BE%D0%B3_%D0%9C%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%9D%D1%81%D1%82%D0%B2%D0%BE_%282%29/"
+      ],
+      "imageIds": [
+        "media-work-nezhnost"
+      ],
+      "imagePaths": [
+        "assets/media/works/media-work-nezhnost.webp"
+      ],
+      "images": [
+        {
+          "id": "media-work-nezhnost",
+          "title": "Нежность",
+          "src": "assets/media/works/media-work-nezhnost.webp",
+          "thumbnail": "assets/media/works/media-work-nezhnost.webp",
+          "width": null,
+          "height": null,
+          "sourceLink": "https://fliphtml5.com/duiub/lnmm/%21%D0%A7%D0%93%D0%9A_%D0%9A%D0%B0%D1%82%D0%B0%D0%9B%D0%BE%D0%B3_%D0%9C%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%9D%D1%81%D1%82%D0%B2%D0%BE_%282%29/3/",
+          "copyrightStatus": "source_reference"
+        }
+      ]
+    },
+    {
+      "id": "work-sladost",
+      "slug": "sladost",
+      "title": "Сладость",
+      "collectionId": "collection-materinstvo",
+      "collectionTitle": "Материнство",
+      "year": 2020,
+      "technique": "сухая игла",
+      "dimensionsText": "19 см х 13 см",
+      "status": "unknown",
+      "sourceLinks": [
+        "https://fliphtml5.com/duiub/lnmm/%21%D0%A7%D0%93%D0%9A_%D0%9A%D0%B0%D1%82%D0%B0%D0%9B%D0%BE%D0%B3_%D0%9C%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%9D%D1%81%D1%82%D0%B2%D0%BE_%282%29/"
+      ],
+      "imageIds": [
+        "media-work-sladost"
+      ],
+      "imagePaths": [
+        "assets/media/works/media-work-sladost.webp"
+      ],
+      "images": [
+        {
+          "id": "media-work-sladost",
+          "title": "Сладость",
+          "src": "assets/media/works/media-work-sladost.webp",
+          "thumbnail": "assets/media/works/media-work-sladost.webp",
+          "width": null,
+          "height": null,
+          "sourceLink": "https://fliphtml5.com/duiub/lnmm/%21%D0%A7%D0%93%D0%9A_%D0%9A%D0%B0%D1%82%D0%B0%D0%9B%D0%BE%D0%B3_%D0%9C%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%9D%D1%81%D1%82%D0%B2%D0%BE_%282%29/4/",
+          "copyrightStatus": "source_reference"
+        }
+      ]
+    },
+    {
+      "id": "work-plod-cheloveka",
+      "slug": "plod-cheloveka",
+      "title": "Плод человека",
+      "collectionId": "collection-materinstvo",
+      "collectionTitle": "Материнство",
+      "year": 2020,
+      "technique": "сухая игла",
+      "dimensionsText": "10,5 см х 8 см",
+      "status": "unknown",
+      "sourceLinks": [
+        "https://fliphtml5.com/duiub/lnmm/%21%D0%A7%D0%93%D0%9A_%D0%9A%D0%B0%D1%82%D0%B0%D0%9B%D0%BE%D0%B3_%D0%9C%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%9D%D1%81%D1%82%D0%B2%D0%BE_%282%29/"
+      ],
+      "imageIds": [
+        "media-work-plod-cheloveka"
+      ],
+      "imagePaths": [
+        "assets/media/works/media-work-plod-cheloveka.webp"
+      ],
+      "images": [
+        {
+          "id": "media-work-plod-cheloveka",
+          "title": "Плод человека",
+          "src": "assets/media/works/media-work-plod-cheloveka.webp",
+          "thumbnail": "assets/media/works/media-work-plod-cheloveka.webp",
+          "width": null,
+          "height": null,
+          "sourceLink": "https://fliphtml5.com/duiub/lnmm/%21%D0%A7%D0%93%D0%9A_%D0%9A%D0%B0%D1%82%D0%B0%D0%9B%D0%BE%D0%B3_%D0%9C%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%9D%D1%81%D1%82%D0%B2%D0%BE_%282%29/5/",
+          "copyrightStatus": "source_reference"
+        }
+      ]
+    },
+    {
+      "id": "work-anatomicheskoe-ustroystvo-materi",
+      "slug": "anatomicheskoe-ustroystvo-materi",
+      "title": "Анатомическое устройство матери",
+      "collectionId": "collection-materinstvo",
+      "collectionTitle": "Материнство",
+      "year": 2022,
+      "technique": "сухая игла",
+      "dimensionsText": "11,7 см х 13,5 см",
+      "status": "unknown",
+      "sourceLinks": [
+        "https://fliphtml5.com/duiub/lnmm/%21%D0%A7%D0%93%D0%9A_%D0%9A%D0%B0%D1%82%D0%B0%D0%9B%D0%BE%D0%B3_%D0%9C%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%9D%D1%81%D1%82%D0%B2%D0%BE_%282%29/"
+      ],
+      "imageIds": [
+        "media-work-anatomicheskoe-ustroystvo-materi"
+      ],
+      "imagePaths": [
+        "assets/media/works/media-work-anatomicheskoe-ustroystvo-materi.webp"
+      ],
+      "images": [
+        {
+          "id": "media-work-anatomicheskoe-ustroystvo-materi",
+          "title": "Анатомическое устройство матери",
+          "src": "assets/media/works/media-work-anatomicheskoe-ustroystvo-materi.webp",
+          "thumbnail": "assets/media/works/media-work-anatomicheskoe-ustroystvo-materi.webp",
+          "width": null,
+          "height": null,
+          "sourceLink": "https://fliphtml5.com/duiub/lnmm/%21%D0%A7%D0%93%D0%9A_%D0%9A%D0%B0%D1%82%D0%B0%D0%9B%D0%BE%D0%B3_%D0%9C%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%9D%D1%81%D1%82%D0%B2%D0%BE_%282%29/6/",
+          "copyrightStatus": "source_reference"
+        }
+      ]
+    },
+    {
+      "id": "work-pervoe-zhelanie",
+      "slug": "pervoe-zhelanie",
+      "title": "Первое желание",
+      "collectionId": "collection-materinstvo",
+      "collectionTitle": "Материнство",
+      "year": 2022,
+      "technique": "сухая игла",
+      "dimensionsText": "15 см х 15,5 см",
+      "status": "unknown",
+      "sourceLinks": [
+        "https://fliphtml5.com/duiub/lnmm/%21%D0%A7%D0%93%D0%9A_%D0%9A%D0%B0%D1%82%D0%B0%D0%9B%D0%BE%D0%B3_%D0%9C%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%9D%D1%81%D1%82%D0%B2%D0%BE_%282%29/"
+      ],
+      "imageIds": [
+        "media-work-pervoe-zhelanie"
+      ],
+      "imagePaths": [
+        "assets/media/works/media-work-pervoe-zhelanie.webp"
+      ],
+      "images": [
+        {
+          "id": "media-work-pervoe-zhelanie",
+          "title": "Первое желание",
+          "src": "assets/media/works/media-work-pervoe-zhelanie.webp",
+          "thumbnail": "assets/media/works/media-work-pervoe-zhelanie.webp",
+          "width": null,
+          "height": null,
+          "sourceLink": "https://fliphtml5.com/duiub/lnmm/%21%D0%A7%D0%93%D0%9A_%D0%9A%D0%B0%D1%82%D0%B0%D0%9B%D0%BE%D0%B3_%D0%9C%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%9D%D1%81%D1%82%D0%B2%D0%BE_%282%29/7/",
+          "copyrightStatus": "source_reference"
+        }
+      ]
+    },
+    {
+      "id": "work-tvoyu-mat",
+      "slug": "tvoyu-mat",
+      "title": "Твою мать!",
+      "collectionId": "collection-materinstvo",
+      "collectionTitle": "Материнство",
+      "year": 2023,
+      "technique": "сухая игла",
+      "dimensionsText": "11 см х 15,5 см",
+      "status": "unknown",
+      "sourceLinks": [
+        "https://fliphtml5.com/duiub/lnmm/%21%D0%A7%D0%93%D0%9A_%D0%9A%D0%B0%D1%82%D0%B0%D0%9B%D0%BE%D0%B3_%D0%9C%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%9D%D1%81%D1%82%D0%B2%D0%BE_%282%29/"
+      ],
+      "imageIds": [
+        "media-work-tvoyu-mat"
+      ],
+      "imagePaths": [
+        "assets/media/works/media-work-tvoyu-mat.webp"
+      ],
+      "images": [
+        {
+          "id": "media-work-tvoyu-mat",
+          "title": "Твою мать!",
+          "src": "assets/media/works/media-work-tvoyu-mat.webp",
+          "thumbnail": "assets/media/works/media-work-tvoyu-mat.webp",
+          "width": null,
+          "height": null,
+          "sourceLink": "https://fliphtml5.com/duiub/lnmm/%21%D0%A7%D0%93%D0%9A_%D0%9A%D0%B0%D1%82%D0%B0%D0%9B%D0%BE%D0%B3_%D0%9C%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%9D%D1%81%D1%82%D0%B2%D0%BE_%282%29/8/",
+          "copyrightStatus": "source_reference"
+        }
+      ]
+    },
+    {
+      "id": "work-moyo",
+      "slug": "moyo",
+      "title": "Моё!",
+      "collectionId": "collection-materinstvo",
+      "collectionTitle": "Материнство",
+      "year": 2023,
+      "technique": "сухая игла",
+      "dimensionsText": "12 см х 12 см",
+      "status": "unknown",
+      "sourceLinks": [
+        "https://fliphtml5.com/duiub/lnmm/%21%D0%A7%D0%93%D0%9A_%D0%9A%D0%B0%D1%82%D0%B0%D0%9B%D0%BE%D0%B3_%D0%9C%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%9D%D1%81%D1%82%D0%B2%D0%BE_%282%29/"
+      ],
+      "imageIds": [
+        "media-work-moyo"
+      ],
+      "imagePaths": [
+        "assets/media/works/media-work-moyo.webp"
+      ],
+      "images": [
+        {
+          "id": "media-work-moyo",
+          "title": "Моё!",
+          "src": "assets/media/works/media-work-moyo.webp",
+          "thumbnail": "assets/media/works/media-work-moyo.webp",
+          "width": null,
+          "height": null,
+          "sourceLink": "https://fliphtml5.com/duiub/lnmm/%21%D0%A7%D0%93%D0%9A_%D0%9A%D0%B0%D1%82%D0%B0%D0%9B%D0%BE%D0%B3_%D0%9C%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%9D%D1%81%D1%82%D0%B2%D0%BE_%282%29/9/",
+          "copyrightStatus": "source_reference"
+        }
+      ]
+    },
+    {
+      "id": "work-zdravstvuy-mir",
+      "slug": "zdravstvuy-mir",
+      "title": "Здравствуй, мир!",
+      "collectionId": "collection-materinstvo",
+      "collectionTitle": "Материнство",
+      "year": 2023,
+      "technique": "сухая игла",
+      "dimensionsText": "13 см х 17 см",
+      "status": "unknown",
+      "sourceLinks": [
+        "https://fliphtml5.com/duiub/lnmm/%21%D0%A7%D0%93%D0%9A_%D0%9A%D0%B0%D1%82%D0%B0%D0%9B%D0%BE%D0%B3_%D0%9C%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%9D%D1%81%D1%82%D0%B2%D0%BE_%282%29/"
+      ],
+      "imageIds": [
+        "media-work-zdravstvuy-mir"
+      ],
+      "imagePaths": [
+        "assets/media/works/media-work-zdravstvuy-mir.webp"
+      ],
+      "images": [
+        {
+          "id": "media-work-zdravstvuy-mir",
+          "title": "Здравствуй, мир!",
+          "src": "assets/media/works/media-work-zdravstvuy-mir.webp",
+          "thumbnail": "assets/media/works/media-work-zdravstvuy-mir.webp",
+          "width": null,
+          "height": null,
+          "sourceLink": "https://fliphtml5.com/duiub/lnmm/%21%D0%A7%D0%93%D0%9A_%D0%9A%D0%B0%D1%82%D0%B0%D0%9B%D0%BE%D0%B3_%D0%9C%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%9D%D1%81%D1%82%D0%B2%D0%BE_%282%29/10/",
+          "copyrightStatus": "source_reference"
+        }
+      ]
+    },
+    {
+      "id": "work-mamochka-moya",
+      "slug": "mamochka-moya",
+      "title": "Мамочка моя!",
+      "collectionId": "collection-materinstvo",
+      "collectionTitle": "Материнство",
+      "year": 2023,
+      "technique": "сухая игла",
+      "dimensionsText": "12 см х 14 см",
+      "status": "unknown",
+      "sourceLinks": [
+        "https://fliphtml5.com/duiub/lnmm/%21%D0%A7%D0%93%D0%9A_%D0%9A%D0%B0%D1%82%D0%B0%D0%9B%D0%BE%D0%B3_%D0%9C%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%9D%D1%81%D1%82%D0%B2%D0%BE_%282%29/"
+      ],
+      "imageIds": [
+        "media-work-mamochka-moya"
+      ],
+      "imagePaths": [
+        "assets/media/works/media-work-mamochka-moya.webp"
+      ],
+      "images": [
+        {
+          "id": "media-work-mamochka-moya",
+          "title": "Мамочка моя!",
+          "src": "assets/media/works/media-work-mamochka-moya.webp",
+          "thumbnail": "assets/media/works/media-work-mamochka-moya.webp",
+          "width": null,
+          "height": null,
+          "sourceLink": "https://fliphtml5.com/duiub/lnmm/%21%D0%A7%D0%93%D0%9A_%D0%9A%D0%B0%D1%82%D0%B0%D0%9B%D0%BE%D0%B3_%D0%9C%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%9D%D1%81%D1%82%D0%B2%D0%BE_%282%29/11/",
+          "copyrightStatus": "source_reference"
+        }
+      ]
+    },
+    {
+      "id": "work-ozhidanie",
+      "slug": "ozhidanie",
+      "title": "Ожидание",
+      "collectionId": "collection-druzhba",
+      "collectionTitle": "Дружба",
+      "year": 2020,
+      "technique": "сухая игла",
+      "dimensionsText": "18 см х 12 см",
+      "status": "unknown",
+      "sourceLinks": [
+        "https://fliphtml5.com/duiub/abom/%21%D0%A7%D0%93%D0%9A_%D0%9A%D0%B0%D1%82%D0%B0%D0%9B%D0%BE%D0%B3_%D0%94%D1%80%D1%83%D0%B6%D0%B1%D0%B0/"
+      ],
+      "imageIds": [
+        "media-work-ozhidanie"
+      ],
+      "imagePaths": [
+        "assets/media/works/media-work-ozhidanie.webp"
+      ],
+      "images": [
+        {
+          "id": "media-work-ozhidanie",
+          "title": "Ожидание",
+          "src": "assets/media/works/media-work-ozhidanie.webp",
+          "thumbnail": "assets/media/works/media-work-ozhidanie.webp",
+          "width": null,
+          "height": null,
+          "sourceLink": "https://fliphtml5.com/duiub/abom/%21%D0%A7%D0%93%D0%9A_%D0%9A%D0%B0%D1%82%D0%B0%D0%9B%D0%BE%D0%B3_%D0%94%D1%80%D1%83%D0%B6%D0%B1%D0%B0/3/",
+          "copyrightStatus": "source_reference"
+        }
+      ]
+    },
+    {
+      "id": "work-devochki",
+      "slug": "devochki",
+      "title": "Девочки",
+      "collectionId": "collection-druzhba",
+      "collectionTitle": "Дружба",
+      "year": 2020,
+      "technique": "сухая игла",
+      "dimensionsText": "15 см х 15 см",
+      "status": "unknown",
+      "sourceLinks": [
+        "https://fliphtml5.com/duiub/abom/%21%D0%A7%D0%93%D0%9A_%D0%9A%D0%B0%D1%82%D0%B0%D0%9B%D0%BE%D0%B3_%D0%94%D1%80%D1%83%D0%B6%D0%B1%D0%B0/"
+      ],
+      "imageIds": [
+        "media-work-devochki"
+      ],
+      "imagePaths": [
+        "assets/media/works/media-work-devochki.webp"
+      ],
+      "images": [
+        {
+          "id": "media-work-devochki",
+          "title": "Девочки",
+          "src": "assets/media/works/media-work-devochki.webp",
+          "thumbnail": "assets/media/works/media-work-devochki.webp",
+          "width": null,
+          "height": null,
+          "sourceLink": "https://fliphtml5.com/duiub/abom/%21%D0%A7%D0%93%D0%9A_%D0%9A%D0%B0%D1%82%D0%B0%D0%9B%D0%BE%D0%B3_%D0%94%D1%80%D1%83%D0%B6%D0%B1%D0%B0/4/",
+          "copyrightStatus": "source_reference"
+        }
+      ]
+    },
+    {
+      "id": "work-teplota",
+      "slug": "teplota",
+      "title": "Теплота",
+      "collectionId": "collection-druzhba",
+      "collectionTitle": "Дружба",
+      "year": 2020,
+      "technique": "сухая игла",
+      "dimensionsText": "22 см х 15,5 см",
+      "status": "unknown",
+      "sourceLinks": [
+        "https://fliphtml5.com/duiub/abom/%21%D0%A7%D0%93%D0%9A_%D0%9A%D0%B0%D1%82%D0%B0%D0%9B%D0%BE%D0%B3_%D0%94%D1%80%D1%83%D0%B6%D0%B1%D0%B0/"
+      ],
+      "imageIds": [
+        "media-work-teplota"
+      ],
+      "imagePaths": [
+        "assets/media/works/media-work-teplota.webp"
+      ],
+      "images": [
+        {
+          "id": "media-work-teplota",
+          "title": "Теплота",
+          "src": "assets/media/works/media-work-teplota.webp",
+          "thumbnail": "assets/media/works/media-work-teplota.webp",
+          "width": null,
+          "height": null,
+          "sourceLink": "https://fliphtml5.com/duiub/abom/%21%D0%A7%D0%93%D0%9A_%D0%9A%D0%B0%D1%82%D0%B0%D0%9B%D0%BE%D0%B3_%D0%94%D1%80%D1%83%D0%B6%D0%B1%D0%B0/5/",
+          "copyrightStatus": "source_reference"
+        }
+      ]
+    },
+    {
+      "id": "work-rasstavanie",
+      "slug": "rasstavanie",
+      "title": "Расставание",
+      "collectionId": "collection-druzhba",
+      "collectionTitle": "Дружба",
+      "year": 2020,
+      "technique": "сухая игла",
+      "dimensionsText": "22 см х 15,5 см",
+      "status": "unknown",
+      "sourceLinks": [
+        "https://fliphtml5.com/duiub/abom/%21%D0%A7%D0%93%D0%9A_%D0%9A%D0%B0%D1%82%D0%B0%D0%9B%D0%BE%D0%B3_%D0%94%D1%80%D1%83%D0%B6%D0%B1%D0%B0/"
+      ],
+      "imageIds": [
+        "media-work-rasstavanie"
+      ],
+      "imagePaths": [
+        "assets/media/works/media-work-rasstavanie.webp"
+      ],
+      "images": [
+        {
+          "id": "media-work-rasstavanie",
+          "title": "Расставание",
+          "src": "assets/media/works/media-work-rasstavanie.webp",
+          "thumbnail": "assets/media/works/media-work-rasstavanie.webp",
+          "width": null,
+          "height": null,
+          "sourceLink": "https://fliphtml5.com/duiub/abom/%21%D0%A7%D0%93%D0%9A_%D0%9A%D0%B0%D1%82%D0%B0%D0%9B%D0%BE%D0%B3_%D0%94%D1%80%D1%83%D0%B6%D0%B1%D0%B0/6/",
+          "copyrightStatus": "source_reference"
+        }
+      ]
+    },
+    {
+      "id": "work-laska",
+      "slug": "laska",
+      "title": "Ласка",
+      "collectionId": "collection-druzhba",
+      "collectionTitle": "Дружба",
+      "year": 2021,
+      "technique": "сухая игла",
+      "dimensionsText": "13,5 см х 15 см",
+      "status": "unknown",
+      "sourceLinks": [
+        "https://fliphtml5.com/duiub/abom/%21%D0%A7%D0%93%D0%9A_%D0%9A%D0%B0%D1%82%D0%B0%D0%9B%D0%BE%D0%B3_%D0%94%D1%80%D1%83%D0%B6%D0%B1%D0%B0/"
+      ],
+      "imageIds": [
+        "media-work-laska"
+      ],
+      "imagePaths": [
+        "assets/media/works/media-work-laska.webp"
+      ],
+      "images": [
+        {
+          "id": "media-work-laska",
+          "title": "Ласка",
+          "src": "assets/media/works/media-work-laska.webp",
+          "thumbnail": "assets/media/works/media-work-laska.webp",
+          "width": null,
+          "height": null,
+          "sourceLink": "https://fliphtml5.com/duiub/abom/%21%D0%A7%D0%93%D0%9A_%D0%9A%D0%B0%D1%82%D0%B0%D0%9B%D0%BE%D0%B3_%D0%94%D1%80%D1%83%D0%B6%D0%B1%D0%B0/7/",
+          "copyrightStatus": "source_reference"
+        }
+      ]
+    },
+    {
+      "id": "work-zhazhda",
+      "slug": "zhazhda",
+      "title": "Жажда",
+      "collectionId": "collection-druzhba",
+      "collectionTitle": "Дружба",
+      "year": 2021,
+      "technique": "сухая игла",
+      "dimensionsText": "15 см х 15 см",
+      "status": "unknown",
+      "sourceLinks": [
+        "https://fliphtml5.com/duiub/abom/%21%D0%A7%D0%93%D0%9A_%D0%9A%D0%B0%D1%82%D0%B0%D0%9B%D0%BE%D0%B3_%D0%94%D1%80%D1%83%D0%B6%D0%B1%D0%B0/"
+      ],
+      "imageIds": [
+        "media-work-zhazhda"
+      ],
+      "imagePaths": [
+        "assets/media/works/media-work-zhazhda.webp"
+      ],
+      "images": [
+        {
+          "id": "media-work-zhazhda",
+          "title": "Жажда",
+          "src": "assets/media/works/media-work-zhazhda.webp",
+          "thumbnail": "assets/media/works/media-work-zhazhda.webp",
+          "width": null,
+          "height": null,
+          "sourceLink": "https://fliphtml5.com/duiub/abom/%21%D0%A7%D0%93%D0%9A_%D0%9A%D0%B0%D1%82%D0%B0%D0%9B%D0%BE%D0%B3_%D0%94%D1%80%D1%83%D0%B6%D0%B1%D0%B0/8/",
+          "copyrightStatus": "source_reference"
+        }
+      ]
+    },
+    {
+      "id": "work-vstrecha",
+      "slug": "vstrecha",
+      "title": "Встреча",
+      "collectionId": "collection-druzhba",
+      "collectionTitle": "Дружба",
+      "year": 2021,
+      "technique": "сухая игла",
+      "dimensionsText": "16 см х 19 см",
+      "status": "unknown",
+      "sourceLinks": [
+        "https://fliphtml5.com/duiub/abom/%21%D0%A7%D0%93%D0%9A_%D0%9A%D0%B0%D1%82%D0%B0%D0%9B%D0%BE%D0%B3_%D0%94%D1%80%D1%83%D0%B6%D0%B1%D0%B0/"
+      ],
+      "imageIds": [
+        "media-work-vstrecha"
+      ],
+      "imagePaths": [
+        "assets/media/works/media-work-vstrecha.webp"
+      ],
+      "images": [
+        {
+          "id": "media-work-vstrecha",
+          "title": "Встреча",
+          "src": "assets/media/works/media-work-vstrecha.webp",
+          "thumbnail": "assets/media/works/media-work-vstrecha.webp",
+          "width": null,
+          "height": null,
+          "sourceLink": "https://fliphtml5.com/duiub/abom/%21%D0%A7%D0%93%D0%9A_%D0%9A%D0%B0%D1%82%D0%B0%D0%9B%D0%BE%D0%B3_%D0%94%D1%80%D1%83%D0%B6%D0%B1%D0%B0/9/",
+          "copyrightStatus": "source_reference"
+        }
+      ]
+    },
+    {
+      "id": "work-ty-i-ya",
+      "slug": "ty-i-ya",
+      "title": "Ты и я",
+      "collectionId": "collection-druzhba",
+      "collectionTitle": "Дружба",
+      "year": 2023,
+      "technique": "сухая игла",
+      "dimensionsText": "12,8 см х 16,8 см",
+      "status": "unknown",
+      "sourceLinks": [
+        "https://fliphtml5.com/duiub/abom/%21%D0%A7%D0%93%D0%9A_%D0%9A%D0%B0%D1%82%D0%B0%D0%9B%D0%BE%D0%B3_%D0%94%D1%80%D1%83%D0%B6%D0%B1%D0%B0/"
+      ],
+      "imageIds": [
+        "media-work-ty-i-ya"
+      ],
+      "imagePaths": [
+        "assets/media/works/media-work-ty-i-ya.webp"
+      ],
+      "images": [
+        {
+          "id": "media-work-ty-i-ya",
+          "title": "Ты и я",
+          "src": "assets/media/works/media-work-ty-i-ya.webp",
+          "thumbnail": "assets/media/works/media-work-ty-i-ya.webp",
+          "width": null,
+          "height": null,
+          "sourceLink": "https://fliphtml5.com/duiub/abom/%21%D0%A7%D0%93%D0%9A_%D0%9A%D0%B0%D1%82%D0%B0%D0%9B%D0%BE%D0%B3_%D0%94%D1%80%D1%83%D0%B6%D0%B1%D0%B0/10/",
+          "copyrightStatus": "source_reference"
+        }
+      ]
+    },
+    {
+      "id": "work-minus-30",
+      "slug": "minus-30",
+      "title": "Минус 30",
+      "collectionId": "collection-druzhba",
+      "collectionTitle": "Дружба",
+      "year": 2023,
+      "technique": "сухая игла",
+      "dimensionsText": "11,5 см х 16 см",
+      "status": "unknown",
+      "sourceLinks": [
+        "https://fliphtml5.com/duiub/abom/%21%D0%A7%D0%93%D0%9A_%D0%9A%D0%B0%D1%82%D0%B0%D0%9B%D0%BE%D0%B3_%D0%94%D1%80%D1%83%D0%B6%D0%B1%D0%B0/"
+      ],
+      "imageIds": [
+        "media-work-minus-30"
+      ],
+      "imagePaths": [
+        "assets/media/works/media-work-minus-30.webp"
+      ],
+      "images": [
+        {
+          "id": "media-work-minus-30",
+          "title": "Минус 30",
+          "src": "assets/media/works/media-work-minus-30.webp",
+          "thumbnail": "assets/media/works/media-work-minus-30.webp",
+          "width": null,
+          "height": null,
+          "sourceLink": "https://fliphtml5.com/duiub/abom/%21%D0%A7%D0%93%D0%9A_%D0%9A%D0%B0%D1%82%D0%B0%D0%9B%D0%BE%D0%B3_%D0%94%D1%80%D1%83%D0%B6%D0%B1%D0%B0/11/",
+          "copyrightStatus": "source_reference"
+        }
+      ]
+    },
+    {
+      "id": "work-tolko-my-i-veter",
+      "slug": "tolko-my-i-veter",
+      "title": "Только мы и ветер",
+      "collectionId": "collection-druzhba",
+      "collectionTitle": "Дружба",
+      "year": 2023,
+      "technique": "сухая игла",
+      "dimensionsText": "11,5 см х 15,5 см",
+      "status": "unknown",
+      "sourceLinks": [
+        "https://fliphtml5.com/duiub/abom/%21%D0%A7%D0%93%D0%9A_%D0%9A%D0%B0%D1%82%D0%B0%D0%9B%D0%BE%D0%B3_%D0%94%D1%80%D1%83%D0%B6%D0%B1%D0%B0/"
+      ],
+      "imageIds": [
+        "media-work-tolko-my-i-veter"
+      ],
+      "imagePaths": [
+        "assets/media/works/media-work-tolko-my-i-veter.webp"
+      ],
+      "images": [
+        {
+          "id": "media-work-tolko-my-i-veter",
+          "title": "Только мы и ветер",
+          "src": "assets/media/works/media-work-tolko-my-i-veter.webp",
+          "thumbnail": "assets/media/works/media-work-tolko-my-i-veter.webp",
+          "width": null,
+          "height": null,
+          "sourceLink": "https://fliphtml5.com/duiub/abom/%21%D0%A7%D0%93%D0%9A_%D0%9A%D0%B0%D1%82%D0%B0%D0%9B%D0%BE%D0%B3_%D0%94%D1%80%D1%83%D0%B6%D0%B1%D0%B0/12/",
+          "copyrightStatus": "source_reference"
+        }
+      ]
+    },
+    {
+      "id": "work-derevenskie-budni",
+      "slug": "derevenskie-budni",
+      "title": "Деревенские будни",
+      "collectionId": "collection-staryy-gorod",
+      "collectionTitle": "Старый город",
+      "year": 2024,
+      "technique": "сухая игла",
+      "dimensionsText": "16 см х 11 см",
+      "status": "unknown",
+      "sourceLinks": [
+        "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+      ],
+      "imageIds": [
+        "media-work-derevenskie-budni"
+      ],
+      "imagePaths": [
+        "assets/media/works/media-work-derevenskie-budni.webp"
+      ],
+      "images": [
+        {
+          "id": "media-work-derevenskie-budni",
+          "title": "Деревенские будни",
+          "src": "assets/media/works/media-work-derevenskie-budni.webp",
+          "thumbnail": "assets/media/works/media-work-derevenskie-budni.webp",
+          "width": null,
+          "height": null,
+          "sourceLink": "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/11/",
+          "copyrightStatus": "source_reference"
+        }
+      ]
+    },
+    {
+      "id": "work-lodki-na-reke",
+      "slug": "lodki-na-reke",
+      "title": "Лодки на реке",
+      "collectionId": "collection-staryy-gorod",
+      "collectionTitle": "Старый город",
+      "year": 2024,
+      "technique": "сухая игла",
+      "dimensionsText": "20 см х 13 см",
+      "status": "unknown",
+      "sourceLinks": [
+        "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+      ],
+      "imageIds": [
+        "media-work-lodki-na-reke"
+      ],
+      "imagePaths": [
+        "assets/media/works/media-work-lodki-na-reke.webp"
+      ],
+      "images": [
+        {
+          "id": "media-work-lodki-na-reke",
+          "title": "Лодки на реке",
+          "src": "assets/media/works/media-work-lodki-na-reke.webp",
+          "thumbnail": "assets/media/works/media-work-lodki-na-reke.webp",
+          "width": null,
+          "height": null,
+          "sourceLink": "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/13/",
+          "copyrightStatus": "source_reference"
+        }
+      ]
+    },
+    {
+      "id": "work-lavka-bondarya",
+      "slug": "lavka-bondarya",
+      "title": "Лавка бондаря",
+      "collectionId": "collection-staryy-gorod",
+      "collectionTitle": "Старый город",
+      "year": 2023,
+      "technique": "сухая игла",
+      "dimensionsText": "14 см х 20 см",
+      "status": "unknown",
+      "sourceLinks": [
+        "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+      ],
+      "imageIds": [
+        "media-work-lavka-bondarya"
+      ],
+      "imagePaths": [
+        "assets/media/works/media-work-lavka-bondarya.webp"
+      ],
+      "images": [
+        {
+          "id": "media-work-lavka-bondarya",
+          "title": "Лавка бондаря",
+          "src": "assets/media/works/media-work-lavka-bondarya.webp",
+          "thumbnail": "assets/media/works/media-work-lavka-bondarya.webp",
+          "width": null,
+          "height": null,
+          "sourceLink": "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/14/",
+          "copyrightStatus": "source_reference"
+        }
+      ]
+    },
+    {
+      "id": "work-zasnezhennaya-tserkov",
+      "slug": "zasnezhennaya-tserkov",
+      "title": "Заснеженная церковь",
+      "collectionId": "collection-staryy-gorod",
+      "collectionTitle": "Старый город",
+      "year": 2022,
+      "technique": "сухая игла",
+      "dimensionsText": "14 см х 18 см",
+      "status": "unknown",
+      "sourceLinks": [
+        "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+      ],
+      "imageIds": [
+        "media-work-zasnezhennaya-tserkov"
+      ],
+      "imagePaths": [
+        "assets/media/works/media-work-zasnezhennaya-tserkov.webp"
+      ],
+      "images": [
+        {
+          "id": "media-work-zasnezhennaya-tserkov",
+          "title": "Заснеженная церковь",
+          "src": "assets/media/works/media-work-zasnezhennaya-tserkov.webp",
+          "thumbnail": "assets/media/works/media-work-zasnezhennaya-tserkov.webp",
+          "width": null,
+          "height": null,
+          "sourceLink": "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/15/",
+          "copyrightStatus": "source_reference"
+        }
+      ]
+    },
+    {
+      "id": "work-zimnie-zaboty",
+      "slug": "zimnie-zaboty",
+      "title": "Зимние заботы",
+      "collectionId": "collection-staryy-gorod",
+      "collectionTitle": "Старый город",
+      "year": 2022,
+      "technique": "сухая игла",
+      "dimensionsText": "10,5 см х 15 см",
+      "status": "unknown",
+      "sourceLinks": [
+        "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+      ],
+      "imageIds": [
+        "media-work-zimnie-zaboty"
+      ],
+      "imagePaths": [
+        "assets/media/works/media-work-zimnie-zaboty.webp"
+      ],
+      "images": [
+        {
+          "id": "media-work-zimnie-zaboty",
+          "title": "Зимние заботы",
+          "src": "assets/media/works/media-work-zimnie-zaboty.webp",
+          "thumbnail": "assets/media/works/media-work-zimnie-zaboty.webp",
+          "width": null,
+          "height": null,
+          "sourceLink": "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/17/",
+          "copyrightStatus": "source_reference"
+        }
+      ]
+    },
+    {
+      "id": "work-nachalo",
+      "slug": "nachalo",
+      "title": "Начало",
+      "collectionId": "collection-liki-zhizni",
+      "collectionTitle": "Лики жизни",
+      "year": 2020,
+      "technique": "сухая игла",
+      "dimensionsText": "26 см х 17 см",
+      "status": "unknown",
+      "sourceLinks": [
+        "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+      ],
+      "imageIds": [
+        "media-work-nachalo"
+      ],
+      "imagePaths": [
+        "assets/media/works/media-work-nachalo.webp"
+      ],
+      "images": [
+        {
+          "id": "media-work-nachalo",
+          "title": "Начало",
+          "src": "assets/media/works/media-work-nachalo.webp",
+          "thumbnail": "assets/media/works/media-work-nachalo.webp",
+          "width": null,
+          "height": null,
+          "sourceLink": "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/19/",
+          "copyrightStatus": "source_reference"
+        }
+      ]
+    },
+    {
+      "id": "work-zhizn",
+      "slug": "zhizn",
+      "title": "Жизнь",
+      "collectionId": "collection-liki-zhizni",
+      "collectionTitle": "Лики жизни",
+      "year": 2020,
+      "technique": "сухая игла",
+      "dimensionsText": "17 см х 17 см",
+      "status": "unknown",
+      "sourceLinks": [
+        "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+      ],
+      "imageIds": [
+        "media-work-zhizn"
+      ],
+      "imagePaths": [
+        "assets/media/works/media-work-zhizn.webp"
+      ],
+      "images": [
+        {
+          "id": "media-work-zhizn",
+          "title": "Жизнь",
+          "src": "assets/media/works/media-work-zhizn.webp",
+          "thumbnail": "assets/media/works/media-work-zhizn.webp",
+          "width": null,
+          "height": null,
+          "sourceLink": "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/20/",
+          "copyrightStatus": "source_reference"
+        }
+      ]
+    },
+    {
+      "id": "work-smekh",
+      "slug": "smekh",
+      "title": "Смех",
+      "collectionId": "collection-liki-zhizni",
+      "collectionTitle": "Лики жизни",
+      "year": 2021,
+      "technique": "сухая игла",
+      "dimensionsText": "17 см х 19 см",
+      "status": "unknown",
+      "sourceLinks": [
+        "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+      ],
+      "imageIds": [
+        "media-work-smekh"
+      ],
+      "imagePaths": [
+        "assets/media/works/media-work-smekh.webp"
+      ],
+      "images": [
+        {
+          "id": "media-work-smekh",
+          "title": "Смех",
+          "src": "assets/media/works/media-work-smekh.webp",
+          "thumbnail": "assets/media/works/media-work-smekh.webp",
+          "width": null,
+          "height": null,
+          "sourceLink": "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/21/",
+          "copyrightStatus": "source_reference"
+        }
+      ]
+    },
+    {
+      "id": "work-sudba",
+      "slug": "sudba",
+      "title": "Судьба",
+      "collectionId": "collection-liki-zhizni",
+      "collectionTitle": "Лики жизни",
+      "year": 2021,
+      "technique": "сухая игла",
+      "dimensionsText": "19 см х 17 см",
+      "status": "unknown",
+      "sourceLinks": [
+        "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+      ],
+      "imageIds": [
+        "media-work-sudba"
+      ],
+      "imagePaths": [
+        "assets/media/works/media-work-sudba.webp"
+      ],
+      "images": [
+        {
+          "id": "media-work-sudba",
+          "title": "Судьба",
+          "src": "assets/media/works/media-work-sudba.webp",
+          "thumbnail": "assets/media/works/media-work-sudba.webp",
+          "width": null,
+          "height": null,
+          "sourceLink": "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/22/",
+          "copyrightStatus": "source_reference"
+        }
+      ]
+    },
+    {
+      "id": "work-smushchenie",
+      "slug": "smushchenie",
+      "title": "Смущение",
+      "collectionId": "collection-liki-zhizni",
+      "collectionTitle": "Лики жизни",
+      "year": 2021,
+      "technique": "сухая игла",
+      "dimensionsText": "17 см х 19 см",
+      "status": "unknown",
+      "sourceLinks": [
+        "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+      ],
+      "imageIds": [
+        "media-work-smushchenie"
+      ],
+      "imagePaths": [
+        "assets/media/works/media-work-smushchenie.webp"
+      ],
+      "images": [
+        {
+          "id": "media-work-smushchenie",
+          "title": "Смущение",
+          "src": "assets/media/works/media-work-smushchenie.webp",
+          "thumbnail": "assets/media/works/media-work-smushchenie.webp",
+          "width": null,
+          "height": null,
+          "sourceLink": "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/23/",
+          "copyrightStatus": "source_reference"
+        }
+      ]
+    },
+    {
+      "id": "work-tikhaya-zavod",
+      "slug": "tikhaya-zavod",
+      "title": "Тихая заводь",
+      "collectionId": "collection-provinciya",
+      "collectionTitle": "Провинция",
+      "year": 2023,
+      "technique": "сухая игла",
+      "dimensionsText": "12,5 см х 19 см",
+      "status": "unknown",
+      "sourceLinks": [
+        "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+      ],
+      "imageIds": [
+        "media-work-tikhaya-zavod"
+      ],
+      "imagePaths": [
+        "assets/media/works/media-work-tikhaya-zavod.webp"
+      ],
+      "images": [
+        {
+          "id": "media-work-tikhaya-zavod",
+          "title": "Тихая заводь",
+          "src": "assets/media/works/media-work-tikhaya-zavod.webp",
+          "thumbnail": "assets/media/works/media-work-tikhaya-zavod.webp",
+          "width": null,
+          "height": null,
+          "sourceLink": "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/25/",
+          "copyrightStatus": "source_reference"
+        }
+      ]
+    },
+    {
+      "id": "work-tri-stoga",
+      "slug": "tri-stoga",
+      "title": "Три стога",
+      "collectionId": "collection-provinciya",
+      "collectionTitle": "Провинция",
+      "year": 2022,
+      "technique": "сухая игла",
+      "dimensionsText": "14 см х 19,5 см",
+      "status": "unknown",
+      "sourceLinks": [
+        "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+      ],
+      "imageIds": [
+        "media-work-tri-stoga"
+      ],
+      "imagePaths": [
+        "assets/media/works/media-work-tri-stoga.webp"
+      ],
+      "images": [
+        {
+          "id": "media-work-tri-stoga",
+          "title": "Три стога",
+          "src": "assets/media/works/media-work-tri-stoga.webp",
+          "thumbnail": "assets/media/works/media-work-tri-stoga.webp",
+          "width": null,
+          "height": null,
+          "sourceLink": "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/27/",
+          "copyrightStatus": "source_reference"
+        }
+      ]
+    },
+    {
+      "id": "work-odin-den-v-derevne",
+      "slug": "odin-den-v-derevne",
+      "title": "Один день в деревне",
+      "collectionId": "collection-provinciya",
+      "collectionTitle": "Провинция",
+      "year": 2022,
+      "technique": "сухая игла",
+      "dimensionsText": "14 см х 19 см",
+      "status": "unknown",
+      "sourceLinks": [
+        "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+      ],
+      "imageIds": [
+        "media-work-odin-den-v-derevne"
+      ],
+      "imagePaths": [
+        "assets/media/works/media-work-odin-den-v-derevne.webp"
+      ],
+      "images": [
+        {
+          "id": "media-work-odin-den-v-derevne",
+          "title": "Один день в деревне",
+          "src": "assets/media/works/media-work-odin-den-v-derevne.webp",
+          "thumbnail": "assets/media/works/media-work-odin-den-v-derevne.webp",
+          "width": null,
+          "height": null,
+          "sourceLink": "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/29/",
+          "copyrightStatus": "source_reference"
+        }
+      ]
+    },
+    {
+      "id": "work-smeshnoy-papa",
+      "slug": "smeshnoy-papa",
+      "title": "Смешной папа",
+      "collectionId": "collection-detstvo",
+      "collectionTitle": "Детство",
+      "year": 2022,
+      "technique": "сухая игла",
+      "dimensionsText": "16 см х 17,5 см",
+      "status": "unknown",
+      "sourceLinks": [
+        "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+      ],
+      "imageIds": [
+        "media-work-smeshnoy-papa"
+      ],
+      "imagePaths": [
+        "assets/media/works/media-work-smeshnoy-papa.webp"
+      ],
+      "images": [
+        {
+          "id": "media-work-smeshnoy-papa",
+          "title": "Смешной папа",
+          "src": "assets/media/works/media-work-smeshnoy-papa.webp",
+          "thumbnail": "assets/media/works/media-work-smeshnoy-papa.webp",
+          "width": null,
+          "height": null,
+          "sourceLink": "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/47/",
+          "copyrightStatus": "source_reference"
+        }
+      ]
+    },
+    {
+      "id": "work-malchik-konki-i-podushka",
+      "slug": "malchik-konki-i-podushka",
+      "title": "Мальчик, коньки и подушка",
+      "collectionId": "collection-detstvo",
+      "collectionTitle": "Детство",
+      "year": 2023,
+      "technique": "сухая игла",
+      "dimensionsText": "13 см х 18 см",
+      "status": "unknown",
+      "sourceLinks": [
+        "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+      ],
+      "imageIds": [
+        "media-work-malchik-konki-i-podushka"
+      ],
+      "imagePaths": [
+        "assets/media/works/media-work-malchik-konki-i-podushka.webp"
+      ],
+      "images": [
+        {
+          "id": "media-work-malchik-konki-i-podushka",
+          "title": "Мальчик, коньки и подушка",
+          "src": "assets/media/works/media-work-malchik-konki-i-podushka.webp",
+          "thumbnail": "assets/media/works/media-work-malchik-konki-i-podushka.webp",
+          "width": null,
+          "height": null,
+          "sourceLink": "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/48/",
+          "copyrightStatus": "source_reference"
+        }
+      ]
+    },
+    {
+      "id": "work-mir-naoborot",
+      "slug": "mir-naoborot",
+      "title": "Мир наоборот",
+      "collectionId": "collection-detstvo",
+      "collectionTitle": "Детство",
+      "year": 2022,
+      "technique": "сухая игла",
+      "dimensionsText": "14 см х 17,5 см",
+      "status": "unknown",
+      "sourceLinks": [
+        "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+      ],
+      "imageIds": [
+        "media-work-mir-naoborot"
+      ],
+      "imagePaths": [
+        "assets/media/works/media-work-mir-naoborot.webp"
+      ],
+      "images": [
+        {
+          "id": "media-work-mir-naoborot",
+          "title": "Мир наоборот",
+          "src": "assets/media/works/media-work-mir-naoborot.webp",
+          "thumbnail": "assets/media/works/media-work-mir-naoborot.webp",
+          "width": null,
+          "height": null,
+          "sourceLink": "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/49/",
+          "copyrightStatus": "source_reference"
+        }
+      ]
+    },
+    {
+      "id": "work-tri-smeyushchikhsya-malchika-na-velosipedakh",
+      "slug": "tri-smeyushchikhsya-malchika-na-velosipedakh",
+      "title": "Три смеющихся мальчика на велосипедах",
+      "collectionId": "collection-detstvo",
+      "collectionTitle": "Детство",
+      "year": 2023,
+      "technique": "сухая игла",
+      "dimensionsText": "13 см х 18 см",
+      "status": "unknown",
+      "sourceLinks": [
+        "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+      ],
+      "imageIds": [
+        "media-work-tri-smeyushchikhsya-malchika-na-velosipedakh"
+      ],
+      "imagePaths": [
+        "assets/media/works/media-work-tri-smeyushchikhsya-malchika-na-velosipedakh.webp"
+      ],
+      "images": [
+        {
+          "id": "media-work-tri-smeyushchikhsya-malchika-na-velosipedakh",
+          "title": "Три смеющихся мальчика на велосипедах",
+          "src": "assets/media/works/media-work-tri-smeyushchikhsya-malchika-na-velosipedakh.webp",
+          "thumbnail": "assets/media/works/media-work-tri-smeyushchikhsya-malchika-na-velosipedakh.webp",
+          "width": null,
+          "height": null,
+          "sourceLink": "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/50/",
+          "copyrightStatus": "source_reference"
+        }
+      ]
+    },
+    {
+      "id": "work-storozhevoy-vorobey",
+      "slug": "storozhevoy-vorobey",
+      "title": "Сторожевой воробей",
+      "collectionId": "collection-zhivaya-priroda",
+      "collectionTitle": "Живая природа",
+      "year": 2020,
+      "technique": "сухая игла",
+      "dimensionsText": "19 см х 12,5 см",
+      "status": "unknown",
+      "sourceLinks": [
+        "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+      ],
+      "imageIds": [
+        "media-work-storozhevoy-vorobey"
+      ],
+      "imagePaths": [
+        "assets/media/works/media-work-storozhevoy-vorobey.webp"
+      ],
+      "images": [
+        {
+          "id": "media-work-storozhevoy-vorobey",
+          "title": "Сторожевой воробей",
+          "src": "assets/media/works/media-work-storozhevoy-vorobey.webp",
+          "thumbnail": "assets/media/works/media-work-storozhevoy-vorobey.webp",
+          "width": null,
+          "height": null,
+          "sourceLink": "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/52/",
+          "copyrightStatus": "source_reference"
+        }
+      ]
+    },
+    {
+      "id": "work-yashcheritsa",
+      "slug": "yashcheritsa",
+      "title": "Ящерица",
+      "collectionId": "collection-zhivaya-priroda",
+      "collectionTitle": "Живая природа",
+      "year": 2020,
+      "technique": "сухая игла",
+      "dimensionsText": "16 см х 10 см",
+      "status": "unknown",
+      "sourceLinks": [
+        "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+      ],
+      "imageIds": [
+        "media-work-yashcheritsa"
+      ],
+      "imagePaths": [
+        "assets/media/works/media-work-yashcheritsa.webp"
+      ],
+      "images": [
+        {
+          "id": "media-work-yashcheritsa",
+          "title": "Ящерица",
+          "src": "assets/media/works/media-work-yashcheritsa.webp",
+          "thumbnail": "assets/media/works/media-work-yashcheritsa.webp",
+          "width": null,
+          "height": null,
+          "sourceLink": "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/53/",
+          "copyrightStatus": "source_reference"
+        }
+      ]
+    },
+    {
+      "id": "work-polet",
+      "slug": "polet",
+      "title": "Полет",
+      "collectionId": "collection-zhivaya-priroda",
+      "collectionTitle": "Живая природа",
+      "year": 2020,
+      "technique": "сухая игла",
+      "dimensionsText": "19 см х 12,6 см",
+      "status": "unknown",
+      "sourceLinks": [
+        "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+      ],
+      "imageIds": [
+        "media-work-polet"
+      ],
+      "imagePaths": [
+        "assets/media/works/media-work-polet.webp"
+      ],
+      "images": [
+        {
+          "id": "media-work-polet",
+          "title": "Полет",
+          "src": "assets/media/works/media-work-polet.webp",
+          "thumbnail": "assets/media/works/media-work-polet.webp",
+          "width": null,
+          "height": null,
+          "sourceLink": "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/61/",
+          "copyrightStatus": "source_reference"
+        }
+      ]
+    },
+    {
+      "id": "work-sova",
+      "slug": "sova",
+      "title": "Сова",
+      "collectionId": "collection-zhivaya-priroda",
+      "collectionTitle": "Живая природа",
+      "year": 2025,
+      "technique": "сухая игла",
+      "dimensionsText": "12 см х 12 см",
+      "status": "unknown",
+      "sourceLinks": [
+        "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+      ],
+      "imageIds": [
+        "media-work-sova"
+      ],
+      "imagePaths": [
+        "assets/media/works/media-work-sova.webp"
+      ],
+      "images": [
+        {
+          "id": "media-work-sova",
+          "title": "Сова",
+          "src": "assets/media/works/media-work-sova.webp",
+          "thumbnail": "assets/media/works/media-work-sova.webp",
+          "width": null,
+          "height": null,
+          "sourceLink": "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/62/",
+          "copyrightStatus": "source_reference"
+        }
+      ]
+    },
+    {
+      "id": "work-shipovnik",
+      "slug": "shipovnik",
+      "title": "Шиповник",
+      "collectionId": "collection-tsvety",
+      "collectionTitle": "Цветы",
+      "year": 2020,
+      "technique": "сухая игла",
+      "dimensionsText": "16 см х 10,6 см",
+      "status": "unknown",
+      "sourceLinks": [
+        "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+      ],
+      "imageIds": [
+        "media-work-shipovnik"
+      ],
+      "imagePaths": [
+        "assets/media/works/media-work-shipovnik.webp"
+      ],
+      "images": [
+        {
+          "id": "media-work-shipovnik",
+          "title": "Шиповник",
+          "src": "assets/media/works/media-work-shipovnik.webp",
+          "thumbnail": "assets/media/works/media-work-shipovnik.webp",
+          "width": null,
+          "height": null,
+          "sourceLink": "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/65/",
+          "copyrightStatus": "source_reference"
+        }
+      ]
+    },
+    {
+      "id": "work-romashka",
+      "slug": "romashka",
+      "title": "Ромашка",
+      "collectionId": "collection-tsvety",
+      "collectionTitle": "Цветы",
+      "year": 2020,
+      "technique": "сухая игла",
+      "dimensionsText": "11 см х 7,5 см",
+      "status": "unknown",
+      "sourceLinks": [
+        "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+      ],
+      "imageIds": [
+        "media-work-romashka"
+      ],
+      "imagePaths": [
+        "assets/media/works/media-work-romashka.webp"
+      ],
+      "images": [
+        {
+          "id": "media-work-romashka",
+          "title": "Ромашка",
+          "src": "assets/media/works/media-work-romashka.webp",
+          "thumbnail": "assets/media/works/media-work-romashka.webp",
+          "width": null,
+          "height": null,
+          "sourceLink": "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/66/",
+          "copyrightStatus": "source_reference"
+        }
+      ]
+    },
+    {
+      "id": "work-solntsa-snova-solntsa",
+      "slug": "solntsa-snova-solntsa",
+      "title": "Солнца, снова солнца!",
+      "collectionId": "collection-tsvety",
+      "collectionTitle": "Цветы",
+      "year": 2023,
+      "technique": "сухая игла",
+      "dimensionsText": "10 см х 14 см",
+      "status": "unknown",
+      "sourceLinks": [
+        "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+      ],
+      "imageIds": [
+        "media-work-solntsa-snova-solntsa"
+      ],
+      "imagePaths": [
+        "assets/media/works/media-work-solntsa-snova-solntsa.webp"
+      ],
+      "images": [
+        {
+          "id": "media-work-solntsa-snova-solntsa",
+          "title": "Солнца, снова солнца!",
+          "src": "assets/media/works/media-work-solntsa-snova-solntsa.webp",
+          "thumbnail": "assets/media/works/media-work-solntsa-snova-solntsa.webp",
+          "width": null,
+          "height": null,
+          "sourceLink": "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/67/",
+          "copyrightStatus": "source_reference"
+        }
+      ]
+    },
+    {
+      "id": "work-verba",
+      "slug": "verba",
+      "title": "Верба",
+      "collectionId": "collection-tsvety",
+      "collectionTitle": "Цветы",
+      "year": 2022,
+      "technique": "сухая игла",
+      "dimensionsText": "14 см х 17,5 см",
+      "status": "unknown",
+      "sourceLinks": [
+        "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+      ],
+      "imageIds": [
+        "media-work-verba"
+      ],
+      "imagePaths": [
+        "assets/media/works/media-work-verba.webp"
+      ],
+      "images": [
+        {
+          "id": "media-work-verba",
+          "title": "Верба",
+          "src": "assets/media/works/media-work-verba.webp",
+          "thumbnail": "assets/media/works/media-work-verba.webp",
+          "width": null,
+          "height": null,
+          "sourceLink": "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/69/",
+          "copyrightStatus": "source_reference"
+        }
+      ]
+    },
+    {
+      "id": "work-koshki-zhazhda",
+      "slug": "koshki-zhazhda",
+      "title": "Жажда",
+      "collectionId": "collection-koshki",
+      "collectionTitle": "Кошки",
+      "year": 2025,
+      "technique": "сухая игла",
+      "dimensionsText": "13 см х 15 см",
+      "status": "unknown",
+      "sourceLinks": [
+        "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+      ],
+      "imageIds": [
+        "media-work-koshki-zhazhda"
+      ],
+      "imagePaths": [
+        "assets/media/works/media-work-koshki-zhazhda.webp"
+      ],
+      "images": [
+        {
+          "id": "media-work-koshki-zhazhda",
+          "title": "Жажда",
+          "src": "assets/media/works/media-work-koshki-zhazhda.webp",
+          "thumbnail": "assets/media/works/media-work-koshki-zhazhda.webp",
+          "width": null,
+          "height": null,
+          "sourceLink": "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/71/",
+          "copyrightStatus": "source_reference"
+        }
+      ]
+    },
+    {
+      "id": "work-knizhnyy-kot",
+      "slug": "knizhnyy-kot",
+      "title": "Книжный кот",
+      "collectionId": "collection-koshki",
+      "collectionTitle": "Кошки",
+      "year": 2021,
+      "technique": "сухая игла",
+      "dimensionsText": "18,5 см х 12,5 см",
+      "status": "unknown",
+      "sourceLinks": [
+        "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+      ],
+      "imageIds": [
+        "media-work-knizhnyy-kot"
+      ],
+      "imagePaths": [
+        "assets/media/works/media-work-knizhnyy-kot.webp"
+      ],
+      "images": [
+        {
+          "id": "media-work-knizhnyy-kot",
+          "title": "Книжный кот",
+          "src": "assets/media/works/media-work-knizhnyy-kot.webp",
+          "thumbnail": "assets/media/works/media-work-knizhnyy-kot.webp",
+          "width": null,
+          "height": null,
+          "sourceLink": "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/73/",
+          "copyrightStatus": "source_reference"
+        }
+      ]
+    },
+    {
+      "id": "work-koshki-ozhidanie",
+      "slug": "koshki-ozhidanie",
+      "title": "Ожидание",
+      "collectionId": "collection-koshki",
+      "collectionTitle": "Кошки",
+      "year": 2024,
+      "technique": "сухая игла",
+      "dimensionsText": "8 см х 17 см",
+      "status": "unknown",
+      "sourceLinks": [
+        "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+      ],
+      "imageIds": [
+        "media-work-koshki-ozhidanie"
+      ],
+      "imagePaths": [
+        "assets/media/works/media-work-koshki-ozhidanie.webp"
+      ],
+      "images": [
+        {
+          "id": "media-work-koshki-ozhidanie",
+          "title": "Ожидание",
+          "src": "assets/media/works/media-work-koshki-ozhidanie.webp",
+          "thumbnail": "assets/media/works/media-work-koshki-ozhidanie.webp",
+          "width": null,
+          "height": null,
+          "sourceLink": "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/74/",
+          "copyrightStatus": "source_reference"
+        }
+      ]
+    },
+    {
+      "id": "work-zasypay",
+      "slug": "zasypay",
+      "title": "Засыпай",
+      "collectionId": "collection-koshki",
+      "collectionTitle": "Кошки",
+      "year": 2024,
+      "technique": "сухая игла",
+      "dimensionsText": "8 см х 17 см",
+      "status": "unknown",
+      "sourceLinks": [
+        "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+      ],
+      "imageIds": [
+        "media-work-zasypay"
+      ],
+      "imagePaths": [
+        "assets/media/works/media-work-zasypay.webp"
+      ],
+      "images": [
+        {
+          "id": "media-work-zasypay",
+          "title": "Засыпай",
+          "src": "assets/media/works/media-work-zasypay.webp",
+          "thumbnail": "assets/media/works/media-work-zasypay.webp",
+          "width": null,
+          "height": null,
+          "sourceLink": "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/75/",
+          "copyrightStatus": "source_reference"
+        }
+      ]
+    },
+    {
+      "id": "work-odin-den-v-derevne-2021",
+      "slug": "odin-den-v-derevne-2021",
+      "title": "Один день в деревне",
+      "collectionId": "collection-provinciya",
+      "collectionTitle": "Провинция",
+      "year": 2021,
+      "technique": "сухая игла",
+      "dimensionsText": "14 см х 19 см",
+      "status": "unknown",
+      "sourceLinks": [
+        "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+      ],
+      "imageIds": [
+        "media-work-odin-den-v-derevne-2021"
+      ],
+      "imagePaths": [
+        "assets/media/works/media-work-odin-den-v-derevne-2021.webp"
+      ],
+      "images": [
+        {
+          "id": "media-work-odin-den-v-derevne-2021",
+          "title": "Один день в деревне",
+          "src": "assets/media/works/media-work-odin-den-v-derevne-2021.webp",
+          "thumbnail": "assets/media/works/media-work-odin-den-v-derevne-2021.webp",
+          "width": null,
+          "height": null,
+          "sourceLink": "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/31/",
+          "copyrightStatus": "source_reference"
+        }
+      ]
+    },
+    {
+      "id": "work-molchi-i-slushay-ili-dva-derushchikhsya-vorobya",
+      "slug": "molchi-i-slushay-ili-dva-derushchikhsya-vorobya",
+      "title": "Молчи и слушай или два дерущихся воробья",
+      "collectionId": "collection-zhivaya-priroda",
+      "collectionTitle": "Живая природа",
+      "year": 2023,
+      "technique": "сухая игла",
+      "dimensionsText": "12,5 см х 22,5 см",
+      "status": "unknown",
+      "sourceLinks": [
+        "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+      ],
+      "imageIds": [
+        "media-work-molchi-i-slushay-ili-dva-derushchikhsya-vorobya"
+      ],
+      "imagePaths": [
+        "assets/media/works/media-work-molchi-i-slushay-ili-dva-derushchikhsya-vorobya.webp"
+      ],
+      "images": [
+        {
+          "id": "media-work-molchi-i-slushay-ili-dva-derushchikhsya-vorobya",
+          "title": "Молчи и слушай или два дерущихся воробья",
+          "src": "assets/media/works/media-work-molchi-i-slushay-ili-dva-derushchikhsya-vorobya.webp",
+          "thumbnail": "assets/media/works/media-work-molchi-i-slushay-ili-dva-derushchikhsya-vorobya.webp",
+          "width": null,
+          "height": null,
+          "sourceLink": "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/55/",
+          "copyrightStatus": "source_reference"
+        }
+      ]
+    },
+    {
+      "id": "work-zemlyanaya-zhaba",
+      "slug": "zemlyanaya-zhaba",
+      "title": "Земляная жаба",
+      "collectionId": "collection-zhivaya-priroda",
+      "collectionTitle": "Живая природа",
+      "year": 2022,
+      "technique": "сухая игла",
+      "dimensionsText": "12 см х 17,5 см",
+      "status": "unknown",
+      "sourceLinks": [
+        "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+      ],
+      "imageIds": [
+        "media-work-zemlyanaya-zhaba"
+      ],
+      "imagePaths": [
+        "assets/media/works/media-work-zemlyanaya-zhaba.webp"
+      ],
+      "images": [
+        {
+          "id": "media-work-zemlyanaya-zhaba",
+          "title": "Земляная жаба",
+          "src": "assets/media/works/media-work-zemlyanaya-zhaba.webp",
+          "thumbnail": "assets/media/works/media-work-zemlyanaya-zhaba.webp",
+          "width": null,
+          "height": null,
+          "sourceLink": "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/57/",
+          "copyrightStatus": "source_reference"
+        }
+      ]
+    },
+    {
+      "id": "work-mertvaya-mukha",
+      "slug": "mertvaya-mukha",
+      "title": "Мёртвая муха",
+      "collectionId": "collection-zhivaya-priroda",
+      "collectionTitle": "Живая природа",
+      "year": 2024,
+      "technique": "сухая игла",
+      "dimensionsText": "11 см х 16 см",
+      "status": "unknown",
+      "sourceLinks": [
+        "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+      ],
+      "imageIds": [
+        "media-work-mertvaya-mukha"
+      ],
+      "imagePaths": [
+        "assets/media/works/media-work-mertvaya-mukha.webp"
+      ],
+      "images": [
+        {
+          "id": "media-work-mertvaya-mukha",
+          "title": "Мёртвая муха",
+          "src": "assets/media/works/media-work-mertvaya-mukha.webp",
+          "thumbnail": "assets/media/works/media-work-mertvaya-mukha.webp",
+          "width": null,
+          "height": null,
+          "sourceLink": "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/59/",
+          "copyrightStatus": "source_reference"
+        }
+      ]
+    },
+    {
+      "id": "work-chetyre-pyat-kto-ne-spryatalsya",
+      "slug": "chetyre-pyat-kto-ne-spryatalsya",
+      "title": "…Четыре-пять… кто не спрятался…",
+      "collectionId": "collection-koshki",
+      "collectionTitle": "Кошки",
+      "year": 2024,
+      "technique": "сухая игла",
+      "dimensionsText": "8 см х 17 см",
+      "status": "unknown",
+      "sourceLinks": [
+        "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+      ],
+      "imageIds": [
+        "media-work-chetyre-pyat-kto-ne-spryatalsya"
+      ],
+      "imagePaths": [
+        "assets/media/works/media-work-chetyre-pyat-kto-ne-spryatalsya.webp"
+      ],
+      "images": [
+        {
+          "id": "media-work-chetyre-pyat-kto-ne-spryatalsya",
+          "title": "…Четыре-пять… кто не спрятался…",
+          "src": "assets/media/works/media-work-chetyre-pyat-kto-ne-spryatalsya.webp",
+          "thumbnail": "assets/media/works/media-work-chetyre-pyat-kto-ne-spryatalsya.webp",
+          "width": null,
+          "height": null,
+          "sourceLink": "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/75/",
+          "copyrightStatus": "source_reference"
+        }
+      ]
+    }
+  ]
+}

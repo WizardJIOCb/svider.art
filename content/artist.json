@@ -1,0 +1,34 @@
+{
+  "id": "sergey-svider",
+  "fullName": "Сергей Михайлович Свидер",
+  "shortName": "Сергей Свидер",
+  "city": "Челябинск",
+  "title": "Гравер, мастер сухой иглы",
+  "shortBio": "Сергей Михайлович Свидер живет и работает в Челябинске. Он гравер и мастер сухой иглы, работающий с камерной печатной графикой, сериями и небольшими форматами.",
+  "fullBio": "Сергей Михайлович Свидер работает в Челябинске и связан с Челябинским гравюрным кабинетом. Он гравер и мастер сухой иглы, для которого важны ручной процесс, точность линии и характер отпечатка. Его работы показывались в Челябинске и Екатеринбурге, а сами циклы строятся вокруг близких и внимательных тем: семьи, памяти, повседневности, природы и сезонных состояний.",
+  "techniques": [
+    "сухая игла",
+    "печатная графика"
+  ],
+  "artisticStatement": "В работах Сергея Свидера важен не только сюжет, но и сама природа линии: живая, точная, местами хрупкая, сохраняющая след руки и сопротивление материала. Его гравюры воспринимаются как камерные листы для неспешного взгляда, где изображение раскрывается через тишину, фактуру и внутренний ритм.",
+  "portraitImageId": "media-group-avatar",
+  "galleryImageIds": [
+    "media-group-avatar",
+    "media-group-cover"
+  ],
+  "exhibitionIds": [
+    "exh-tochka-liniya-svet-2024",
+    "exh-zhizn-chelovek-kniga-2021"
+  ],
+  "publicationLinks": [
+    "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/",
+    "https://book.uraic.ru/galereja/vystavki2021/zhiznchelovekkniga_vystavka",
+    "https://chel.guide/events/tochka-liniya-svet-20240531-0831"
+  ],
+  "sourceLinks": [
+    "https://vk.com/gravcab",
+    "https://chel.guide/events/tochka-liniya-svet-20240531-0831",
+    "https://book.uraic.ru/galereja/vystavki2021/zhiznchelovekkniga_vystavka",
+    "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+  ]
+}

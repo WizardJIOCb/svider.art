@@ -1,0 +1,282 @@
+[
+  {
+    "id": "collection-pisateli",
+    "title": "Писатели",
+    "slug": "pisateli",
+    "coverImageId": "media-collection-pisateli-cover",
+    "shortDescription": "Серия миниатюрных гравюр с образами писателей и культурных фигур.",
+    "fullDescription": "Серия «Писатели» занимает центральную часть выставки «Жизнь-Человек-Книга». Работы отличаются предельно малым форматом и строятся вокруг литературных и культурных образов.",
+    "theme": "литература и культурные фигуры",
+    "season": "серия миниатюр",
+    "period": "",
+    "yearStart": 2021,
+    "yearEnd": 2021,
+    "workIds": [],
+    "featured": true,
+    "order": 2,
+    "sourceLinks": [
+      "https://book.uraic.ru/galereja/vystavki2021/zhiznchelovekkniga_vystavka"
+    ]
+  },
+  {
+    "id": "collection-ottsovstvo",
+    "title": "Отцовство",
+    "slug": "ottsovstvo",
+    "coverImageId": "media-collection-ottsovstvo-cover",
+    "shortDescription": "Сезон гравюр, посвященный теме отцовства, близости и совместной памяти.",
+    "fullDescription": "В отдельном каталоге 2025 года сезон «Отцовство» представлен как серия гравюр Гравюрного кабинета, объединенных темой связи между отцом и ребенком.",
+    "theme": "семья и отцовство",
+    "season": "сезон",
+    "period": "",
+    "yearStart": 2022,
+    "yearEnd": 2025,
+    "workIds": [
+      "work-ruka-v-ruke",
+      "work-v-rukakh-ottsa",
+      "work-blizost",
+      "work-dve-gitary",
+      "work-dad-and-i-sledding",
+      "work-ne-otpuskay-menya",
+      "work-vmeste-navsegda"
+    ],
+    "featured": true,
+    "order": 4,
+    "sourceLinks": [
+      "https://fliphtml5.com/jhcib/hnsh/%D0%9F%D0%A0%D0%9E%D0%91%D0%9D%D0%98%D0%9A_%D0%A7%D0%93%D0%9A_%D0%9E%D1%82%D1%86%D0%BE%D0%B2%D1%81%D1%82%D0%B2%D0%BE_%28%D0%BD%D0%B5%D1%82_2025%29/"
+    ]
+  },
+  {
+    "id": "collection-materinstvo",
+    "title": "Материнство",
+    "slug": "materinstvo",
+    "coverImageId": "media-collection-materinstvo-cover",
+    "shortDescription": "Сезон гравюр о нежности, рождении, телесности и материнском опыте.",
+    "fullDescription": "Каталог сезона «Материнство» показывает цикл работ, объединенных темой материнства, появления жизни и эмоциональной близости.",
+    "theme": "материнство и рождение",
+    "season": "сезон",
+    "period": "",
+    "yearStart": 2020,
+    "yearEnd": 2023,
+    "workIds": [
+      "work-nezhnost",
+      "work-sladost",
+      "work-plod-cheloveka",
+      "work-anatomicheskoe-ustroystvo-materi",
+      "work-pervoe-zhelanie",
+      "work-tvoyu-mat",
+      "work-moyo",
+      "work-zdravstvuy-mir",
+      "work-mamochka-moya"
+    ],
+    "featured": true,
+    "order": 5,
+    "sourceLinks": [
+      "https://fliphtml5.com/duiub/lnmm/%21%D0%A7%D0%93%D0%9A_%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_%D0%9C%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%9D%D1%81%D1%82%D0%B2%D0%BE_%282%29/"
+    ]
+  },
+  {
+    "id": "collection-druzhba",
+    "title": "Дружба",
+    "slug": "druzhba",
+    "coverImageId": "media-collection-druzhba-cover",
+    "shortDescription": "Сезон гравюр о теплоте, ожидании, встрече и хрупкости человеческой связи.",
+    "fullDescription": "Сезон «Дружба» объединяет работы о близости, расставании, ожидании и совместном времени.",
+    "theme": "дружба и близость",
+    "season": "сезон",
+    "period": "",
+    "yearStart": 2020,
+    "yearEnd": 2023,
+    "workIds": [
+      "work-ozhidanie",
+      "work-devochki",
+      "work-teplota",
+      "work-rasstavanie",
+      "work-laska",
+      "work-zhazhda",
+      "work-vstrecha",
+      "work-ty-i-ya",
+      "work-minus-30",
+      "work-tolko-my-i-veter"
+    ],
+    "featured": true,
+    "order": 6,
+    "sourceLinks": [
+      "https://fliphtml5.com/duiub/abom/%21%D0%A7%D0%93%D0%9A_%D0%9A%D0%B0%D1%82%D0%B0%D0%9B%D0%BE%D0%B3_%D0%94%D1%80%D1%83%D0%B6%D0%B1%D0%B0/"
+    ]
+  },
+  {
+    "id": "collection-provinciya",
+    "title": "Провинция",
+    "slug": "provinciya",
+    "coverImageId": "media-collection-provinciya-cover",
+    "shortDescription": "Сезон о сельском пейзаже, повседневности и неспешном ритме провинциальной жизни.",
+    "fullDescription": "В сезоне «Провинция» собраны листы, посвященные деревенскому пейзажу, тишине воды, стогам, повседневным сценам и спокойному течению времени.",
+    "theme": "деревенский пейзаж и провинциальный быт",
+    "season": "сезон",
+    "period": "",
+    "yearStart": 2021,
+    "yearEnd": 2023,
+    "workIds": [
+      "work-tikhaya-zavod",
+      "work-tri-stoga",
+      "work-odin-den-v-derevne",
+      "work-odin-den-v-derevne-2021"
+    ],
+    "featured": true,
+    "order": 7,
+    "sourceLinks": [
+      "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+    ]
+  },
+  {
+    "id": "collection-detstvo",
+    "title": "Детство",
+    "slug": "detstvo",
+    "coverImageId": "media-collection-detstvo-cover",
+    "shortDescription": "Сезон о детской свободе, игре, юморе и легкости повседневного наблюдения.",
+    "fullDescription": "Работы сезона «Детство» строятся вокруг движения, игры, фантазии и того особого взгляда на мир, где серьезность соседствует с радостью и перевернутой логикой детского опыта.",
+    "theme": "детство, игра, движение",
+    "season": "сезон",
+    "period": "",
+    "yearStart": 2022,
+    "yearEnd": 2023,
+    "workIds": [
+      "work-smeshnoy-papa",
+      "work-malchik-konki-i-podushka",
+      "work-mir-naoborot",
+      "work-tri-smeyushchikhsya-malchika-na-velosipedakh"
+    ],
+    "featured": true,
+    "order": 8,
+    "sourceLinks": [
+      "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+    ]
+  },
+  {
+    "id": "collection-zhivaya-priroda",
+    "title": "Живая природа",
+    "slug": "zhivaya-priroda",
+    "coverImageId": "media-collection-zhivaya-priroda-cover",
+    "shortDescription": "Сезон наблюдений за птицами, животными и природным движением.",
+    "fullDescription": "Сезон «Живая природа» объединяет листы, в которых внимание мастера сосредоточено на пластике живого существа, настороженности, полете и естественной драматургии природы.",
+    "theme": "птицы, животные, природное движение",
+    "season": "сезон",
+    "period": "",
+    "yearStart": 2020,
+    "yearEnd": 2025,
+    "workIds": [
+      "work-storozhevoy-vorobey",
+      "work-yashcheritsa",
+      "work-molchi-i-slushay-ili-dva-derushchikhsya-vorobya",
+      "work-zemlyanaya-zhaba",
+      "work-mertvaya-mukha",
+      "work-polet",
+      "work-sova"
+    ],
+    "featured": true,
+    "order": 9,
+    "sourceLinks": [
+      "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+    ]
+  },
+  {
+    "id": "collection-tsvety",
+    "title": "Цветы",
+    "slug": "tsvety",
+    "coverImageId": "media-collection-tsvety-cover",
+    "shortDescription": "Сезон ботанических мотивов, света и цветочной пластики.",
+    "fullDescription": "В сезоне «Цветы» линия становится особенно внимательной к форме стебля, лепестка и цветочного силуэта. Это камерные листы о свете, хрупкости и внутреннем движении растения.",
+    "theme": "ботаника и цветочные мотивы",
+    "season": "сезон",
+    "period": "",
+    "yearStart": 2020,
+    "yearEnd": 2023,
+    "workIds": [
+      "work-shipovnik",
+      "work-romashka",
+      "work-solntsa-snova-solntsa",
+      "work-verba"
+    ],
+    "featured": true,
+    "order": 10,
+    "sourceLinks": [
+      "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+    ]
+  },
+  {
+    "id": "collection-koshki",
+    "title": "Кошки",
+    "slug": "koshki",
+    "coverImageId": "media-collection-koshki-cover",
+    "shortDescription": "Сезон о кошачьей пластике, характере и наблюдении за привычками.",
+    "fullDescription": "Сезон «Кошки» строится на точных наблюдениях за движением, жестом и характером животного. Листы работают на стыке юмора, нежности и внимательной графической фиксации момента.",
+    "theme": "кошки и повседневное наблюдение",
+    "season": "сезон",
+    "period": "",
+    "yearStart": 2021,
+    "yearEnd": 2025,
+    "workIds": [
+      "work-koshki-zhazhda",
+      "work-knizhnyy-kot",
+      "work-koshki-ozhidanie",
+      "work-chetyre-pyat-kto-ne-spryatalsya",
+      "work-zasypay"
+    ],
+    "featured": true,
+    "order": 11,
+    "sourceLinks": [
+      "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+    ]
+  },
+  {
+    "id": "collection-liki-zhizni",
+    "title": "Лики жизни",
+    "slug": "liki-zhizni",
+    "coverImageId": "media-collection-liki-zhizni-cover",
+    "shortDescription": "Цикл реалистично-гротесковых портретов, который сам автор относит к сезонам.",
+    "fullDescription": "В описании выставки в Библиотеке Белинского цикл «Лики жизни» назван авторскими эстампами из сезона, где важны лица, возраст, след пережитого и сложная штриховая ткань изображения.",
+    "theme": "лики, возраст, характер",
+    "season": "авторский цикл",
+    "period": "",
+    "yearStart": 2020,
+    "yearEnd": 2021,
+    "workIds": [
+      "work-nachalo",
+      "work-zhizn",
+      "work-smekh",
+      "work-sudba",
+      "work-smushchenie"
+    ],
+    "featured": true,
+    "order": 1,
+    "sourceLinks": [
+      "https://book.uraic.ru/galereja/vystavki2021/zhiznchelovekkniga_vystavka"
+    ]
+  },
+  {
+    "id": "collection-staryy-gorod",
+    "title": "Старый город",
+    "slug": "staryy-gorod",
+    "coverImageId": "media-collection-staryy-gorod-cover",
+    "shortDescription": "Сезон городских и деревенских пейзажей, построенных на памяти места, архитектуре и времени.",
+    "fullDescription": "В сезоне «Старый город» мастер работает с архитектурным мотивом, улицей, церковью, водой, ремесленным двором и зимним состоянием пространства. Это один из самых атмосферных циклов каталога.",
+    "theme": "городской и исторический пейзаж",
+    "season": "сезон",
+    "period": "",
+    "yearStart": 2020,
+    "yearEnd": 2025,
+    "workIds": [
+      "work-okhotniche-pomestye",
+      "work-derevenskie-budni",
+      "work-lodki-na-reke",
+      "work-lavka-bondarya",
+      "work-zasnezhennaya-tserkov",
+      "work-zimnie-zaboty"
+    ],
+    "featured": true,
+    "order": 3,
+    "sourceLinks": [
+      "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+    ]
+  }
+]

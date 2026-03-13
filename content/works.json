@@ -1,0 +1,2137 @@
+[
+  {
+    "id": "work-okhotniche-pomestye",
+    "title": "Охотничье поместье",
+    "slug": "okhotniche-pomestye",
+    "artistId": "sergey-svider",
+    "collectionId": "collection-staryy-gorod",
+    "year": 2020,
+    "technique": "сухая игла",
+    "materials": [
+      "пластик",
+      "бумага"
+    ],
+    "width": 19,
+    "height": 16,
+    "dimensionsText": "19 см х 16 см",
+    "edition": "",
+    "status": "unknown",
+    "price": null,
+    "priceOnRequest": true,
+    "shortDescription": "Лист из городского цикла о старом доме, памяти места и сдержанной архитектурной пластике.",
+    "fullDescription": "«Охотничье поместье» принадлежит к циклу «Старый город», где архитектурный мотив читается как след времени и памяти места. Работа строится на сдержанном ритме формы, внимании к силуэту здания и ощущении медленного исторического дыхания.",
+    "imageIds": [
+      "media-work-okhotniche-pomestye"
+    ],
+    "detailImageIds": [],
+    "tags": [
+      "сезон",
+      "город"
+    ],
+    "featured": false,
+    "order": 1,
+    "sourceLinks": [
+      "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+    ]
+  },
+  {
+    "id": "work-ruka-v-ruke",
+    "title": "Рука в руке",
+    "slug": "ruka-v-ruke",
+    "artistId": "sergey-svider",
+    "collectionId": "collection-ottsovstvo",
+    "year": 2022,
+    "technique": "сухая игла",
+    "materials": [
+      "пластик",
+      "бумага"
+    ],
+    "width": 12.7,
+    "height": 15,
+    "dimensionsText": "12,7 см х 15 см",
+    "edition": "",
+    "status": "unknown",
+    "price": null,
+    "priceOnRequest": true,
+    "shortDescription": "Лист о доверии, телесной памяти и тихой связи между близкими.",
+    "fullDescription": "Рука в руке входит в цикл «Отцовство», где важны жест, телесная память и тихая связь между взрослым и ребенком. Работа раскрывается через камерный формат, мягкую сухую иглу и внимание к эмоциональной интонации сцены.",
+    "imageIds": [
+      "media-work-ruka-v-ruke"
+    ],
+    "detailImageIds": [],
+    "tags": [
+      "отцовство",
+      "сезон"
+    ],
+    "featured": true,
+    "order": 2,
+    "sourceLinks": [
+      "https://fliphtml5.com/jhcib/hnsh/%D0%9F%D0%A0%D0%9E%D0%91%D0%9D%D0%98%D0%9A_%D0%A7%D0%93%D0%9A_%D0%9E%D1%82%D1%86%D0%BE%D0%B2%D1%81%D1%82%D0%B2%D0%BE_%28%D0%BD%D0%B5%D1%82_2025%29/"
+    ]
+  },
+  {
+    "id": "work-v-rukakh-ottsa",
+    "title": "В руках отца",
+    "slug": "v-rukakh-ottsa",
+    "artistId": "sergey-svider",
+    "collectionId": "collection-ottsovstvo",
+    "year": 2023,
+    "technique": "сухая игла",
+    "materials": [
+      "пластик",
+      "бумага"
+    ],
+    "width": 13,
+    "height": 18,
+    "dimensionsText": "13 см х 18 см",
+    "edition": "",
+    "status": "unknown",
+    "price": null,
+    "priceOnRequest": true,
+    "shortDescription": "Лист о защите, опоре и образе отцовских рук как пространства близости.",
+    "fullDescription": "В руках отца входит в цикл «Отцовство», где важны жест, телесная память и тихая связь между взрослым и ребенком. Работа раскрывается через камерный формат, мягкую сухую иглу и внимание к эмоциональной интонации сцены.",
+    "imageIds": [
+      "media-work-v-rukakh-ottsa"
+    ],
+    "detailImageIds": [],
+    "tags": [
+      "отцовство",
+      "сезон"
+    ],
+    "featured": false,
+    "order": 3,
+    "sourceLinks": [
+      "https://fliphtml5.com/jhcib/hnsh/%D0%9F%D0%A0%D0%9E%D0%91%D0%9D%D0%98%D0%9A_%D0%A7%D0%93%D0%9A_%D0%9E%D1%82%D1%86%D0%BE%D0%B2%D1%81%D1%82%D0%B2%D0%BE_%28%D0%BD%D0%B5%D1%82_2025%29/"
+    ]
+  },
+  {
+    "id": "work-blizost",
+    "title": "Близость",
+    "slug": "blizost",
+    "artistId": "sergey-svider",
+    "collectionId": "collection-ottsovstvo",
+    "year": 2023,
+    "technique": "сухая игла",
+    "materials": [
+      "пластик",
+      "бумага"
+    ],
+    "width": 13,
+    "height": 18,
+    "dimensionsText": "13 см х 18 см",
+    "edition": "",
+    "status": "unknown",
+    "price": null,
+    "priceOnRequest": true,
+    "shortDescription": "Лист из сезона об отцовстве, близости и памяти совместного времени.",
+    "fullDescription": "Близость входит в цикл «Отцовство», где важны жест, телесная память и тихая связь между взрослым и ребенком. Работа раскрывается через камерный формат, мягкую сухую иглу и внимание к эмоциональной интонации сцены.",
+    "imageIds": [
+      "media-work-blizost"
+    ],
+    "detailImageIds": [],
+    "tags": [
+      "отцовство",
+      "сезон"
+    ],
+    "featured": false,
+    "order": 4,
+    "sourceLinks": [
+      "https://fliphtml5.com/jhcib/hnsh/%D0%9F%D0%A0%D0%9E%D0%91%D0%9D%D0%98%D0%9A_%D0%A7%D0%93%D0%9A_%D0%9E%D1%82%D1%86%D0%BE%D0%B2%D1%81%D1%82%D0%B2%D0%BE_%28%D0%BD%D0%B5%D1%82_2025%29/"
+    ]
+  },
+  {
+    "id": "work-dve-gitary",
+    "title": "Две гитары",
+    "slug": "dve-gitary",
+    "artistId": "sergey-svider",
+    "collectionId": "collection-ottsovstvo",
+    "year": 2023,
+    "technique": "сухая игла",
+    "materials": [
+      "пластик",
+      "бумага"
+    ],
+    "width": 12,
+    "height": 17,
+    "dimensionsText": "12 см х 17 см",
+    "edition": "",
+    "status": "unknown",
+    "price": null,
+    "priceOnRequest": true,
+    "shortDescription": "Лист из сезона об отцовстве, близости и памяти совместного времени.",
+    "fullDescription": "Две гитары входит в цикл «Отцовство», где важны жест, телесная память и тихая связь между взрослым и ребенком. Работа раскрывается через камерный формат, мягкую сухую иглу и внимание к эмоциональной интонации сцены.",
+    "imageIds": [
+      "media-work-dve-gitary"
+    ],
+    "detailImageIds": [],
+    "tags": [
+      "отцовство",
+      "сезон"
+    ],
+    "featured": false,
+    "order": 5,
+    "sourceLinks": [
+      "https://fliphtml5.com/jhcib/hnsh/%D0%9F%D0%A0%D0%9E%D0%91%D0%9D%D0%98%D0%9A_%D0%A7%D0%93%D0%9A_%D0%9E%D1%82%D1%86%D0%BE%D0%B2%D1%81%D1%82%D0%B2%D0%BE_%28%D0%BD%D0%B5%D1%82_2025%29/"
+    ]
+  },
+  {
+    "id": "work-dad-and-i-sledding",
+    "title": "Dad and I sledding",
+    "slug": "dad-and-i-sledding",
+    "artistId": "sergey-svider",
+    "collectionId": "collection-ottsovstvo",
+    "year": 2023,
+    "technique": "сухая игла",
+    "materials": [
+      "пластик",
+      "бумага"
+    ],
+    "width": 13.5,
+    "height": 17.5,
+    "dimensionsText": "13,5 см х 17,5 см",
+    "edition": "",
+    "status": "unknown",
+    "price": null,
+    "priceOnRequest": true,
+    "shortDescription": "Лист из сезона об отцовстве, близости и памяти совместного времени.",
+    "fullDescription": "Dad and I sledding входит в цикл «Отцовство», где важны жест, телесная память и тихая связь между взрослым и ребенком. Работа раскрывается через камерный формат, мягкую сухую иглу и внимание к эмоциональной интонации сцены.",
+    "imageIds": [
+      "media-work-dad-and-i-sledding"
+    ],
+    "detailImageIds": [],
+    "tags": [
+      "отцовство",
+      "сезон"
+    ],
+    "featured": true,
+    "order": 6,
+    "sourceLinks": [
+      "https://fliphtml5.com/jhcib/hnsh/%D0%9F%D0%A0%D0%9E%D0%91%D0%9D%D0%98%D0%9A_%D0%A7%D0%93%D0%9A_%D0%9E%D1%82%D1%86%D0%BE%D0%B2%D1%81%D1%82%D0%B2%D0%BE_%28%D0%BD%D0%B5%D1%82_2025%29/"
+    ]
+  },
+  {
+    "id": "work-ne-otpuskay-menya",
+    "title": "Не отпускай меня",
+    "slug": "ne-otpuskay-menya",
+    "artistId": "sergey-svider",
+    "collectionId": "collection-ottsovstvo",
+    "year": 2025,
+    "technique": "сухая игла",
+    "materials": [
+      "пластик",
+      "бумага"
+    ],
+    "width": 13,
+    "height": 17,
+    "dimensionsText": "13 см х 17 см",
+    "edition": "",
+    "status": "unknown",
+    "price": null,
+    "priceOnRequest": true,
+    "shortDescription": "Лист из сезона об отцовстве, близости и памяти совместного времени.",
+    "fullDescription": "Не отпускай меня входит в цикл «Отцовство», где важны жест, телесная память и тихая связь между взрослым и ребенком. Работа раскрывается через камерный формат, мягкую сухую иглу и внимание к эмоциональной интонации сцены.",
+    "imageIds": [
+      "media-work-ne-otpuskay-menya"
+    ],
+    "detailImageIds": [],
+    "tags": [
+      "отцовство",
+      "сезон"
+    ],
+    "featured": false,
+    "order": 7,
+    "sourceLinks": [
+      "https://fliphtml5.com/jhcib/hnsh/%D0%9F%D0%A0%D0%9E%D0%91%D0%9D%D0%98%D0%9A_%D0%A7%D0%93%D0%9A_%D0%9E%D1%82%D1%86%D0%BE%D0%B2%D1%81%D1%82%D0%B2%D0%BE_%28%D0%BD%D0%B5%D1%82_2025%29/"
+    ]
+  },
+  {
+    "id": "work-vmeste-navsegda",
+    "title": "Вместе навсегда",
+    "slug": "vmeste-navsegda",
+    "artistId": "sergey-svider",
+    "collectionId": "collection-ottsovstvo",
+    "year": 2025,
+    "technique": "сухая игла",
+    "materials": [
+      "пластик",
+      "бумага"
+    ],
+    "width": 13,
+    "height": 17,
+    "dimensionsText": "13 см х 17 см",
+    "edition": "",
+    "status": "unknown",
+    "price": null,
+    "priceOnRequest": true,
+    "shortDescription": "Лист из сезона об отцовстве, близости и памяти совместного времени.",
+    "fullDescription": "Вместе навсегда входит в цикл «Отцовство», где важны жест, телесная память и тихая связь между взрослым и ребенком. Работа раскрывается через камерный формат, мягкую сухую иглу и внимание к эмоциональной интонации сцены.",
+    "imageIds": [
+      "media-work-vmeste-navsegda"
+    ],
+    "detailImageIds": [],
+    "tags": [
+      "отцовство",
+      "сезон"
+    ],
+    "featured": false,
+    "order": 8,
+    "sourceLinks": [
+      "https://fliphtml5.com/jhcib/hnsh/%D0%9F%D0%A0%D0%9E%D0%91%D0%9D%D0%98%D0%9A_%D0%A7%D0%93%D0%9A_%D0%9E%D1%82%D1%86%D0%BE%D0%B2%D1%81%D1%82%D0%B2%D0%BE_%28%D0%BD%D0%B5%D1%82_2025%29/"
+    ]
+  },
+  {
+    "id": "work-nezhnost",
+    "title": "Нежность",
+    "slug": "nezhnost",
+    "artistId": "sergey-svider",
+    "collectionId": "collection-materinstvo",
+    "year": 2020,
+    "technique": "сухая игла",
+    "materials": [
+      "пластик",
+      "бумага"
+    ],
+    "width": 15,
+    "height": 10.5,
+    "dimensionsText": "15 см х 10,5 см",
+    "edition": "",
+    "status": "unknown",
+    "price": null,
+    "priceOnRequest": true,
+    "shortDescription": "Лист о хрупкой близости, заботе и мягком внутреннем движении материнского образа.",
+    "fullDescription": "Нежность относится к сезону «Материнство», где пластика линии соединяется с темами рождения, заботы и внутреннего напряжения чувств. В этой работе важны не только образ и сюжет, но и материальность листа, удерживающая хрупкость переживания.",
+    "imageIds": [
+      "media-work-nezhnost"
+    ],
+    "detailImageIds": [],
+    "tags": [
+      "материнство",
+      "сезон"
+    ],
+    "featured": true,
+    "order": 9,
+    "sourceLinks": [
+      "https://fliphtml5.com/duiub/lnmm/%21%D0%A7%D0%93%D0%9A_%D0%9A%D0%B0%D1%82%D0%B0%D0%9B%D0%BE%D0%B3_%D0%9C%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%9D%D1%81%D1%82%D0%B2%D0%BE_%282%29/"
+    ]
+  },
+  {
+    "id": "work-sladost",
+    "title": "Сладость",
+    "slug": "sladost",
+    "artistId": "sergey-svider",
+    "collectionId": "collection-materinstvo",
+    "year": 2020,
+    "technique": "сухая игла",
+    "materials": [
+      "пластик",
+      "бумага"
+    ],
+    "width": 19,
+    "height": 13,
+    "dimensionsText": "19 см х 13 см",
+    "edition": "",
+    "status": "unknown",
+    "price": null,
+    "priceOnRequest": true,
+    "shortDescription": "Лист из сезона о материнстве, рождении, телесности и внутренней близости.",
+    "fullDescription": "Сладость относится к сезону «Материнство», где пластика линии соединяется с темами рождения, заботы и внутреннего напряжения чувств. В этой работе важны не только образ и сюжет, но и материальность листа, удерживающая хрупкость переживания.",
+    "imageIds": [
+      "media-work-sladost"
+    ],
+    "detailImageIds": [],
+    "tags": [
+      "материнство",
+      "сезон"
+    ],
+    "featured": false,
+    "order": 10,
+    "sourceLinks": [
+      "https://fliphtml5.com/duiub/lnmm/%21%D0%A7%D0%93%D0%9A_%D0%9A%D0%B0%D1%82%D0%B0%D0%9B%D0%BE%D0%B3_%D0%9C%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%9D%D1%81%D1%82%D0%B2%D0%BE_%282%29/"
+    ]
+  },
+  {
+    "id": "work-plod-cheloveka",
+    "title": "Плод человека",
+    "slug": "plod-cheloveka",
+    "artistId": "sergey-svider",
+    "collectionId": "collection-materinstvo",
+    "year": 2020,
+    "technique": "сухая игла",
+    "materials": [
+      "пластик",
+      "бумага"
+    ],
+    "width": 10.5,
+    "height": 8,
+    "dimensionsText": "10,5 см х 8 см",
+    "edition": "",
+    "status": "unknown",
+    "price": null,
+    "priceOnRequest": true,
+    "shortDescription": "Лист из сезона о материнстве, рождении, телесности и внутренней близости.",
+    "fullDescription": "Плод человека относится к сезону «Материнство», где пластика линии соединяется с темами рождения, заботы и внутреннего напряжения чувств. В этой работе важны не только образ и сюжет, но и материальность листа, удерживающая хрупкость переживания.",
+    "imageIds": [
+      "media-work-plod-cheloveka"
+    ],
+    "detailImageIds": [],
+    "tags": [
+      "материнство",
+      "сезон"
+    ],
+    "featured": false,
+    "order": 11,
+    "sourceLinks": [
+      "https://fliphtml5.com/duiub/lnmm/%21%D0%A7%D0%93%D0%9A_%D0%9A%D0%B0%D1%82%D0%B0%D0%9B%D0%BE%D0%B3_%D0%9C%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%9D%D1%81%D1%82%D0%B2%D0%BE_%282%29/"
+    ]
+  },
+  {
+    "id": "work-anatomicheskoe-ustroystvo-materi",
+    "title": "Анатомическое устройство матери",
+    "slug": "anatomicheskoe-ustroystvo-materi",
+    "artistId": "sergey-svider",
+    "collectionId": "collection-materinstvo",
+    "year": 2022,
+    "technique": "сухая игла",
+    "materials": [
+      "пластик",
+      "бумага"
+    ],
+    "width": 11.7,
+    "height": 13.5,
+    "dimensionsText": "11,7 см х 13,5 см",
+    "edition": "",
+    "status": "unknown",
+    "price": null,
+    "priceOnRequest": true,
+    "shortDescription": "Лист из сезона о материнстве, рождении, телесности и внутренней близости.",
+    "fullDescription": "Анатомическое устройство матери относится к сезону «Материнство», где пластика линии соединяется с темами рождения, заботы и внутреннего напряжения чувств. В этой работе важны не только образ и сюжет, но и материальность листа, удерживающая хрупкость переживания.",
+    "imageIds": [
+      "media-work-anatomicheskoe-ustroystvo-materi"
+    ],
+    "detailImageIds": [],
+    "tags": [
+      "материнство",
+      "сезон"
+    ],
+    "featured": false,
+    "order": 12,
+    "sourceLinks": [
+      "https://fliphtml5.com/duiub/lnmm/%21%D0%A7%D0%93%D0%9A_%D0%9A%D0%B0%D1%82%D0%B0%D0%9B%D0%BE%D0%B3_%D0%9C%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%9D%D1%81%D1%82%D0%B2%D0%BE_%282%29/"
+    ]
+  },
+  {
+    "id": "work-pervoe-zhelanie",
+    "title": "Первое желание",
+    "slug": "pervoe-zhelanie",
+    "artistId": "sergey-svider",
+    "collectionId": "collection-materinstvo",
+    "year": 2022,
+    "technique": "сухая игла",
+    "materials": [
+      "пластик",
+      "бумага"
+    ],
+    "width": 15,
+    "height": 15.5,
+    "dimensionsText": "15 см х 15,5 см",
+    "edition": "",
+    "status": "unknown",
+    "price": null,
+    "priceOnRequest": true,
+    "shortDescription": "Лист из сезона о материнстве, рождении, телесности и внутренней близости.",
+    "fullDescription": "Первое желание относится к сезону «Материнство», где пластика линии соединяется с темами рождения, заботы и внутреннего напряжения чувств. В этой работе важны не только образ и сюжет, но и материальность листа, удерживающая хрупкость переживания.",
+    "imageIds": [
+      "media-work-pervoe-zhelanie"
+    ],
+    "detailImageIds": [],
+    "tags": [
+      "материнство",
+      "сезон"
+    ],
+    "featured": false,
+    "order": 13,
+    "sourceLinks": [
+      "https://fliphtml5.com/duiub/lnmm/%21%D0%A7%D0%93%D0%9A_%D0%9A%D0%B0%D1%82%D0%B0%D0%9B%D0%BE%D0%B3_%D0%9C%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%9D%D1%81%D1%82%D0%B2%D0%BE_%282%29/"
+    ]
+  },
+  {
+    "id": "work-tvoyu-mat",
+    "title": "Твою мать!",
+    "slug": "tvoyu-mat",
+    "artistId": "sergey-svider",
+    "collectionId": "collection-materinstvo",
+    "year": 2023,
+    "technique": "сухая игла",
+    "materials": [
+      "пластик",
+      "бумага"
+    ],
+    "width": 11,
+    "height": 15.5,
+    "dimensionsText": "11 см х 15,5 см",
+    "edition": "",
+    "status": "unknown",
+    "price": null,
+    "priceOnRequest": true,
+    "shortDescription": "Лист из сезона о материнстве, рождении, телесности и внутренней близости.",
+    "fullDescription": "Твою мать! относится к сезону «Материнство», где пластика линии соединяется с темами рождения, заботы и внутреннего напряжения чувств. В этой работе важны не только образ и сюжет, но и материальность листа, удерживающая хрупкость переживания.",
+    "imageIds": [
+      "media-work-tvoyu-mat"
+    ],
+    "detailImageIds": [],
+    "tags": [
+      "материнство",
+      "сезон"
+    ],
+    "featured": false,
+    "order": 14,
+    "sourceLinks": [
+      "https://fliphtml5.com/duiub/lnmm/%21%D0%A7%D0%93%D0%9A_%D0%9A%D0%B0%D1%82%D0%B0%D0%9B%D0%BE%D0%B3_%D0%9C%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%9D%D1%81%D1%82%D0%B2%D0%BE_%282%29/"
+    ]
+  },
+  {
+    "id": "work-moyo",
+    "title": "Моё!",
+    "slug": "moyo",
+    "artistId": "sergey-svider",
+    "collectionId": "collection-materinstvo",
+    "year": 2023,
+    "technique": "сухая игла",
+    "materials": [
+      "пластик",
+      "бумага"
+    ],
+    "width": 12,
+    "height": 12,
+    "dimensionsText": "12 см х 12 см",
+    "edition": "",
+    "status": "unknown",
+    "price": null,
+    "priceOnRequest": true,
+    "shortDescription": "Лист из сезона о материнстве, рождении, телесности и внутренней близости.",
+    "fullDescription": "Моё! относится к сезону «Материнство», где пластика линии соединяется с темами рождения, заботы и внутреннего напряжения чувств. В этой работе важны не только образ и сюжет, но и материальность листа, удерживающая хрупкость переживания.",
+    "imageIds": [
+      "media-work-moyo"
+    ],
+    "detailImageIds": [],
+    "tags": [
+      "материнство",
+      "сезон"
+    ],
+    "featured": false,
+    "order": 15,
+    "sourceLinks": [
+      "https://fliphtml5.com/duiub/lnmm/%21%D0%A7%D0%93%D0%9A_%D0%9A%D0%B0%D1%82%D0%B0%D0%9B%D0%BE%D0%B3_%D0%9C%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%9D%D1%81%D1%82%D0%B2%D0%BE_%282%29/"
+    ]
+  },
+  {
+    "id": "work-zdravstvuy-mir",
+    "title": "Здравствуй, мир!",
+    "slug": "zdravstvuy-mir",
+    "artistId": "sergey-svider",
+    "collectionId": "collection-materinstvo",
+    "year": 2023,
+    "technique": "сухая игла",
+    "materials": [
+      "пластик",
+      "бумага"
+    ],
+    "width": 13,
+    "height": 17,
+    "dimensionsText": "13 см х 17 см",
+    "edition": "",
+    "status": "unknown",
+    "price": null,
+    "priceOnRequest": true,
+    "shortDescription": "Лист из сезона о материнстве, рождении, телесности и внутренней близости.",
+    "fullDescription": "Здравствуй, мир! относится к сезону «Материнство», где пластика линии соединяется с темами рождения, заботы и внутреннего напряжения чувств. В этой работе важны не только образ и сюжет, но и материальность листа, удерживающая хрупкость переживания.",
+    "imageIds": [
+      "media-work-zdravstvuy-mir"
+    ],
+    "detailImageIds": [],
+    "tags": [
+      "материнство",
+      "сезон"
+    ],
+    "featured": false,
+    "order": 16,
+    "sourceLinks": [
+      "https://fliphtml5.com/duiub/lnmm/%21%D0%A7%D0%93%D0%9A_%D0%9A%D0%B0%D1%82%D0%B0%D0%9B%D0%BE%D0%B3_%D0%9C%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%9D%D1%81%D1%82%D0%B2%D0%BE_%282%29/"
+    ]
+  },
+  {
+    "id": "work-mamochka-moya",
+    "title": "Мамочка моя!",
+    "slug": "mamochka-moya",
+    "artistId": "sergey-svider",
+    "collectionId": "collection-materinstvo",
+    "year": 2023,
+    "technique": "сухая игла",
+    "materials": [
+      "пластик",
+      "бумага"
+    ],
+    "width": 12,
+    "height": 14,
+    "dimensionsText": "12 см х 14 см",
+    "edition": "",
+    "status": "unknown",
+    "price": null,
+    "priceOnRequest": true,
+    "shortDescription": "Лист из сезона о материнстве, рождении, телесности и внутренней близости.",
+    "fullDescription": "Мамочка моя! относится к сезону «Материнство», где пластика линии соединяется с темами рождения, заботы и внутреннего напряжения чувств. В этой работе важны не только образ и сюжет, но и материальность листа, удерживающая хрупкость переживания.",
+    "imageIds": [
+      "media-work-mamochka-moya"
+    ],
+    "detailImageIds": [],
+    "tags": [
+      "материнство",
+      "сезон"
+    ],
+    "featured": false,
+    "order": 17,
+    "sourceLinks": [
+      "https://fliphtml5.com/duiub/lnmm/%21%D0%A7%D0%93%D0%9A_%D0%9A%D0%B0%D1%82%D0%B0%D0%9B%D0%BE%D0%B3_%D0%9C%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%9D%D1%81%D1%82%D0%B2%D0%BE_%282%29/"
+    ]
+  },
+  {
+    "id": "work-ozhidanie",
+    "title": "Ожидание",
+    "slug": "ozhidanie",
+    "artistId": "sergey-svider",
+    "collectionId": "collection-druzhba",
+    "year": 2020,
+    "technique": "сухая игла",
+    "materials": [
+      "пластик",
+      "бумага"
+    ],
+    "width": 18,
+    "height": 12,
+    "dimensionsText": "18 см х 12 см",
+    "edition": "",
+    "status": "unknown",
+    "price": null,
+    "priceOnRequest": true,
+    "shortDescription": "Лист о дружбе, ожидании, теплоте и хрупкости человеческой связи.",
+    "fullDescription": "Ожидание входит в сезон «Дружба», посвященный встрече, ожиданию, расставанию и человеческой теплоте. Работа строится на внимательном наблюдении за состоянием, где эмоциональный тон раскрывается через жест, паузу и ритм линии.",
+    "imageIds": [
+      "media-work-ozhidanie"
+    ],
+    "detailImageIds": [],
+    "tags": [
+      "дружба",
+      "сезон"
+    ],
+    "featured": false,
+    "order": 18,
+    "sourceLinks": [
+      "https://fliphtml5.com/duiub/abom/%21%D0%A7%D0%93%D0%9A_%D0%9A%D0%B0%D1%82%D0%B0%D0%9B%D0%BE%D0%B3_%D0%94%D1%80%D1%83%D0%B6%D0%B1%D0%B0/"
+    ]
+  },
+  {
+    "id": "work-devochki",
+    "title": "Девочки",
+    "slug": "devochki",
+    "artistId": "sergey-svider",
+    "collectionId": "collection-druzhba",
+    "year": 2020,
+    "technique": "сухая игла",
+    "materials": [
+      "пластик",
+      "бумага"
+    ],
+    "width": 15,
+    "height": 15,
+    "dimensionsText": "15 см х 15 см",
+    "edition": "",
+    "status": "unknown",
+    "price": null,
+    "priceOnRequest": true,
+    "shortDescription": "Лист о дружбе, ожидании, теплоте и хрупкости человеческой связи.",
+    "fullDescription": "Девочки входит в сезон «Дружба», посвященный встрече, ожиданию, расставанию и человеческой теплоте. Работа строится на внимательном наблюдении за состоянием, где эмоциональный тон раскрывается через жест, паузу и ритм линии.",
+    "imageIds": [
+      "media-work-devochki"
+    ],
+    "detailImageIds": [],
+    "tags": [
+      "дружба",
+      "сезон"
+    ],
+    "featured": false,
+    "order": 19,
+    "sourceLinks": [
+      "https://fliphtml5.com/duiub/abom/%21%D0%A7%D0%93%D0%9A_%D0%9A%D0%B0%D1%82%D0%B0%D0%9B%D0%BE%D0%B3_%D0%94%D1%80%D1%83%D0%B6%D0%B1%D0%B0/"
+    ]
+  },
+  {
+    "id": "work-teplota",
+    "title": "Теплота",
+    "slug": "teplota",
+    "artistId": "sergey-svider",
+    "collectionId": "collection-druzhba",
+    "year": 2020,
+    "technique": "сухая игла",
+    "materials": [
+      "пластик",
+      "бумага"
+    ],
+    "width": 22,
+    "height": 15.5,
+    "dimensionsText": "22 см х 15,5 см",
+    "edition": "",
+    "status": "unknown",
+    "price": null,
+    "priceOnRequest": true,
+    "shortDescription": "Лист о дружбе, ожидании, теплоте и хрупкости человеческой связи.",
+    "fullDescription": "Теплота входит в сезон «Дружба», посвященный встрече, ожиданию, расставанию и человеческой теплоте. Работа строится на внимательном наблюдении за состоянием, где эмоциональный тон раскрывается через жест, паузу и ритм линии.",
+    "imageIds": [
+      "media-work-teplota"
+    ],
+    "detailImageIds": [],
+    "tags": [
+      "дружба",
+      "сезон"
+    ],
+    "featured": false,
+    "order": 20,
+    "sourceLinks": [
+      "https://fliphtml5.com/duiub/abom/%21%D0%A7%D0%93%D0%9A_%D0%9A%D0%B0%D1%82%D0%B0%D0%9B%D0%BE%D0%B3_%D0%94%D1%80%D1%83%D0%B6%D0%B1%D0%B0/"
+    ]
+  },
+  {
+    "id": "work-rasstavanie",
+    "title": "Расставание",
+    "slug": "rasstavanie",
+    "artistId": "sergey-svider",
+    "collectionId": "collection-druzhba",
+    "year": 2020,
+    "technique": "сухая игла",
+    "materials": [
+      "пластик",
+      "бумага"
+    ],
+    "width": 22,
+    "height": 15.5,
+    "dimensionsText": "22 см х 15,5 см",
+    "edition": "",
+    "status": "unknown",
+    "price": null,
+    "priceOnRequest": true,
+    "shortDescription": "Лист о дружбе, ожидании, теплоте и хрупкости человеческой связи.",
+    "fullDescription": "Расставание входит в сезон «Дружба», посвященный встрече, ожиданию, расставанию и человеческой теплоте. Работа строится на внимательном наблюдении за состоянием, где эмоциональный тон раскрывается через жест, паузу и ритм линии.",
+    "imageIds": [
+      "media-work-rasstavanie"
+    ],
+    "detailImageIds": [],
+    "tags": [
+      "дружба",
+      "сезон"
+    ],
+    "featured": false,
+    "order": 21,
+    "sourceLinks": [
+      "https://fliphtml5.com/duiub/abom/%21%D0%A7%D0%93%D0%9A_%D0%9A%D0%B0%D1%82%D0%B0%D0%9B%D0%BE%D0%B3_%D0%94%D1%80%D1%83%D0%B6%D0%B1%D0%B0/"
+    ]
+  },
+  {
+    "id": "work-laska",
+    "title": "Ласка",
+    "slug": "laska",
+    "artistId": "sergey-svider",
+    "collectionId": "collection-druzhba",
+    "year": 2021,
+    "technique": "сухая игла",
+    "materials": [
+      "пластик",
+      "бумага"
+    ],
+    "width": 13.5,
+    "height": 15,
+    "dimensionsText": "13,5 см х 15 см",
+    "edition": "",
+    "status": "unknown",
+    "price": null,
+    "priceOnRequest": true,
+    "shortDescription": "Лист о дружбе, ожидании, теплоте и хрупкости человеческой связи.",
+    "fullDescription": "Ласка входит в сезон «Дружба», посвященный встрече, ожиданию, расставанию и человеческой теплоте. Работа строится на внимательном наблюдении за состоянием, где эмоциональный тон раскрывается через жест, паузу и ритм линии.",
+    "imageIds": [
+      "media-work-laska"
+    ],
+    "detailImageIds": [],
+    "tags": [
+      "дружба",
+      "сезон"
+    ],
+    "featured": false,
+    "order": 22,
+    "sourceLinks": [
+      "https://fliphtml5.com/duiub/abom/%21%D0%A7%D0%93%D0%9A_%D0%9A%D0%B0%D1%82%D0%B0%D0%9B%D0%BE%D0%B3_%D0%94%D1%80%D1%83%D0%B6%D0%B1%D0%B0/"
+    ]
+  },
+  {
+    "id": "work-zhazhda",
+    "title": "Жажда",
+    "slug": "zhazhda",
+    "artistId": "sergey-svider",
+    "collectionId": "collection-druzhba",
+    "year": 2021,
+    "technique": "сухая игла",
+    "materials": [
+      "пластик",
+      "бумага"
+    ],
+    "width": 15,
+    "height": 15,
+    "dimensionsText": "15 см х 15 см",
+    "edition": "",
+    "status": "unknown",
+    "price": null,
+    "priceOnRequest": true,
+    "shortDescription": "Лист о дружбе, ожидании, теплоте и хрупкости человеческой связи.",
+    "fullDescription": "Жажда входит в сезон «Дружба», посвященный встрече, ожиданию, расставанию и человеческой теплоте. Работа строится на внимательном наблюдении за состоянием, где эмоциональный тон раскрывается через жест, паузу и ритм линии.",
+    "imageIds": [
+      "media-work-zhazhda"
+    ],
+    "detailImageIds": [],
+    "tags": [
+      "дружба",
+      "сезон"
+    ],
+    "featured": false,
+    "order": 23,
+    "sourceLinks": [
+      "https://fliphtml5.com/duiub/abom/%21%D0%A7%D0%93%D0%9A_%D0%9A%D0%B0%D1%82%D0%B0%D0%9B%D0%BE%D0%B3_%D0%94%D1%80%D1%83%D0%B6%D0%B1%D0%B0/"
+    ]
+  },
+  {
+    "id": "work-vstrecha",
+    "title": "Встреча",
+    "slug": "vstrecha",
+    "artistId": "sergey-svider",
+    "collectionId": "collection-druzhba",
+    "year": 2021,
+    "technique": "сухая игла",
+    "materials": [
+      "пластик",
+      "бумага"
+    ],
+    "width": 16,
+    "height": 19,
+    "dimensionsText": "16 см х 19 см",
+    "edition": "",
+    "status": "unknown",
+    "price": null,
+    "priceOnRequest": true,
+    "shortDescription": "Лист о дружбе, ожидании, теплоте и хрупкости человеческой связи.",
+    "fullDescription": "Встреча входит в сезон «Дружба», посвященный встрече, ожиданию, расставанию и человеческой теплоте. Работа строится на внимательном наблюдении за состоянием, где эмоциональный тон раскрывается через жест, паузу и ритм линии.",
+    "imageIds": [
+      "media-work-vstrecha"
+    ],
+    "detailImageIds": [],
+    "tags": [
+      "дружба",
+      "сезон"
+    ],
+    "featured": false,
+    "order": 24,
+    "sourceLinks": [
+      "https://fliphtml5.com/duiub/abom/%21%D0%A7%D0%93%D0%9A_%D0%9A%D0%B0%D1%82%D0%B0%D0%9B%D0%BE%D0%B3_%D0%94%D1%80%D1%83%D0%B6%D0%B1%D0%B0/"
+    ]
+  },
+  {
+    "id": "work-ty-i-ya",
+    "title": "Ты и я",
+    "slug": "ty-i-ya",
+    "artistId": "sergey-svider",
+    "collectionId": "collection-druzhba",
+    "year": 2023,
+    "technique": "сухая игла",
+    "materials": [
+      "пластик",
+      "бумага"
+    ],
+    "width": 12.8,
+    "height": 16.8,
+    "dimensionsText": "12,8 см х 16,8 см",
+    "edition": "",
+    "status": "unknown",
+    "price": null,
+    "priceOnRequest": true,
+    "shortDescription": "Лист о дружбе, ожидании, теплоте и хрупкости человеческой связи.",
+    "fullDescription": "Ты и я входит в сезон «Дружба», посвященный встрече, ожиданию, расставанию и человеческой теплоте. Работа строится на внимательном наблюдении за состоянием, где эмоциональный тон раскрывается через жест, паузу и ритм линии.",
+    "imageIds": [
+      "media-work-ty-i-ya"
+    ],
+    "detailImageIds": [],
+    "tags": [
+      "дружба",
+      "сезон"
+    ],
+    "featured": false,
+    "order": 25,
+    "sourceLinks": [
+      "https://fliphtml5.com/duiub/abom/%21%D0%A7%D0%93%D0%9A_%D0%9A%D0%B0%D1%82%D0%B0%D0%9B%D0%BE%D0%B3_%D0%94%D1%80%D1%83%D0%B6%D0%B1%D0%B0/"
+    ]
+  },
+  {
+    "id": "work-minus-30",
+    "title": "Минус 30",
+    "slug": "minus-30",
+    "artistId": "sergey-svider",
+    "collectionId": "collection-druzhba",
+    "year": 2023,
+    "technique": "сухая игла",
+    "materials": [
+      "пластик",
+      "бумага"
+    ],
+    "width": 11.5,
+    "height": 16,
+    "dimensionsText": "11,5 см х 16 см",
+    "edition": "",
+    "status": "unknown",
+    "price": null,
+    "priceOnRequest": true,
+    "shortDescription": "Лист о дружбе, ожидании, теплоте и хрупкости человеческой связи.",
+    "fullDescription": "Минус 30 входит в сезон «Дружба», посвященный встрече, ожиданию, расставанию и человеческой теплоте. Работа строится на внимательном наблюдении за состоянием, где эмоциональный тон раскрывается через жест, паузу и ритм линии.",
+    "imageIds": [
+      "media-work-minus-30"
+    ],
+    "detailImageIds": [],
+    "tags": [
+      "дружба",
+      "сезон"
+    ],
+    "featured": false,
+    "order": 26,
+    "sourceLinks": [
+      "https://fliphtml5.com/duiub/abom/%21%D0%A7%D0%93%D0%9A_%D0%9A%D0%B0%D1%82%D0%B0%D0%9B%D0%BE%D0%B3_%D0%94%D1%80%D1%83%D0%B6%D0%B1%D0%B0/"
+    ]
+  },
+  {
+    "id": "work-tolko-my-i-veter",
+    "title": "Только мы и ветер",
+    "slug": "tolko-my-i-veter",
+    "artistId": "sergey-svider",
+    "collectionId": "collection-druzhba",
+    "year": 2023,
+    "technique": "сухая игла",
+    "materials": [
+      "пластик",
+      "бумага"
+    ],
+    "width": 11.5,
+    "height": 15.5,
+    "dimensionsText": "11,5 см х 15,5 см",
+    "edition": "",
+    "status": "unknown",
+    "price": null,
+    "priceOnRequest": true,
+    "shortDescription": "Лист о дружбе, ожидании, теплоте и хрупкости человеческой связи.",
+    "fullDescription": "Только мы и ветер входит в сезон «Дружба», посвященный встрече, ожиданию, расставанию и человеческой теплоте. Работа строится на внимательном наблюдении за состоянием, где эмоциональный тон раскрывается через жест, паузу и ритм линии.",
+    "imageIds": [
+      "media-work-tolko-my-i-veter"
+    ],
+    "detailImageIds": [],
+    "tags": [
+      "дружба",
+      "сезон"
+    ],
+    "featured": false,
+    "order": 27,
+    "sourceLinks": [
+      "https://fliphtml5.com/duiub/abom/%21%D0%A7%D0%93%D0%9A_%D0%9A%D0%B0%D1%82%D0%B0%D0%9B%D0%BE%D0%B3_%D0%94%D1%80%D1%83%D0%B6%D0%B1%D0%B0/"
+    ]
+  },
+  {
+    "id": "work-derevenskie-budni",
+    "title": "Деревенские будни",
+    "slug": "derevenskie-budni",
+    "artistId": "sergey-svider",
+    "collectionId": "collection-staryy-gorod",
+    "year": 2024,
+    "technique": "сухая игла",
+    "materials": [
+      "пластик",
+      "бумага"
+    ],
+    "width": 16,
+    "height": 11,
+    "dimensionsText": "16 см х 11 см",
+    "edition": "",
+    "status": "unknown",
+    "price": null,
+    "priceOnRequest": true,
+    "shortDescription": "Лист из городского цикла о памяти места, архитектуре и неспешном времени.",
+    "fullDescription": "Деревенские будни принадлежит к циклу «Старый город», где городской мотив воспринимается как пространство памяти, тишины и исторического слоя. Важную роль здесь играют ритм архитектуры, состояние воздуха и камерный характер печатного листа.",
+    "imageIds": [
+      "media-work-derevenskie-budni"
+    ],
+    "detailImageIds": [],
+    "tags": [
+      "старый город",
+      "сезон"
+    ],
+    "featured": false,
+    "order": 28,
+    "sourceLinks": [
+      "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+    ]
+  },
+  {
+    "id": "work-lodki-na-reke",
+    "title": "Лодки на реке",
+    "slug": "lodki-na-reke",
+    "artistId": "sergey-svider",
+    "collectionId": "collection-staryy-gorod",
+    "year": 2024,
+    "technique": "сухая игла",
+    "materials": [
+      "пластик",
+      "бумага"
+    ],
+    "width": 20,
+    "height": 13,
+    "dimensionsText": "20 см х 13 см",
+    "edition": "",
+    "status": "unknown",
+    "price": null,
+    "priceOnRequest": true,
+    "shortDescription": "Лист из городского цикла о памяти места, архитектуре и неспешном времени.",
+    "fullDescription": "Лодки на реке принадлежит к циклу «Старый город», где городской мотив воспринимается как пространство памяти, тишины и исторического слоя. Важную роль здесь играют ритм архитектуры, состояние воздуха и камерный характер печатного листа.",
+    "imageIds": [
+      "media-work-lodki-na-reke"
+    ],
+    "detailImageIds": [],
+    "tags": [
+      "старый город",
+      "сезон"
+    ],
+    "featured": false,
+    "order": 29,
+    "sourceLinks": [
+      "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+    ]
+  },
+  {
+    "id": "work-lavka-bondarya",
+    "title": "Лавка бондаря",
+    "slug": "lavka-bondarya",
+    "artistId": "sergey-svider",
+    "collectionId": "collection-staryy-gorod",
+    "year": 2023,
+    "technique": "сухая игла",
+    "materials": [
+      "пластик",
+      "бумага"
+    ],
+    "width": 14,
+    "height": 20,
+    "dimensionsText": "14 см х 20 см",
+    "edition": "",
+    "status": "unknown",
+    "price": null,
+    "priceOnRequest": true,
+    "shortDescription": "Лист из городского цикла о памяти места, архитектуре и неспешном времени.",
+    "fullDescription": "Лавка бондаря принадлежит к циклу «Старый город», где городской мотив воспринимается как пространство памяти, тишины и исторического слоя. Важную роль здесь играют ритм архитектуры, состояние воздуха и камерный характер печатного листа.",
+    "imageIds": [
+      "media-work-lavka-bondarya"
+    ],
+    "detailImageIds": [],
+    "tags": [
+      "старый город",
+      "сезон"
+    ],
+    "featured": false,
+    "order": 30,
+    "sourceLinks": [
+      "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+    ]
+  },
+  {
+    "id": "work-zasnezhennaya-tserkov",
+    "title": "Заснеженная церковь",
+    "slug": "zasnezhennaya-tserkov",
+    "artistId": "sergey-svider",
+    "collectionId": "collection-staryy-gorod",
+    "year": 2022,
+    "technique": "сухая игла",
+    "materials": [
+      "пластик",
+      "бумага"
+    ],
+    "width": 14,
+    "height": 18,
+    "dimensionsText": "14 см х 18 см",
+    "edition": "",
+    "status": "unknown",
+    "price": null,
+    "priceOnRequest": true,
+    "shortDescription": "Лист из городского цикла о памяти места, архитектуре и неспешном времени.",
+    "fullDescription": "Заснеженная церковь принадлежит к циклу «Старый город», где городской мотив воспринимается как пространство памяти, тишины и исторического слоя. Важную роль здесь играют ритм архитектуры, состояние воздуха и камерный характер печатного листа.",
+    "imageIds": [
+      "media-work-zasnezhennaya-tserkov"
+    ],
+    "detailImageIds": [],
+    "tags": [
+      "старый город",
+      "сезон"
+    ],
+    "featured": false,
+    "order": 31,
+    "sourceLinks": [
+      "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+    ]
+  },
+  {
+    "id": "work-zimnie-zaboty",
+    "title": "Зимние заботы",
+    "slug": "zimnie-zaboty",
+    "artistId": "sergey-svider",
+    "collectionId": "collection-staryy-gorod",
+    "year": 2022,
+    "technique": "сухая игла",
+    "materials": [
+      "пластик",
+      "бумага"
+    ],
+    "width": 10.5,
+    "height": 15,
+    "dimensionsText": "10,5 см х 15 см",
+    "edition": "",
+    "status": "unknown",
+    "price": null,
+    "priceOnRequest": true,
+    "shortDescription": "Лист из городского цикла о памяти места, архитектуре и неспешном времени.",
+    "fullDescription": "Зимние заботы принадлежит к циклу «Старый город», где городской мотив воспринимается как пространство памяти, тишины и исторического слоя. Важную роль здесь играют ритм архитектуры, состояние воздуха и камерный характер печатного листа.",
+    "imageIds": [
+      "media-work-zimnie-zaboty"
+    ],
+    "detailImageIds": [],
+    "tags": [
+      "старый город",
+      "сезон"
+    ],
+    "featured": false,
+    "order": 32,
+    "sourceLinks": [
+      "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+    ]
+  },
+  {
+    "id": "work-nachalo",
+    "title": "Начало",
+    "slug": "nachalo",
+    "artistId": "sergey-svider",
+    "collectionId": "collection-liki-zhizni",
+    "year": 2020,
+    "technique": "сухая игла",
+    "materials": [
+      "пластик",
+      "бумага"
+    ],
+    "width": 26,
+    "height": 17,
+    "dimensionsText": "26 см х 17 см",
+    "edition": "",
+    "status": "unknown",
+    "price": null,
+    "priceOnRequest": true,
+    "shortDescription": "Лист из серии о состояниях человека, внутреннем ритме и пластике образа.",
+    "fullDescription": "Начало входит в коллекцию «Лики жизни», где отдельные состояния и человеческие интонации раскрываются через лаконичный образ. Работа воспринимается как самостоятельное высказывание о переживании, характере и внутреннем движении чувства.",
+    "imageIds": [
+      "media-work-nachalo"
+    ],
+    "detailImageIds": [],
+    "tags": [
+      "лики жизни",
+      "сезон"
+    ],
+    "featured": true,
+    "order": 33,
+    "sourceLinks": [
+      "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+    ]
+  },
+  {
+    "id": "work-zhizn",
+    "title": "Жизнь",
+    "slug": "zhizn",
+    "artistId": "sergey-svider",
+    "collectionId": "collection-liki-zhizni",
+    "year": 2020,
+    "technique": "сухая игла",
+    "materials": [
+      "пластик",
+      "бумага"
+    ],
+    "width": 17,
+    "height": 17,
+    "dimensionsText": "17 см х 17 см",
+    "edition": "",
+    "status": "unknown",
+    "price": null,
+    "priceOnRequest": true,
+    "shortDescription": "Лист из серии о состояниях человека, внутреннем ритме и пластике образа.",
+    "fullDescription": "Жизнь входит в коллекцию «Лики жизни», где отдельные состояния и человеческие интонации раскрываются через лаконичный образ. Работа воспринимается как самостоятельное высказывание о переживании, характере и внутреннем движении чувства.",
+    "imageIds": [
+      "media-work-zhizn"
+    ],
+    "detailImageIds": [],
+    "tags": [
+      "лики жизни",
+      "сезон"
+    ],
+    "featured": false,
+    "order": 34,
+    "sourceLinks": [
+      "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+    ]
+  },
+  {
+    "id": "work-smekh",
+    "title": "Смех",
+    "slug": "smekh",
+    "artistId": "sergey-svider",
+    "collectionId": "collection-liki-zhizni",
+    "year": 2021,
+    "technique": "сухая игла",
+    "materials": [
+      "пластик",
+      "бумага"
+    ],
+    "width": 17,
+    "height": 19,
+    "dimensionsText": "17 см х 19 см",
+    "edition": "",
+    "status": "unknown",
+    "price": null,
+    "priceOnRequest": true,
+    "shortDescription": "Лист из серии о состояниях человека, внутреннем ритме и пластике образа.",
+    "fullDescription": "Смех входит в коллекцию «Лики жизни», где отдельные состояния и человеческие интонации раскрываются через лаконичный образ. Работа воспринимается как самостоятельное высказывание о переживании, характере и внутреннем движении чувства.",
+    "imageIds": [
+      "media-work-smekh"
+    ],
+    "detailImageIds": [],
+    "tags": [
+      "лики жизни",
+      "сезон"
+    ],
+    "featured": false,
+    "order": 35,
+    "sourceLinks": [
+      "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+    ]
+  },
+  {
+    "id": "work-sudba",
+    "title": "Судьба",
+    "slug": "sudba",
+    "artistId": "sergey-svider",
+    "collectionId": "collection-liki-zhizni",
+    "year": 2021,
+    "technique": "сухая игла",
+    "materials": [
+      "пластик",
+      "бумага"
+    ],
+    "width": 19,
+    "height": 17,
+    "dimensionsText": "19 см х 17 см",
+    "edition": "",
+    "status": "unknown",
+    "price": null,
+    "priceOnRequest": true,
+    "shortDescription": "Лист из серии о состояниях человека, внутреннем ритме и пластике образа.",
+    "fullDescription": "Судьба входит в коллекцию «Лики жизни», где отдельные состояния и человеческие интонации раскрываются через лаконичный образ. Работа воспринимается как самостоятельное высказывание о переживании, характере и внутреннем движении чувства.",
+    "imageIds": [
+      "media-work-sudba"
+    ],
+    "detailImageIds": [],
+    "tags": [
+      "лики жизни",
+      "сезон"
+    ],
+    "featured": false,
+    "order": 36,
+    "sourceLinks": [
+      "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+    ]
+  },
+  {
+    "id": "work-smushchenie",
+    "title": "Смущение",
+    "slug": "smushchenie",
+    "artistId": "sergey-svider",
+    "collectionId": "collection-liki-zhizni",
+    "year": 2021,
+    "technique": "сухая игла",
+    "materials": [
+      "пластик",
+      "бумага"
+    ],
+    "width": 17,
+    "height": 19,
+    "dimensionsText": "17 см х 19 см",
+    "edition": "",
+    "status": "unknown",
+    "price": null,
+    "priceOnRequest": true,
+    "shortDescription": "Лист из серии о состояниях человека, внутреннем ритме и пластике образа.",
+    "fullDescription": "Смущение входит в коллекцию «Лики жизни», где отдельные состояния и человеческие интонации раскрываются через лаконичный образ. Работа воспринимается как самостоятельное высказывание о переживании, характере и внутреннем движении чувства.",
+    "imageIds": [
+      "media-work-smushchenie"
+    ],
+    "detailImageIds": [],
+    "tags": [
+      "лики жизни",
+      "сезон"
+    ],
+    "featured": false,
+    "order": 37,
+    "sourceLinks": [
+      "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+    ]
+  },
+  {
+    "id": "work-tikhaya-zavod",
+    "title": "Тихая заводь",
+    "slug": "tikhaya-zavod",
+    "artistId": "sergey-svider",
+    "collectionId": "collection-provinciya",
+    "year": 2023,
+    "technique": "сухая игла",
+    "materials": [
+      "пластик",
+      "бумага"
+    ],
+    "width": 12.5,
+    "height": 19,
+    "dimensionsText": "12,5 см х 19 см",
+    "edition": "",
+    "status": "unknown",
+    "price": null,
+    "priceOnRequest": true,
+    "shortDescription": "Лист о провинциальном пейзаже, медленном времени и повседневном наблюдении.",
+    "fullDescription": "Тихая заводь относится к сезону «Провинция», в котором важны тишина деревенского мотива, спокойный ритм пространства и созерцательность взгляда. Это работа о среде, где простая сцена становится внимательным художественным наблюдением.",
+    "imageIds": [
+      "media-work-tikhaya-zavod"
+    ],
+    "detailImageIds": [],
+    "tags": [
+      "провинция",
+      "сезон"
+    ],
+    "featured": false,
+    "order": 38,
+    "sourceLinks": [
+      "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+    ]
+  },
+  {
+    "id": "work-tri-stoga",
+    "title": "Три стога",
+    "slug": "tri-stoga",
+    "artistId": "sergey-svider",
+    "collectionId": "collection-provinciya",
+    "year": 2022,
+    "technique": "сухая игла",
+    "materials": [
+      "пластик",
+      "бумага"
+    ],
+    "width": 14,
+    "height": 19.5,
+    "dimensionsText": "14 см х 19,5 см",
+    "edition": "",
+    "status": "unknown",
+    "price": null,
+    "priceOnRequest": true,
+    "shortDescription": "Лист о провинциальном пейзаже, медленном времени и повседневном наблюдении.",
+    "fullDescription": "Три стога относится к сезону «Провинция», в котором важны тишина деревенского мотива, спокойный ритм пространства и созерцательность взгляда. Это работа о среде, где простая сцена становится внимательным художественным наблюдением.",
+    "imageIds": [
+      "media-work-tri-stoga"
+    ],
+    "detailImageIds": [],
+    "tags": [
+      "провинция",
+      "сезон"
+    ],
+    "featured": false,
+    "order": 39,
+    "sourceLinks": [
+      "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+    ]
+  },
+  {
+    "id": "work-odin-den-v-derevne",
+    "title": "Один день в деревне",
+    "slug": "odin-den-v-derevne",
+    "artistId": "sergey-svider",
+    "collectionId": "collection-provinciya",
+    "year": 2022,
+    "technique": "сухая игла",
+    "materials": [
+      "пластик",
+      "бумага"
+    ],
+    "width": 14,
+    "height": 19,
+    "dimensionsText": "14 см х 19 см",
+    "edition": "",
+    "status": "unknown",
+    "price": null,
+    "priceOnRequest": true,
+    "shortDescription": "Лист о провинциальном пейзаже, медленном времени и повседневном наблюдении.",
+    "fullDescription": "Один день в деревне относится к сезону «Провинция», в котором важны тишина деревенского мотива, спокойный ритм пространства и созерцательность взгляда. Это работа о среде, где простая сцена становится внимательным художественным наблюдением.",
+    "imageIds": [
+      "media-work-odin-den-v-derevne"
+    ],
+    "detailImageIds": [],
+    "tags": [
+      "провинция",
+      "сезон"
+    ],
+    "featured": false,
+    "order": 40,
+    "sourceLinks": [
+      "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+    ]
+  },
+  {
+    "id": "work-smeshnoy-papa",
+    "title": "Смешной папа",
+    "slug": "smeshnoy-papa",
+    "artistId": "sergey-svider",
+    "collectionId": "collection-detstvo",
+    "year": 2022,
+    "technique": "сухая игла",
+    "materials": [
+      "пластик",
+      "бумага"
+    ],
+    "width": 16,
+    "height": 17.5,
+    "dimensionsText": "16 см х 17,5 см",
+    "edition": "",
+    "status": "unknown",
+    "price": null,
+    "priceOnRequest": true,
+    "shortDescription": "Лист о детской свободе, игре, юморе и движении повседневной сцены.",
+    "fullDescription": "Смешной папа входит в сезон «Детство», где энергия игры и перевернутая логика детского взгляда становятся главной темой. Работа держится на движении, легкости и живом ощущении момента, сохраненного в отпечатке.",
+    "imageIds": [
+      "media-work-smeshnoy-papa"
+    ],
+    "detailImageIds": [],
+    "tags": [
+      "детство",
+      "сезон"
+    ],
+    "featured": false,
+    "order": 41,
+    "sourceLinks": [
+      "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+    ]
+  },
+  {
+    "id": "work-malchik-konki-i-podushka",
+    "title": "Мальчик, коньки и подушка",
+    "slug": "malchik-konki-i-podushka",
+    "artistId": "sergey-svider",
+    "collectionId": "collection-detstvo",
+    "year": 2023,
+    "technique": "сухая игла",
+    "materials": [
+      "пластик",
+      "бумага"
+    ],
+    "width": 13,
+    "height": 18,
+    "dimensionsText": "13 см х 18 см",
+    "edition": "",
+    "status": "unknown",
+    "price": null,
+    "priceOnRequest": true,
+    "shortDescription": "Лист о детской свободе, игре, юморе и движении повседневной сцены.",
+    "fullDescription": "Мальчик, коньки и подушка входит в сезон «Детство», где энергия игры и перевернутая логика детского взгляда становятся главной темой. Работа держится на движении, легкости и живом ощущении момента, сохраненного в отпечатке.",
+    "imageIds": [
+      "media-work-malchik-konki-i-podushka"
+    ],
+    "detailImageIds": [],
+    "tags": [
+      "детство",
+      "сезон"
+    ],
+    "featured": false,
+    "order": 42,
+    "sourceLinks": [
+      "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+    ]
+  },
+  {
+    "id": "work-mir-naoborot",
+    "title": "Мир наоборот",
+    "slug": "mir-naoborot",
+    "artistId": "sergey-svider",
+    "collectionId": "collection-detstvo",
+    "year": 2022,
+    "technique": "сухая игла",
+    "materials": [
+      "пластик",
+      "бумага"
+    ],
+    "width": 14,
+    "height": 17.5,
+    "dimensionsText": "14 см х 17,5 см",
+    "edition": "",
+    "status": "unknown",
+    "price": null,
+    "priceOnRequest": true,
+    "shortDescription": "Лист о детской свободе, игре, юморе и движении повседневной сцены.",
+    "fullDescription": "Мир наоборот входит в сезон «Детство», где энергия игры и перевернутая логика детского взгляда становятся главной темой. Работа держится на движении, легкости и живом ощущении момента, сохраненного в отпечатке.",
+    "imageIds": [
+      "media-work-mir-naoborot"
+    ],
+    "detailImageIds": [],
+    "tags": [
+      "детство",
+      "сезон"
+    ],
+    "featured": false,
+    "order": 43,
+    "sourceLinks": [
+      "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+    ]
+  },
+  {
+    "id": "work-tri-smeyushchikhsya-malchika-na-velosipedakh",
+    "title": "Три смеющихся мальчика на велосипедах",
+    "slug": "tri-smeyushchikhsya-malchika-na-velosipedakh",
+    "artistId": "sergey-svider",
+    "collectionId": "collection-detstvo",
+    "year": 2023,
+    "technique": "сухая игла",
+    "materials": [
+      "пластик",
+      "бумага"
+    ],
+    "width": 13,
+    "height": 18,
+    "dimensionsText": "13 см х 18 см",
+    "edition": "",
+    "status": "unknown",
+    "price": null,
+    "priceOnRequest": true,
+    "shortDescription": "Лист о детской свободе, игре, юморе и движении повседневной сцены.",
+    "fullDescription": "Три смеющихся мальчика на велосипедах входит в сезон «Детство», где энергия игры и перевернутая логика детского взгляда становятся главной темой. Работа держится на движении, легкости и живом ощущении момента, сохраненного в отпечатке.",
+    "imageIds": [
+      "media-work-tri-smeyushchikhsya-malchika-na-velosipedakh"
+    ],
+    "detailImageIds": [],
+    "tags": [
+      "детство",
+      "сезон"
+    ],
+    "featured": false,
+    "order": 44,
+    "sourceLinks": [
+      "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+    ]
+  },
+  {
+    "id": "work-storozhevoy-vorobey",
+    "title": "Сторожевой воробей",
+    "slug": "storozhevoy-vorobey",
+    "artistId": "sergey-svider",
+    "collectionId": "collection-zhivaya-priroda",
+    "year": 2020,
+    "technique": "сухая игла",
+    "materials": [
+      "пластик",
+      "бумага"
+    ],
+    "width": 19,
+    "height": 12.5,
+    "dimensionsText": "19 см х 12,5 см",
+    "edition": "",
+    "status": "unknown",
+    "price": null,
+    "priceOnRequest": true,
+    "shortDescription": "Лист из серии наблюдений за птицами, животными и природным движением.",
+    "fullDescription": "Сторожевой воробей относится к сезону «Живая природа», где мастер внимательно рассматривает пластику живого существа, его настороженность, движение и характер. В этой работе особенно чувствуется точность наблюдения и графическая выразительность формы.",
+    "imageIds": [
+      "media-work-storozhevoy-vorobey"
+    ],
+    "detailImageIds": [],
+    "tags": [
+      "живая природа",
+      "сезон"
+    ],
+    "featured": false,
+    "order": 45,
+    "sourceLinks": [
+      "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+    ]
+  },
+  {
+    "id": "work-yashcheritsa",
+    "title": "Ящерица",
+    "slug": "yashcheritsa",
+    "artistId": "sergey-svider",
+    "collectionId": "collection-zhivaya-priroda",
+    "year": 2020,
+    "technique": "сухая игла",
+    "materials": [
+      "пластик",
+      "бумага"
+    ],
+    "width": 16,
+    "height": 10,
+    "dimensionsText": "16 см х 10 см",
+    "edition": "",
+    "status": "unknown",
+    "price": null,
+    "priceOnRequest": true,
+    "shortDescription": "Лист из серии наблюдений за птицами, животными и природным движением.",
+    "fullDescription": "Ящерица относится к сезону «Живая природа», где мастер внимательно рассматривает пластику живого существа, его настороженность, движение и характер. В этой работе особенно чувствуется точность наблюдения и графическая выразительность формы.",
+    "imageIds": [
+      "media-work-yashcheritsa"
+    ],
+    "detailImageIds": [],
+    "tags": [
+      "живая природа",
+      "сезон"
+    ],
+    "featured": false,
+    "order": 46,
+    "sourceLinks": [
+      "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+    ]
+  },
+  {
+    "id": "work-polet",
+    "title": "Полет",
+    "slug": "polet",
+    "artistId": "sergey-svider",
+    "collectionId": "collection-zhivaya-priroda",
+    "year": 2020,
+    "technique": "сухая игла",
+    "materials": [
+      "пластик",
+      "бумага"
+    ],
+    "width": 19,
+    "height": 12.6,
+    "dimensionsText": "19 см х 12,6 см",
+    "edition": "",
+    "status": "unknown",
+    "price": null,
+    "priceOnRequest": true,
+    "shortDescription": "Лист из серии наблюдений за птицами, животными и природным движением.",
+    "fullDescription": "Полет относится к сезону «Живая природа», где мастер внимательно рассматривает пластику живого существа, его настороженность, движение и характер. В этой работе особенно чувствуется точность наблюдения и графическая выразительность формы.",
+    "imageIds": [
+      "media-work-polet"
+    ],
+    "detailImageIds": [],
+    "tags": [
+      "живая природа",
+      "сезон"
+    ],
+    "featured": false,
+    "order": 47,
+    "sourceLinks": [
+      "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+    ]
+  },
+  {
+    "id": "work-sova",
+    "title": "Сова",
+    "slug": "sova",
+    "artistId": "sergey-svider",
+    "collectionId": "collection-zhivaya-priroda",
+    "year": 2025,
+    "technique": "сухая игла",
+    "materials": [
+      "пластик",
+      "бумага"
+    ],
+    "width": 12,
+    "height": 12,
+    "dimensionsText": "12 см х 12 см",
+    "edition": "",
+    "status": "unknown",
+    "price": null,
+    "priceOnRequest": true,
+    "shortDescription": "Лист из серии наблюдений за птицами, животными и природным движением.",
+    "fullDescription": "Сова относится к сезону «Живая природа», где мастер внимательно рассматривает пластику живого существа, его настороженность, движение и характер. В этой работе особенно чувствуется точность наблюдения и графическая выразительность формы.",
+    "imageIds": [
+      "media-work-sova"
+    ],
+    "detailImageIds": [],
+    "tags": [
+      "живая природа",
+      "сезон"
+    ],
+    "featured": false,
+    "order": 48,
+    "sourceLinks": [
+      "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+    ]
+  },
+  {
+    "id": "work-shipovnik",
+    "title": "Шиповник",
+    "slug": "shipovnik",
+    "artistId": "sergey-svider",
+    "collectionId": "collection-tsvety",
+    "year": 2020,
+    "technique": "сухая игла",
+    "materials": [
+      "пластик",
+      "бумага"
+    ],
+    "width": 16,
+    "height": 10.6,
+    "dimensionsText": "16 см х 10,6 см",
+    "edition": "",
+    "status": "unknown",
+    "price": null,
+    "priceOnRequest": true,
+    "shortDescription": "Лист о ботаническом мотиве, свете и хрупкой пластике растения.",
+    "fullDescription": "Шиповник входит в сезон «Цветы», где линия становится особенно деликатной и чувствительной к форме стебля, лепестка и цветочного силуэта. Работа строится на сочетании света, хрупкости и тихой внутренней жизни растения.",
+    "imageIds": [
+      "media-work-shipovnik"
+    ],
+    "detailImageIds": [],
+    "tags": [
+      "цветы",
+      "сезон"
+    ],
+    "featured": false,
+    "order": 49,
+    "sourceLinks": [
+      "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+    ]
+  },
+  {
+    "id": "work-romashka",
+    "title": "Ромашка",
+    "slug": "romashka",
+    "artistId": "sergey-svider",
+    "collectionId": "collection-tsvety",
+    "year": 2020,
+    "technique": "сухая игла",
+    "materials": [
+      "пластик",
+      "бумага"
+    ],
+    "width": 11,
+    "height": 7.5,
+    "dimensionsText": "11 см х 7,5 см",
+    "edition": "",
+    "status": "unknown",
+    "price": null,
+    "priceOnRequest": true,
+    "shortDescription": "Лист о ботаническом мотиве, свете и хрупкой пластике растения.",
+    "fullDescription": "Ромашка входит в сезон «Цветы», где линия становится особенно деликатной и чувствительной к форме стебля, лепестка и цветочного силуэта. Работа строится на сочетании света, хрупкости и тихой внутренней жизни растения.",
+    "imageIds": [
+      "media-work-romashka"
+    ],
+    "detailImageIds": [],
+    "tags": [
+      "цветы",
+      "сезон"
+    ],
+    "featured": false,
+    "order": 50,
+    "sourceLinks": [
+      "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+    ]
+  },
+  {
+    "id": "work-solntsa-snova-solntsa",
+    "title": "Солнца, снова солнца!",
+    "slug": "solntsa-snova-solntsa",
+    "artistId": "sergey-svider",
+    "collectionId": "collection-tsvety",
+    "year": 2023,
+    "technique": "сухая игла",
+    "materials": [
+      "пластик",
+      "бумага"
+    ],
+    "width": 10,
+    "height": 14,
+    "dimensionsText": "10 см х 14 см",
+    "edition": "",
+    "status": "unknown",
+    "price": null,
+    "priceOnRequest": true,
+    "shortDescription": "Лист о ботаническом мотиве, свете и хрупкой пластике растения.",
+    "fullDescription": "Солнца, снова солнца! входит в сезон «Цветы», где линия становится особенно деликатной и чувствительной к форме стебля, лепестка и цветочного силуэта. Работа строится на сочетании света, хрупкости и тихой внутренней жизни растения.",
+    "imageIds": [
+      "media-work-solntsa-snova-solntsa"
+    ],
+    "detailImageIds": [],
+    "tags": [
+      "цветы",
+      "сезон"
+    ],
+    "featured": false,
+    "order": 51,
+    "sourceLinks": [
+      "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+    ]
+  },
+  {
+    "id": "work-verba",
+    "title": "Верба",
+    "slug": "verba",
+    "artistId": "sergey-svider",
+    "collectionId": "collection-tsvety",
+    "year": 2022,
+    "technique": "сухая игла",
+    "materials": [
+      "пластик",
+      "бумага"
+    ],
+    "width": 14,
+    "height": 17.5,
+    "dimensionsText": "14 см х 17,5 см",
+    "edition": "",
+    "status": "unknown",
+    "price": null,
+    "priceOnRequest": true,
+    "shortDescription": "Лист о ботаническом мотиве, свете и хрупкой пластике растения.",
+    "fullDescription": "Верба входит в сезон «Цветы», где линия становится особенно деликатной и чувствительной к форме стебля, лепестка и цветочного силуэта. Работа строится на сочетании света, хрупкости и тихой внутренней жизни растения.",
+    "imageIds": [
+      "media-work-verba"
+    ],
+    "detailImageIds": [],
+    "tags": [
+      "цветы",
+      "сезон"
+    ],
+    "featured": false,
+    "order": 52,
+    "sourceLinks": [
+      "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+    ]
+  },
+  {
+    "id": "work-koshki-zhazhda",
+    "title": "Жажда",
+    "slug": "koshki-zhazhda",
+    "artistId": "sergey-svider",
+    "collectionId": "collection-koshki",
+    "year": 2025,
+    "technique": "сухая игла",
+    "materials": [
+      "пластик",
+      "бумага"
+    ],
+    "width": 13,
+    "height": 15,
+    "dimensionsText": "13 см х 15 см",
+    "edition": "",
+    "status": "unknown",
+    "price": null,
+    "priceOnRequest": true,
+    "shortDescription": "Лист о кошачьем характере, жесте, наблюдении и камерном юморе.",
+    "fullDescription": "Жажда принадлежит сезону «Кошки», построенному на точных наблюдениях за характером, привычками и пластикой животного. Работа соединяет графическую внимательность, легкий юмор и ощущение живого присутствия.",
+    "imageIds": [
+      "media-work-koshki-zhazhda"
+    ],
+    "detailImageIds": [],
+    "tags": [
+      "кошки",
+      "сезон"
+    ],
+    "featured": false,
+    "order": 53,
+    "sourceLinks": [
+      "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+    ]
+  },
+  {
+    "id": "work-knizhnyy-kot",
+    "title": "Книжный кот",
+    "slug": "knizhnyy-kot",
+    "artistId": "sergey-svider",
+    "collectionId": "collection-koshki",
+    "year": 2021,
+    "technique": "сухая игла",
+    "materials": [
+      "пластик",
+      "бумага"
+    ],
+    "width": 18.5,
+    "height": 12.5,
+    "dimensionsText": "18,5 см х 12,5 см",
+    "edition": "",
+    "status": "unknown",
+    "price": null,
+    "priceOnRequest": true,
+    "shortDescription": "Лист о спокойствии, привычке и камерном домашнем наблюдении.",
+    "fullDescription": "Книжный кот принадлежит сезону «Кошки», построенному на точных наблюдениях за характером, привычками и пластикой животного. Работа соединяет графическую внимательность, легкий юмор и ощущение живого присутствия.",
+    "imageIds": [
+      "media-work-knizhnyy-kot"
+    ],
+    "detailImageIds": [],
+    "tags": [
+      "кошки",
+      "сезон"
+    ],
+    "featured": false,
+    "order": 54,
+    "sourceLinks": [
+      "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+    ]
+  },
+  {
+    "id": "work-koshki-ozhidanie",
+    "title": "Ожидание",
+    "slug": "koshki-ozhidanie",
+    "artistId": "sergey-svider",
+    "collectionId": "collection-koshki",
+    "year": 2024,
+    "technique": "сухая игла",
+    "materials": [
+      "пластик",
+      "бумага"
+    ],
+    "width": 8,
+    "height": 17,
+    "dimensionsText": "8 см х 17 см",
+    "edition": "",
+    "status": "unknown",
+    "price": null,
+    "priceOnRequest": true,
+    "shortDescription": "Лист о кошачьем характере, жесте, наблюдении и камерном юморе.",
+    "fullDescription": "Ожидание принадлежит сезону «Кошки», построенному на точных наблюдениях за характером, привычками и пластикой животного. Работа соединяет графическую внимательность, легкий юмор и ощущение живого присутствия.",
+    "imageIds": [
+      "media-work-koshki-ozhidanie"
+    ],
+    "detailImageIds": [],
+    "tags": [
+      "кошки",
+      "сезон"
+    ],
+    "featured": false,
+    "order": 55,
+    "sourceLinks": [
+      "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+    ]
+  },
+  {
+    "id": "work-zasypay",
+    "title": "Засыпай",
+    "slug": "zasypay",
+    "artistId": "sergey-svider",
+    "collectionId": "collection-koshki",
+    "year": 2024,
+    "technique": "сухая игла",
+    "materials": [
+      "пластик",
+      "бумага"
+    ],
+    "width": 8,
+    "height": 17,
+    "dimensionsText": "8 см х 17 см",
+    "edition": "",
+    "status": "unknown",
+    "price": null,
+    "priceOnRequest": true,
+    "shortDescription": "Лист о кошачьем характере, жесте, наблюдении и камерном юморе.",
+    "fullDescription": "Засыпай принадлежит сезону «Кошки», построенному на точных наблюдениях за характером, привычками и пластикой животного. Работа соединяет графическую внимательность, легкий юмор и ощущение живого присутствия.",
+    "imageIds": [
+      "media-work-zasypay"
+    ],
+    "detailImageIds": [],
+    "tags": [
+      "кошки",
+      "сезон"
+    ],
+    "featured": false,
+    "order": 56,
+    "sourceLinks": [
+      "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+    ]
+  },
+  {
+    "id": "work-odin-den-v-derevne-2021",
+    "title": "Один день в деревне",
+    "slug": "odin-den-v-derevne-2021",
+    "artistId": "sergey-svider",
+    "collectionId": "collection-provinciya",
+    "year": 2021,
+    "technique": "сухая игла",
+    "materials": [
+      "пластик",
+      "бумага"
+    ],
+    "width": 14,
+    "height": 19,
+    "dimensionsText": "14 см х 19 см",
+    "edition": "",
+    "status": "unknown",
+    "price": null,
+    "priceOnRequest": true,
+    "shortDescription": "Лист о провинциальном пейзаже, медленном времени и повседневном наблюдении.",
+    "fullDescription": "Один день в деревне относится к сезону «Провинция», в котором важны тишина деревенского мотива, спокойный ритм пространства и созерцательность взгляда. Это работа о среде, где простая сцена становится внимательным художественным наблюдением.",
+    "imageIds": [
+      "media-work-odin-den-v-derevne-2021"
+    ],
+    "detailImageIds": [],
+    "tags": [
+      "провинция",
+      "сезон"
+    ],
+    "featured": false,
+    "order": 57,
+    "sourceLinks": [
+      "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+    ]
+  },
+  {
+    "id": "work-molchi-i-slushay-ili-dva-derushchikhsya-vorobya",
+    "title": "Молчи и слушай или два дерущихся воробья",
+    "slug": "molchi-i-slushay-ili-dva-derushchikhsya-vorobya",
+    "artistId": "sergey-svider",
+    "collectionId": "collection-zhivaya-priroda",
+    "year": 2023,
+    "technique": "сухая игла",
+    "materials": [
+      "пластик",
+      "бумага"
+    ],
+    "width": 12.5,
+    "height": 22.5,
+    "dimensionsText": "12,5 см х 22,5 см",
+    "edition": "",
+    "status": "unknown",
+    "price": null,
+    "priceOnRequest": true,
+    "shortDescription": "Лист из серии наблюдений за птицами, животными и природным движением.",
+    "fullDescription": "Молчи и слушай или два дерущихся воробья относится к сезону «Живая природа», где мастер внимательно рассматривает пластику живого существа, его настороженность, движение и характер. В этой работе особенно чувствуется точность наблюдения и графическая выразительность формы.",
+    "imageIds": [
+      "media-work-molchi-i-slushay-ili-dva-derushchikhsya-vorobya"
+    ],
+    "detailImageIds": [],
+    "tags": [
+      "живая природа",
+      "сезон"
+    ],
+    "featured": false,
+    "order": 58,
+    "sourceLinks": [
+      "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+    ]
+  },
+  {
+    "id": "work-zemlyanaya-zhaba",
+    "title": "Земляная жаба",
+    "slug": "zemlyanaya-zhaba",
+    "artistId": "sergey-svider",
+    "collectionId": "collection-zhivaya-priroda",
+    "year": 2022,
+    "technique": "сухая игла",
+    "materials": [
+      "пластик",
+      "бумага"
+    ],
+    "width": 12,
+    "height": 17.5,
+    "dimensionsText": "12 см х 17,5 см",
+    "edition": "",
+    "status": "unknown",
+    "price": null,
+    "priceOnRequest": true,
+    "shortDescription": "Лист из серии наблюдений за птицами, животными и природным движением.",
+    "fullDescription": "Земляная жаба относится к сезону «Живая природа», где мастер внимательно рассматривает пластику живого существа, его настороженность, движение и характер. В этой работе особенно чувствуется точность наблюдения и графическая выразительность формы.",
+    "imageIds": [
+      "media-work-zemlyanaya-zhaba"
+    ],
+    "detailImageIds": [],
+    "tags": [
+      "живая природа",
+      "сезон"
+    ],
+    "featured": false,
+    "order": 59,
+    "sourceLinks": [
+      "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+    ]
+  },
+  {
+    "id": "work-mertvaya-mukha",
+    "title": "Мёртвая муха",
+    "slug": "mertvaya-mukha",
+    "artistId": "sergey-svider",
+    "collectionId": "collection-zhivaya-priroda",
+    "year": 2024,
+    "technique": "сухая игла",
+    "materials": [
+      "пластик",
+      "бумага"
+    ],
+    "width": 11,
+    "height": 16,
+    "dimensionsText": "11 см х 16 см",
+    "edition": "",
+    "status": "unknown",
+    "price": null,
+    "priceOnRequest": true,
+    "shortDescription": "Лист из серии наблюдений за птицами, животными и природным движением.",
+    "fullDescription": "Мёртвая муха относится к сезону «Живая природа», где мастер внимательно рассматривает пластику живого существа, его настороженность, движение и характер. В этой работе особенно чувствуется точность наблюдения и графическая выразительность формы.",
+    "imageIds": [
+      "media-work-mertvaya-mukha"
+    ],
+    "detailImageIds": [],
+    "tags": [
+      "живая природа",
+      "сезон"
+    ],
+    "featured": false,
+    "order": 60,
+    "sourceLinks": [
+      "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+    ]
+  },
+  {
+    "id": "work-chetyre-pyat-kto-ne-spryatalsya",
+    "title": "…Четыре-пять… кто не спрятался…",
+    "slug": "chetyre-pyat-kto-ne-spryatalsya",
+    "artistId": "sergey-svider",
+    "collectionId": "collection-koshki",
+    "year": 2024,
+    "technique": "сухая игла",
+    "materials": [
+      "пластик",
+      "бумага"
+    ],
+    "width": 8,
+    "height": 17,
+    "dimensionsText": "8 см х 17 см",
+    "edition": "",
+    "status": "unknown",
+    "price": null,
+    "priceOnRequest": true,
+    "shortDescription": "Лист о кошачьем характере, жесте, наблюдении и камерном юморе.",
+    "fullDescription": "…Четыре-пять… кто не спрятался… принадлежит сезону «Кошки», построенному на точных наблюдениях за характером, привычками и пластикой животного. Работа соединяет графическую внимательность, легкий юмор и ощущение живого присутствия.",
+    "imageIds": [
+      "media-work-chetyre-pyat-kto-ne-spryatalsya"
+    ],
+    "detailImageIds": [],
+    "tags": [
+      "кошки",
+      "сезон"
+    ],
+    "featured": false,
+    "order": 61,
+    "sourceLinks": [
+      "https://fliphtml5.com/jhcib/qalq/%D0%A7%D0%93%D0%9A._%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_2025/"
+    ]
+  }
+]
