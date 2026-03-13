@@ -3,3 +3,12 @@ tmp-pages/
 vk-gravcab*.html
 flip-*.html
 dev-artifacts/
+.env
+.env.*
+*.log
+*.bak
+*.tmp
+*.tar.gz
+*.zip
+.admin-pass*
+admin-test-payload.json

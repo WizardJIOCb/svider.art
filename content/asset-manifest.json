@@ -239,7 +239,7 @@
     {
       "id": "work-dad-and-i-sledding",
       "slug": "dad-and-i-sledding",
-      "title": "Dad and I sledding",
+      "title": "Папа и я на санках",
       "collectionId": "collection-ottsovstvo",
       "collectionTitle": "Отцовство",
       "year": 2023,
@@ -258,7 +258,7 @@
       "images": [
         {
           "id": "media-work-dad-and-i-sledding",
-          "title": "Dad and I sledding",
+          "title": "Папа и я на санках",
           "src": "assets/media/works/media-work-dad-and-i-sledding.webp",
           "thumbnail": "assets/media/works/media-work-dad-and-i-sledding.webp",
           "width": null,

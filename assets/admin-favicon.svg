@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">svider.art admin favicon</title>
+  <desc id="desc">Administrative engraving-inspired seal with a central letter A.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3d271a" />
+      <stop offset="100%" stop-color="#17110d" />
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#efe4d3" />
+  <circle cx="32" cy="32" r="24" fill="url(#bg)" />
+  <circle cx="32" cy="32" r="20.5" fill="none" stroke="#f4ecdf" stroke-width="1.4" opacity="0.95" />
+  <path d="M18 20.5h28" stroke="#b98752" stroke-width="1" opacity="0.85" />
+  <path d="M18 43.5h28" stroke="#b98752" stroke-width="1" opacity="0.85" />
+  <path d="M20.5 32h23" stroke="#f4ecdf" stroke-width="0.9" opacity="0.36" stroke-dasharray="1.5 2" />
+  <text
+    x="32"
+    y="39"
+    text-anchor="middle"
+    font-family="'Cormorant Garamond', 'Times New Roman', serif"
+    font-size="24"
+    font-weight="700"
+    fill="#fff7ec"
+  >
+    A
+  </text>
+</svg>

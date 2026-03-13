@@ -241,8 +241,8 @@ function renderHero(artist, mediaMap, siteSections, collections, works) {
     hero.kicker || "Авторская печатная графика";
   document.querySelector("#heroTitle").textContent =
     hero.title || "Гравюра как пространство линии, времени и ручного отпечатка";
-  document.querySelector("#heroText").textContent =
-    hero.text || artist.fullBio || artist.shortBio;
+  document.querySelector("#heroText").innerHTML =
+    hero.text || escapeHtml(artist.fullBio || artist.shortBio || "");
   document.querySelector("#heroSupport").textContent =
     hero.supportText || artist.artisticStatement || "";
   document.querySelector("#heroPoints").innerHTML = (hero.points || [])

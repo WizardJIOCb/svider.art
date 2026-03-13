@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">svider.art favicon</title>
+  <desc id="desc">Engraving-inspired round seal with the Cyrillic letter Es in the center.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2c221c" />
+      <stop offset="100%" stop-color="#0f0c0a" />
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#efe4d3" />
+  <circle cx="32" cy="32" r="24" fill="url(#bg)" />
+  <circle cx="32" cy="32" r="20.5" fill="none" stroke="#efe4d3" stroke-width="1.4" opacity="0.92" />
+  <circle cx="32" cy="32" r="17.2" fill="none" stroke="#c39b67" stroke-width="1.1" stroke-dasharray="0.2 2.6" stroke-linecap="round" />
+  <path d="M17 23.5c4.8-2.7 9.8-4 15-4 5.2 0 10.2 1.3 15 4" fill="none" stroke="#efe4d3" stroke-width="1" opacity="0.55" />
+  <path d="M17 40.5c4.8 2.7 9.8 4 15 4 5.2 0 10.2-1.3 15-4" fill="none" stroke="#efe4d3" stroke-width="1" opacity="0.55" />
+  <path d="M24 18.5h16" stroke="#efe4d3" stroke-width="0.9" opacity="0.4" />
+  <path d="M24 45.5h16" stroke="#efe4d3" stroke-width="0.9" opacity="0.4" />
+  <text
+    x="32"
+    y="39.5"
+    text-anchor="middle"
+    font-family="'Cormorant Garamond', 'Times New Roman', serif"
+    font-size="27"
+    font-weight="700"
+    fill="#f7f0e6"
+  >
+    С
+  </text>
+</svg>
