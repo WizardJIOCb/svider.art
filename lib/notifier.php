@@ -243,20 +243,59 @@ function notifyViaTelegram(array $request, array $config): array
     }
 
     $botToken = (string) ($config["bot_token"] ?? "");
-    $chatId = (string) ($config["chat_id"] ?? "");
-    if ($botToken === "" || $chatId === "") {
+    $chatIds = [];
+    if (!empty($config["chat_id"])) {
+        $chatIds[] = (string) $config["chat_id"];
+    }
+    if (is_array($config["chat_ids"] ?? null)) {
+        foreach ($config["chat_ids"] as $chatId) {
+            $chatId = trim((string) $chatId);
+            if ($chatId !== "") {
+                $chatIds[] = $chatId;
+            }
+        }
+    }
+    $chatIds = array_values(array_unique($chatIds));
+
+    if ($botToken === "" || $chatIds === []) {
         return ["enabled" => true, "sent" => false, "message" => "telegram credentials are incomplete"];
     }
 
     $url = "https://api.telegram.org/bot{$botToken}/sendMessage";
-    $payload = [
-        "chat_id" => $chatId,
-        "text" => requestNotificationTelegramText($request),
-        "parse_mode" => "HTML",
-        "disable_web_page_preview" => true,
-    ];
+    $delivered = 0;
+    $errors = [];
 
-    return postJsonNotification($url, $payload, "Telegram");
+    foreach ($chatIds as $chatId) {
+        $payload = [
+            "chat_id" => $chatId,
+            "text" => requestNotificationTelegramText($request),
+            "parse_mode" => "HTML",
+            "disable_web_page_preview" => true,
+        ];
+
+        $result = postJsonNotification($url, $payload, "Telegram");
+        if (!empty($result["sent"])) {
+            $delivered++;
+        } else {
+            $errors[] = "{$chatId}: " . ($result["message"] ?? "unknown error");
+        }
+    }
+
+    if ($delivered === count($chatIds)) {
+        return [
+            "enabled" => true,
+            "sent" => true,
+            "message" => "Telegram delivered to {$delivered} chat(s)",
+        ];
+    }
+
+    return [
+        "enabled" => true,
+        "sent" => $delivered > 0,
+        "message" => $delivered > 0
+            ? "Telegram delivered to {$delivered} chat(s), errors: " . implode("; ", $errors)
+            : implode("; ", $errors),
+    ];
 }
 
 function notifyViaWebhookChannel(array $request, array $config, string $label): array

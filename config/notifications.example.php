@@ -21,6 +21,7 @@ return [
         "enabled" => false,
         "bot_token" => "",
         "chat_id" => "",
+        "chat_ids" => [],
     ],
     "whatsapp" => [
         "enabled" => false,
