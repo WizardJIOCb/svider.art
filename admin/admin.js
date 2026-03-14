@@ -280,6 +280,7 @@ function renderNewsAdmin() {
     button.addEventListener("click", () => {
       currentNewsId = button.dataset.newsId;
       renderNewsAdmin();
+      scrollToAdminEditor("newsEditorTitle");
     });
   });
 
@@ -409,6 +410,7 @@ function renderRequests() {
     button.addEventListener("click", () => {
       currentRequestId = button.dataset.requestId;
       renderRequests();
+      scrollToAdminEditor("requestEditorTitle");
     });
   });
 
@@ -781,6 +783,7 @@ function renderCollections() {
     button.addEventListener("click", () => {
       currentCollectionId = button.dataset.collectionId;
       renderCollections();
+      scrollToAdminEditor("collectionEditorTitle");
     });
   });
 
