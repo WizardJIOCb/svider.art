@@ -10,5 +10,8 @@ dev-artifacts/
 *.tmp
 *.tar.gz
 *.zip
+.tmp_*
 .admin-pass*
 admin-test-payload.json
+config/notifications.php
+config/notifications.local.php

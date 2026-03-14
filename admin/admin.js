@@ -7,11 +7,15 @@ const state = {
   collections: [],
   works: [],
   media: [],
+  news: null,
+  requests: [],
   siteSections: null,
 };
 
 let currentWorkId = null;
 let currentCollectionId = null;
+let currentNewsId = null;
+let currentRequestId = null;
 
 function escapeHtml(value) {
   return String(value ?? "")
@@ -28,6 +32,10 @@ function slugify(value) {
     .trim()
     .replace(/[^a-zа-яё0-9]+/gi, "-")
     .replace(/^-+|-+$/g, "");
+}
+
+function byOrder(a, b) {
+  return (a.order ?? 999) - (b.order ?? 999);
 }
 
 function setStatus(text, isError = false) {
@@ -47,6 +55,75 @@ function getCollectionById(id) {
 
 function getWorkById(id) {
   return state.works.find((item) => item.id === id);
+}
+
+function getNewsItems() {
+  return state.news?.items || [];
+}
+
+function getNewsById(id) {
+  return getNewsItems().find((item) => item.id === id);
+}
+
+function getRequestById(id) {
+  return (state.requests || []).find((item) => item.id === id);
+}
+
+function isCompactAdminLayout() {
+  return window.matchMedia("(max-width: 980px)").matches;
+}
+
+function scrollToAdminEditor(titleId) {
+  if (!isCompactAdminLayout()) {
+    return;
+  }
+
+  const titleNode = document.querySelector(`#${titleId}`);
+  const editorCard = titleNode?.closest(".editor-card");
+  if (!editorCard) {
+    return;
+  }
+
+  requestAnimationFrame(() => {
+    editorCard.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+}
+
+function looksLikeMojibake(value) {
+  const text = String(value || "");
+  return /Р|СЏ|вЂ|Ѓ|�/.test(text);
+}
+
+function getMediaDisplayTitle(image) {
+  if (!image) return "";
+
+  const title = String(image.title || "").trim();
+  if (title && !looksLikeMojibake(title)) {
+    return title;
+  }
+
+  if (image.relatedEntityType === "work") {
+    const work = getWorkById(image.relatedEntityId);
+    if (work?.title) {
+      return work.title;
+    }
+  }
+
+  if (image.relatedEntityType === "collection") {
+    const collection = getCollectionById(image.relatedEntityId);
+    if (collection?.title) {
+      return collection.title;
+    }
+  }
+
+  if (image.relatedEntityType === "news") {
+    const news = getNewsById(image.relatedEntityId);
+    if (news?.title) {
+      return news.title;
+    }
+  }
+
+  return image.id || "Изображение";
 }
 
 async function apiGet(action) {
@@ -114,12 +191,20 @@ async function loadBootstrap() {
   if (!currentCollectionId && state.collections.length) {
     currentCollectionId = state.collections[0].id;
   }
+  if (!currentNewsId && getNewsItems().length) {
+    currentNewsId = getNewsItems()[0].id;
+  }
+  if (!currentRequestId && state.requests.length) {
+    currentRequestId = state.requests[0].id;
+  }
   renderAll();
   setStatus("Данные загружены");
 }
 
 function renderAll() {
   renderDashboard();
+  renderNewsAdmin();
+  renderRequests();
   renderWorks();
   renderCollections();
   renderContacts();
@@ -130,6 +215,14 @@ function renderDashboard() {
   const node = document.querySelector("#dashboardStats");
   if (!node) return;
   node.innerHTML = `
+    <article class="stat-card">
+      <p class="admin-kicker">Новости</p>
+      <p class="stat-card__value">${getNewsItems().length}</p>
+    </article>
+    <article class="stat-card">
+      <p class="admin-kicker">Заявки</p>
+      <p class="stat-card__value">${state.requests.length}</p>
+    </article>
     <article class="stat-card">
       <p class="admin-kicker">Гравюры</p>
       <p class="stat-card__value">${state.works.length}</p>
@@ -147,6 +240,344 @@ function renderDashboard() {
       <p class="stat-card__value">${state.media.length}</p>
     </article>
   `;
+}
+
+function renderNewsAdmin() {
+  const listNode = document.querySelector("#newsList");
+  const sectionForm = document.querySelector("#newsSectionForm");
+  const form = document.querySelector("#newsForm");
+  const titleNode = document.querySelector("#newsEditorTitle");
+  if (!listNode || !sectionForm || !form) {
+    return;
+  }
+
+  const section = state.news?.section || {};
+  sectionForm.elements.kicker.value = section.kicker || "";
+  sectionForm.elements.title.value = section.title || "";
+  sectionForm.elements.text.value = section.text || "";
+
+  const query = (document.querySelector("#newsSearch")?.value || "").toLowerCase();
+  const items = getNewsItems()
+    .slice()
+    .sort((a, b) => String(b.publishedAt || "").localeCompare(String(a.publishedAt || "")) || byOrder(a, b))
+    .filter((item) => {
+      const haystack = `${item.title} ${item.summary} ${item.bodyHtml}`.toLowerCase();
+      return !query || haystack.includes(query);
+    });
+
+  listNode.innerHTML = items
+    .map(
+      (item) => `
+        <button class="item-card ${item.id === currentNewsId ? "is-active" : ""}" type="button" data-news-id="${escapeHtml(item.id)}">
+          <strong>${escapeHtml(item.title)}</strong>
+          <span class="item-card__meta">${escapeHtml(formatDateLabel(item.publishedAt))}${item.published === false ? " • не опубликовано" : ""}</span>
+        </button>
+      `
+    )
+    .join("");
+
+  listNode.querySelectorAll("[data-news-id]").forEach((button) => {
+    button.addEventListener("click", () => {
+      currentNewsId = button.dataset.newsId;
+      renderNewsAdmin();
+    });
+  });
+
+  const news = getNewsById(currentNewsId);
+  if (!news) {
+    form.reset();
+    titleNode.textContent = "Выберите или создайте новость";
+    renderNewsImages(null);
+    return;
+  }
+
+  titleNode.textContent = news.title || "Новая новость";
+  form.elements.id.value = news.id || "";
+  form.elements.title.value = news.title || "";
+  form.elements.slug.value = news.slug || "";
+  form.elements.publishedAt.value = news.publishedAt || "";
+  form.elements.published.checked = news.published !== false;
+  form.elements.featured.checked = Boolean(news.featured);
+  form.elements.order.value = news.order ?? "";
+  form.elements.summary.value = news.summary || "";
+  form.elements.bodyHtml.value = news.bodyHtml || "";
+
+  renderNewsImages(news);
+}
+
+function formatDateLabel(value) {
+  if (!value) {
+    return "без даты";
+  }
+  return value;
+}
+
+function humanizeRequestStatus(value) {
+  switch (value) {
+    case "new":
+      return "Новая";
+    case "in_progress":
+      return "В работе";
+    case "done":
+      return "Завершена";
+    case "archived":
+      return "В архиве";
+    default:
+      return value || "Новая";
+  }
+}
+
+function renderNewsImages(news) {
+  const node = document.querySelector("#newsImagePreview");
+  if (!node) {
+    return;
+  }
+  const mediaMap = getMediaMap();
+  const images = (news?.imageIds || []).map((id) => mediaMap.get(id)).filter(Boolean);
+  node.innerHTML = images.length
+    ? images
+        .map(
+          (image) => `
+            <article class="image-preview__card">
+              <img src="/${escapeHtml(image.src)}" alt="${escapeHtml(image.alt || image.title || "")}" />
+              <div class="image-preview__caption">
+                <span>${escapeHtml(getMediaDisplayTitle(image))}</span>
+                <button class="button button--danger button--tiny" type="button" data-delete-image-id="${escapeHtml(image.id)}">Удалить</button>
+              </div>
+            </article>
+          `
+        )
+        .join("")
+    : `<div class="note-card"><p>У этой новости пока нет загруженных изображений.</p></div>`;
+
+  node.querySelectorAll("[data-delete-image-id]").forEach((button) => {
+    button.addEventListener("click", async () => {
+      const mediaId = button.dataset.deleteImageId;
+      const image = images.find((item) => item.id === mediaId);
+      const ok = window.confirm(
+        `Удалить изображение${image ? ` «${getMediaDisplayTitle(image)}»` : ""}? Оно будет удалено и с сервера, и из базы сайта.`
+      );
+      if (!ok) return;
+      try {
+        setStatus("Удаление изображения...");
+        const result = await apiDeleteImage(mediaId);
+        state.media = result.data.media;
+        state.works = result.data.works;
+        state.collections = result.data.collections;
+        if (result.data.workshop) state.workshop = result.data.workshop;
+        if (result.data.news) state.news = result.data.news;
+        renderAll();
+        setStatus("Изображение удалено");
+      } catch (error) {
+        handleError(error);
+      }
+    });
+  });
+}
+
+function renderRequests() {
+  const listNode = document.querySelector("#requestsList");
+  const form = document.querySelector("#requestForm");
+  const titleNode = document.querySelector("#requestEditorTitle");
+  if (!listNode || !form || !titleNode) {
+    return;
+  }
+
+  const query = (document.querySelector("#requestSearch")?.value || "").toLowerCase();
+  const items = (state.requests || [])
+    .slice()
+    .sort((a, b) => String(b.submittedAt || "").localeCompare(String(a.submittedAt || "")))
+    .filter((item) => {
+      const haystack = `${item.name || ""} ${item.contact || ""} ${item.workTitle || ""} ${item.message || ""}`.toLowerCase();
+      return !query || haystack.includes(query);
+    });
+
+  listNode.innerHTML = items.length
+    ? items
+        .map(
+          (item) => `
+            <button class="item-card ${item.id === currentRequestId ? "is-active" : ""}" type="button" data-request-id="${escapeHtml(item.id)}">
+              <strong>${escapeHtml(item.name || "Без имени")}</strong>
+              <span class="item-card__meta">${escapeHtml(formatDateLabel(item.submittedAt))} • ${escapeHtml(humanizeRequestStatus(item.status || "new"))}</span>
+            </button>
+          `,
+        )
+        .join("")
+    : `<div class="note-card"><p>Пока нет заявок с сайта.</p></div>`;
+
+  listNode.querySelectorAll("[data-request-id]").forEach((button) => {
+    button.addEventListener("click", () => {
+      currentRequestId = button.dataset.requestId;
+      renderRequests();
+    });
+  });
+
+  const request = getRequestById(currentRequestId);
+  if (!request) {
+    form.reset();
+    titleNode.textContent = "Выберите заявку";
+    return;
+  }
+
+  titleNode.textContent = request.name || "Заявка";
+  form.elements.id.value = request.id || "";
+  form.elements.submittedAt.value = request.submittedAt || "";
+  form.elements.status.value = request.status || "new";
+  form.elements.source.value = request.source || "";
+  form.elements.requestType.value = request.requestType || "";
+  form.elements.workTitle.value = request.workTitle || "";
+  form.elements.name.value = request.name || "";
+  form.elements.contact.value = request.contact || "";
+  form.elements.size.value = request.size || "";
+  form.elements.city.value = request.city || "";
+  form.elements.preferredChannel.value = request.preferredChannel || "";
+  form.elements.message.value = request.message || "";
+  form.elements.adminNote.value = request.adminNote || "";
+  form.elements.notificationsSummary.value = Object.entries(request.notifications || {})
+    .map(([channel, result]) => {
+      const stateLabel = result?.enabled ? (result?.sent ? "отправлено" : "не отправлено") : "не настроено";
+      const message = result?.message ? ` — ${result.message}` : "";
+      return `${channel}: ${stateLabel}${message}`;
+    })
+    .join("\n");
+}
+
+function syncRequestFormToState() {
+  const form = document.querySelector("#requestForm");
+  const request = getRequestById(currentRequestId);
+  if (!form || !request) {
+    return;
+  }
+
+  request.status = form.elements.status.value;
+  request.adminNote = form.elements.adminNote.value.trim();
+}
+
+function syncNewsSectionFormToState() {
+  const form = document.querySelector("#newsSectionForm");
+  if (!form || !state.news) return;
+  state.news.section = state.news.section || {};
+  state.news.section.kicker = form.elements.kicker.value.trim();
+  state.news.section.title = form.elements.title.value.trim();
+  state.news.section.text = form.elements.text.value.trim();
+}
+
+function syncNewsFormToState() {
+  const form = document.querySelector("#newsForm");
+  const news = getNewsById(currentNewsId);
+  if (!form || !news) return;
+  news.id = form.elements.id.value.trim();
+  news.title = form.elements.title.value.trim();
+  news.slug = form.elements.slug.value.trim();
+  news.publishedAt = form.elements.publishedAt.value;
+  news.published = form.elements.published.checked;
+  news.featured = form.elements.featured.checked;
+  news.order = form.elements.order.value ? Number(form.elements.order.value) : null;
+  news.summary = form.elements.summary.value.trim();
+  news.bodyHtml = form.elements.bodyHtml.value.trim();
+}
+
+async function saveNews() {
+  syncNewsSectionFormToState();
+  syncNewsFormToState();
+  setStatus("Сохранение новостей...");
+  await saveSection("news", state.news);
+  renderNewsAdmin();
+  renderDashboard();
+  setStatus("Новости сохранены");
+}
+
+async function saveRequests() {
+  syncRequestFormToState();
+  setStatus("Сохранение заявок...");
+  await saveSection("requests", state.requests);
+  renderRequests();
+  renderDashboard();
+  setStatus("Заявки сохранены");
+}
+
+async function deleteCurrentRequest() {
+  const request = getRequestById(currentRequestId);
+  if (!request) return;
+
+  const requestTitle = request.name || request.contact || "эту заявку";
+  const ok = window.confirm(
+    `Удалить заявку «${requestTitle}»? Она исчезнет из админки без возможности быстрого восстановления.`
+  );
+  if (!ok) return;
+
+  state.requests = state.requests.filter((item) => item.id !== currentRequestId);
+  currentRequestId = state.requests[0]?.id || null;
+  renderRequests();
+  renderDashboard();
+  setStatus("Удаление заявки...");
+  await saveSection("requests", state.requests);
+  setStatus("Заявка удалена");
+}
+
+function createEmptyNews() {
+  const timestamp = Date.now();
+  return {
+    id: `news-${timestamp}`,
+    title: "Новая новость",
+    slug: `novost-${timestamp}`,
+    publishedAt: new Date().toISOString().slice(0, 10),
+    summary: "",
+    bodyHtml: "<p></p>",
+    imageIds: [],
+    published: true,
+    featured: false,
+    order: (getNewsItems().at(-1)?.order || 0) + 1,
+  };
+}
+
+async function deleteCurrentNews() {
+  const news = getNewsById(currentNewsId);
+  if (!news) return;
+  const ok = window.confirm(
+    `Удалить новость «${news.title}»? Запись исчезнет со страницы, но её изображения можно будет удалить отдельно при необходимости.`
+  );
+  if (!ok) return;
+  state.news.items = getNewsItems().filter((item) => item.id !== currentNewsId);
+  currentNewsId = state.news.items[0]?.id || null;
+  renderNewsAdmin();
+  renderDashboard();
+  setStatus("Удаление новости...");
+  await saveSection("news", state.news);
+  setStatus("Новость удалена");
+}
+
+async function uploadNewsImage() {
+  const news = getNewsById(currentNewsId);
+  if (!news) {
+    setStatus("Сначала выберите новость, а затем загрузите изображение.", true);
+    return;
+  }
+  const fileInput = document.querySelector("#newsImageFile");
+  const file = fileInput.files?.[0];
+  if (!file) {
+    setStatus("Выберите файл изображения.", true);
+    return;
+  }
+  const formData = new FormData();
+  formData.append("file", file);
+  formData.append("entityType", "news");
+  formData.append("entityId", news.id);
+  formData.append("title", document.querySelector("#newsImageTitle").value.trim() || news.title);
+  formData.append("alt", document.querySelector("#newsImageAlt").value.trim() || `Изображение для новости «${news.title}».`);
+
+  setStatus("Загрузка изображения...");
+  const result = await apiUpload(formData);
+  state.media = result.data.media;
+  if (result.data.news) {
+    state.news = result.data.news;
+  }
+  renderNewsAdmin();
+  renderDashboard();
+  fileInput.value = "";
+  document.querySelector("#newsImageTitle").value = "";
+  document.querySelector("#newsImageAlt").value = "";
+  setStatus("Изображение загружено");
 }
 
 function renderWorks() {
@@ -172,10 +603,11 @@ function renderWorks() {
   listNode.innerHTML = items
     .map((work) => {
       const collection = getCollectionById(work.collectionId);
+      const metaParts = [collection?.title || "без коллекции", work.year || ""].filter(Boolean);
       return `
         <button class="item-card ${work.id === currentWorkId ? "is-active" : ""}" type="button" data-work-id="${escapeHtml(work.id)}">
           <strong>${escapeHtml(work.title)}</strong>
-          <span class="item-card__meta">${escapeHtml(collection?.title || "Без коллекции")} · ${escapeHtml(work.year || "")}</span>
+          <span class="item-card__meta">${escapeHtml(metaParts.join(" • "))}</span>
         </button>
       `;
     })
@@ -185,6 +617,7 @@ function renderWorks() {
     button.addEventListener("click", () => {
       currentWorkId = button.dataset.workId;
       renderWorks();
+      scrollToAdminEditor("workEditorTitle");
     });
   });
 
@@ -199,11 +632,11 @@ function populateWorkForm() {
 
   if (!work) {
     form.reset();
-    titleNode.textContent = "Выберите гравюру";
+    titleNode.textContent = "Выберите или создайте работу";
     return;
   }
 
-  titleNode.textContent = work.title || "Работа";
+  titleNode.textContent = work.title || "Новая работа";
   form.elements.id.value = work.id || "";
   form.elements.title.value = work.title || "";
   form.elements.slug.value = work.slug || "";
@@ -239,21 +672,21 @@ function renderWorkImages(work) {
             <article class="image-preview__card">
               <img src="/${escapeHtml(image.src)}" alt="${escapeHtml(image.alt || image.title || "")}" />
               <div class="image-preview__caption">
-                <span>${escapeHtml(image.title || image.id)}</span>
+                <span>${escapeHtml(getMediaDisplayTitle(image))}</span>
                 <button class="button button--danger button--tiny" type="button" data-delete-image-id="${escapeHtml(image.id)}">Удалить</button>
               </div>
             </article>
           `
         )
         .join("")
-    : `<div class="note-card"><p>У этой работы пока нет привязанных изображений.</p></div>`;
+    : `<div class="note-card"><p>У этой работы пока нет загруженных изображений.</p></div>`;
 
   node.querySelectorAll("[data-delete-image-id]").forEach((button) => {
     button.addEventListener("click", async () => {
       const mediaId = button.dataset.deleteImageId;
       const image = images.find((item) => item.id === mediaId);
       const ok = window.confirm(
-        `Удалить изображение${image?.title ? ` «${image.title}»` : ""}? Файл будет убран с сервера и отвязан от сайта.`
+        `Удалить изображение${image ? ` «${getMediaDisplayTitle(image)}»` : ""}? Оно будет удалено и с сервера, и из базы сайта.`
       );
       if (!ok) {
         return;
@@ -266,6 +699,9 @@ function renderWorkImages(work) {
         state.collections = result.data.collections;
         if (result.data.workshop) {
           state.workshop = result.data.workshop;
+        }
+        if (result.data.news) {
+          state.news = result.data.news;
         }
         renderAll();
         setStatus("Изображение удалено");
@@ -330,14 +766,15 @@ function renderCollections() {
     });
 
   listNode.innerHTML = items
-    .map(
-      (collection) => `
+    .map((collection) => {
+      const metaParts = [collection.season || "", collection.yearStart || ""].filter(Boolean);
+      return `
         <button class="item-card ${collection.id === currentCollectionId ? "is-active" : ""}" type="button" data-collection-id="${escapeHtml(collection.id)}">
           <strong>${escapeHtml(collection.title)}</strong>
-          <span class="item-card__meta">${escapeHtml(collection.season || "")} · ${escapeHtml(collection.yearStart || "")}</span>
+          <span class="item-card__meta">${escapeHtml(metaParts.join(" • "))}</span>
         </button>
-      `
-    )
+      `;
+    })
     .join("");
 
   listNode.querySelectorAll("[data-collection-id]").forEach((button) => {
@@ -357,11 +794,11 @@ function populateCollectionForm() {
   if (!form) return;
   if (!collection) {
     form.reset();
-    titleNode.textContent = "Выберите коллекцию";
+    titleNode.textContent = "Выберите или создайте коллекцию";
     return;
   }
 
-  titleNode.textContent = collection.title || "Коллекция";
+  titleNode.textContent = collection.title || "Новая коллекция";
   form.elements.id.value = collection.id || "";
   form.elements.title.value = collection.title || "";
   form.elements.slug.value = collection.slug || "";
@@ -521,7 +958,7 @@ async function deleteCurrentWork() {
     return;
   }
   const ok = window.confirm(
-    `Удалить работу «${work.title}»? Это действие уберет ее из каталога и коллекции. Изображения останутся на сервере, их можно удалить отдельно.`
+    `Удалить работу «${work.title}»? Она исчезнет из каталога и из коллекции. Изображения останутся в медиатеке, пока вы не удалите их отдельно.`
   );
   if (!ok) {
     return;
@@ -573,7 +1010,7 @@ function createEmptyWork() {
     collectionId: state.collections[0]?.id || "",
     year: new Date().getFullYear(),
     technique: "сухая игла",
-    materials: ["пластик", "бумага"],
+    materials: ["бумага", "краска"],
     width: null,
     height: null,
     dimensionsText: "",
@@ -616,13 +1053,13 @@ function createEmptyCollection() {
 async function uploadWorkImage() {
   const work = getWorkById(currentWorkId);
   if (!work) {
-    setStatus("Сначала выберите работу", true);
+    setStatus("Сначала выберите работу, а затем загрузите изображение.", true);
     return;
   }
   const fileInput = document.querySelector("#workImageFile");
   const file = fileInput.files?.[0];
   if (!file) {
-    setStatus("Выберите файл изображения", true);
+    setStatus("Выберите файл изображения.", true);
     return;
   }
   const formData = new FormData();
@@ -630,7 +1067,7 @@ async function uploadWorkImage() {
   formData.append("entityType", "work");
   formData.append("entityId", work.id);
   formData.append("title", document.querySelector("#workImageTitle").value.trim() || work.title);
-  formData.append("alt", document.querySelector("#workImageAlt").value.trim() || `Гравюра «${work.title}»`);
+  formData.append("alt", document.querySelector("#workImageAlt").value.trim() || `Изображение для работы «${work.title}».`);
 
   setStatus("Загрузка изображения...");
   const result = await apiUpload(formData);
@@ -657,15 +1094,35 @@ function bindTabs() {
 
 function bindActions() {
   document.querySelector("#reloadData").addEventListener("click", loadBootstrap);
+  document.querySelector("#newsSearch").addEventListener("input", renderNewsAdmin);
+  document.querySelector("#requestSearch")?.addEventListener("input", renderRequests);
   document.querySelector("#workSearch").addEventListener("input", renderWorks);
   document.querySelector("#collectionSearch").addEventListener("input", renderCollections);
+  document.querySelector("#newsSectionForm").addEventListener("input", syncNewsSectionFormToState);
+  document.querySelector("#newsForm").addEventListener("input", syncNewsFormToState);
+  document.querySelector("#requestForm")?.addEventListener("input", syncRequestFormToState);
   document.querySelector("#workForm").addEventListener("input", syncWorkFormToState);
   document.querySelector("#collectionForm").addEventListener("input", syncCollectionFormToState);
+  document.querySelector("#saveNews").addEventListener("click", () => saveNews().catch(handleError));
+  document.querySelector("#saveRequests")?.addEventListener("click", () => saveRequests().catch(handleError));
+  document.querySelector("#deleteRequest")?.addEventListener("click", () => deleteCurrentRequest().catch(handleError));
   document.querySelector("#saveWorks").addEventListener("click", () => saveWorks().catch(handleError));
   document.querySelector("#saveCollections").addEventListener("click", () => saveCollections().catch(handleError));
   document.querySelector("#saveContacts").addEventListener("click", () => saveContacts().catch(handleError));
   document.querySelector("#saveSettings").addEventListener("click", () => saveSettings().catch(handleError));
+  document.querySelector("#uploadNewsImage").addEventListener("click", () => uploadNewsImage().catch(handleError));
   document.querySelector("#uploadWorkImage").addEventListener("click", () => uploadWorkImage().catch(handleError));
+
+  document.querySelector("#addNews").addEventListener("click", () => {
+    state.news.items.unshift(createEmptyNews());
+    currentNewsId = state.news.items[0].id;
+    renderNewsAdmin();
+    renderDashboard();
+  });
+
+  document.querySelector("#deleteNews").addEventListener("click", () => {
+    deleteCurrentNews().catch(handleError);
+  });
 
   document.querySelector("#addWork").addEventListener("click", () => {
     const work = createEmptyWork();

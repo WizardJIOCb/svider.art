@@ -74,6 +74,7 @@
           <span></span>
         </button>
         <nav class="site-nav" id="siteNav">
+          <a href="#news">Новости</a>
           <a href="#featured">Избранное</a>
           <a href="#catalog">Каталог</a>
           <a href="#collections">Коллекции</a>
@@ -114,6 +115,15 @@
               <span class="hero-note__label">Коллекции</span>
               <p>Работы раскрываются не только поодиночке, но и через сезоны, серии и переходы между образами.</p>
             </div>
+          </section>
+
+          <section class="section news-section" id="news" hidden>
+            <div class="section-head">
+              <p class="section-kicker" id="newsKicker">Новости</p>
+              <h2 id="newsTitle">Новости мастерской</h2>
+              <p id="newsText"></p>
+            </div>
+            <div class="news-grid" id="newsGrid"></div>
           </section>
 
           <section class="section" id="featured">
@@ -190,6 +200,7 @@
               <div class="contact-stack" id="orderContacts"></div>
             </div>
             <p class="section-note" id="orderNote"></p>
+            <div class="request-form-shell" id="requestFormShell"></div>
           </section>
 
           <section class="section section--dark" id="workshop">
@@ -211,6 +222,19 @@
             </div>
             <div class="contacts-grid" id="contactGrid"></div>
           </section>
+
+          <footer class="site-footer">
+            <div class="site-footer__inner">
+              <div class="site-footer__copy">
+                <p class="site-footer__kicker">SVIDER.ART</p>
+                <p class="site-footer__text">Авторская гравюрная мастерская Сергея Михайловича Свидера.</p>
+              </div>
+              <div class="site-footer__credit">
+                <p class="site-footer__label">Сайт разработан Родионом</p>
+                <a class="site-footer__link" href="https://rodion.pro" target="_blank" rel="noreferrer">rodion.pro</a>
+              </div>
+            </div>
+          </footer>
         </div>
       </main>
     </div>
@@ -222,6 +246,74 @@
         <img class="lightbox__image" id="lightboxImage" alt="" />
       </div>
     </div>
+
+    <div class="request-modal" id="requestModal" hidden aria-hidden="true">
+      <button class="request-modal__backdrop" id="requestModalBackdrop" type="button" aria-label="Закрыть окно запроса"></button>
+      <div class="request-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="requestModalTitle">
+        <button class="request-modal__close" id="requestModalClose" type="button" aria-label="Закрыть окно запроса">×</button>
+        <div class="request-modal__body">
+          <p class="section-kicker" id="requestModalKicker">Запрос</p>
+          <h2 id="requestModalTitle">Связаться с мастерской</h2>
+          <p class="request-modal__lead" id="requestModalLead"></p>
+          <div class="request-modal__panel">
+            <div class="order-steps" id="requestModalSteps"></div>
+            <div class="contact-stack" id="requestModalContacts"></div>
+          </div>
+          <p class="section-note" id="requestModalNote"></p>
+          <div class="request-form-shell" id="requestModalFormShell"></div>
+        </div>
+      </div>
+    </div>
+
+    <template id="requestFormTemplate">
+      <form class="request-form" data-request-form>
+        <div class="request-form__grid">
+          <label>
+            Имя
+            <input name="name" type="text" placeholder="Как к вам обращаться" required />
+          </label>
+          <label>
+            Контакт для связи
+            <input name="contact" type="text" placeholder="Телефон, email или Telegram" required />
+          </label>
+          <label>
+            Тип запроса
+            <select name="requestType">
+              <option value="individual">Индивидуальный запрос</option>
+              <option value="ready_work">Готовая работа</option>
+            </select>
+          </label>
+          <label>
+            Работа или серия
+            <input name="workTitle" type="text" placeholder="Если речь о конкретной гравюре" />
+          </label>
+          <label>
+            Размер / формат
+            <input name="size" type="text" placeholder="Например, 13 × 17 см" />
+          </label>
+          <label>
+            Город
+            <input name="city" type="text" placeholder="Например, Челябинск" />
+          </label>
+          <label>
+            Предпочтительный способ связи
+            <input name="preferredChannel" type="text" placeholder="Телефон, email, Telegram" />
+          </label>
+          <label class="request-form__source">
+            Источник
+            <input name="sourceLabel" type="text" readonly />
+          </label>
+          <label class="full-width">
+            Что вы хотите обсудить
+            <textarea name="message" rows="5" required></textarea>
+          </label>
+        </div>
+        <div class="request-form__actions">
+          <button class="button button--primary" type="submit">Отправить заявку</button>
+          <p class="request-form__status" data-request-status aria-live="polite"></p>
+        </div>
+      </form>
+    </template>
 
     <script src="./app.js" type="module"></script>
   </body>

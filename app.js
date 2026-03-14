@@ -6,6 +6,7 @@ const contentFiles = {
   exhibitions: "./content/exhibitions.json",
   contacts: "./content/contacts.json",
   media: "./content/media.json",
+  news: "./content/news.json",
   siteSections: "./content/site-sections.json",
   browseSections: "./content/browse-sections.json",
   collectionPage: "./content/collection-page.json",
@@ -65,6 +66,23 @@ function formatCount(value, one, few, many) {
   return `${value} ${many}`;
 }
 
+function formatRussianDate(value) {
+  if (!value) {
+    return "";
+  }
+
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) {
+    return value;
+  }
+
+  return new Intl.DateTimeFormat("ru-RU", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  }).format(date);
+}
+
 function updateDocumentMeta(title, description) {
   document.title = title;
   const meta = document.querySelector('meta[name="description"]');
@@ -78,18 +96,13 @@ function getPrimaryContact(contacts) {
 }
 
 function pickFeaturedWork(works) {
-  return works
-    .slice()
-    .sort((a, b) => {
-      if (a.featured && !b.featured) {
-        return -1;
-      }
-      if (!a.featured && b.featured) {
-        return 1;
-      }
-      return byOrder(a, b);
-    })
-    .find((item) => item.imageIds?.length);
+  const candidates = works.filter((item) => item.imageIds?.length);
+  if (!candidates.length) {
+    return null;
+  }
+
+  const randomIndex = Math.floor(Math.random() * candidates.length);
+  return candidates[randomIndex];
 }
 
 function pickFeaturedCollection(collections) {
@@ -168,9 +181,8 @@ function setupLightbox() {
   const lightboxImage = document.querySelector("#lightboxImage");
   const lightboxClose = document.querySelector("#lightboxClose");
   const lightboxBackdrop = document.querySelector("#lightboxBackdrop");
-  const detailView = document.querySelector("#detailView");
 
-  if (!lightbox || !lightboxImage || !lightboxClose || !lightboxBackdrop || !detailView) {
+  if (!lightbox || !lightboxImage || !lightboxClose || !lightboxBackdrop) {
     return;
   }
 
@@ -190,7 +202,7 @@ function setupLightbox() {
     document.body.classList.add("has-lightbox");
   };
 
-  detailView.addEventListener("click", (event) => {
+  document.addEventListener("click", (event) => {
     const trigger = event.target.closest("[data-lightbox-src]");
     if (!trigger) {
       return;
@@ -206,6 +218,202 @@ function setupLightbox() {
   window.addEventListener("keydown", (event) => {
     if (event.key === "Escape" && !lightbox.hidden) {
       closeLightbox();
+    }
+  });
+}
+
+function setupRequestModal() {
+  const modal = document.querySelector("#requestModal");
+  const backdrop = document.querySelector("#requestModalBackdrop");
+  const closeButton = document.querySelector("#requestModalClose");
+  const kickerNode = document.querySelector("#requestModalKicker");
+  const titleNode = document.querySelector("#requestModalTitle");
+  const leadNode = document.querySelector("#requestModalLead");
+  const stepsNode = document.querySelector("#requestModalSteps");
+  const contactsNode = document.querySelector("#requestModalContacts");
+  const noteNode = document.querySelector("#requestModalNote");
+  const sourceTitle = document.querySelector("#orderTitle");
+  const sourceText = document.querySelector("#orderText");
+  const sourceSteps = document.querySelector("#orderSteps");
+  const sourceContacts = document.querySelector("#orderContacts");
+  const sourceNote = document.querySelector("#orderNote");
+
+  if (
+    !modal ||
+    !backdrop ||
+    !closeButton ||
+    !kickerNode ||
+    !titleNode ||
+    !leadNode ||
+    !stepsNode ||
+    !contactsNode ||
+    !noteNode ||
+    !sourceTitle ||
+    !sourceText ||
+    !sourceSteps ||
+    !sourceContacts ||
+    !sourceNote
+  ) {
+    return;
+  }
+
+  const closeModal = () => {
+    modal.hidden = true;
+    modal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("has-modal");
+  };
+
+  const openModal = (workTitle) => {
+    kickerNode.textContent = "Запрос";
+    titleNode.textContent = sourceTitle.textContent || "Готовая работа или индивидуальный запрос";
+    leadNode.textContent = workTitle
+      ? `Вы можете обсудить работу «${workTitle}» или задать вопрос мастерской напрямую.`
+      : sourceText.textContent || "";
+    stepsNode.innerHTML = sourceSteps.innerHTML;
+    contactsNode.innerHTML = sourceContacts.innerHTML;
+    noteNode.textContent = sourceNote.textContent || "";
+    const form = document.querySelector("#requestModalFormShell [data-request-form]");
+    if (form) {
+      form.dataset.source = "work-detail";
+      form.elements.sourceLabel.value = "Страница работы";
+      form.elements.requestType.value = "ready_work";
+      form.elements.workTitle.value = workTitle || "";
+      const statusNode = form.querySelector("[data-request-status]");
+      if (statusNode) {
+        statusNode.textContent = "";
+        statusNode.classList.remove("is-error", "is-success");
+      }
+    }
+    modal.hidden = false;
+    modal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("has-modal");
+  };
+
+  document.addEventListener("click", (event) => {
+    const trigger = event.target.closest("[data-open-request-modal]");
+    if (!trigger) {
+      return;
+    }
+
+    event.preventDefault();
+    openModal(trigger.getAttribute("data-request-title") || "");
+  });
+
+  closeButton.addEventListener("click", closeModal);
+  backdrop.addEventListener("click", closeModal);
+
+  window.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !modal.hidden) {
+      closeModal();
+    }
+  });
+}
+
+function mountRequestForm(target, defaults = {}) {
+  const template = document.querySelector("#requestFormTemplate");
+  if (!template || !target) {
+    return null;
+  }
+
+  target.innerHTML = "";
+  const fragment = template.content.cloneNode(true);
+  const form = fragment.querySelector("[data-request-form]");
+  if (!form) {
+    return null;
+  }
+
+  form.dataset.source = defaults.source || "site";
+  if (defaults.workTitle) {
+    form.elements.workTitle.value = defaults.workTitle;
+  }
+  if (defaults.requestType) {
+    form.elements.requestType.value = defaults.requestType;
+  }
+  form.elements.sourceLabel.value = defaults.sourceLabel || "Сайт мастерской";
+  target.appendChild(fragment);
+  return target.querySelector("[data-request-form]");
+}
+
+function setupRequestForms() {
+  const homepageShell = document.querySelector("#requestFormShell");
+  const modalShell = document.querySelector("#requestModalFormShell");
+
+  mountRequestForm(homepageShell, {
+    source: "homepage",
+    sourceLabel: "Главная страница",
+  });
+
+  mountRequestForm(modalShell, {
+    source: "work-detail",
+    sourceLabel: "Страница работы",
+  });
+
+  document.addEventListener("submit", async (event) => {
+    const form = event.target.closest("[data-request-form]");
+    if (!form) {
+      return;
+    }
+
+    event.preventDefault();
+    const statusNode = form.querySelector("[data-request-status]");
+    const submitButton = form.querySelector('button[type="submit"]');
+    const payload = {
+      name: form.elements.name.value.trim(),
+      contact: form.elements.contact.value.trim(),
+      requestType: form.elements.requestType.value,
+      workTitle: form.elements.workTitle.value.trim(),
+      size: form.elements.size.value.trim(),
+      city: form.elements.city.value.trim(),
+      preferredChannel: form.elements.preferredChannel.value.trim(),
+      message: form.elements.message.value.trim(),
+      source: form.dataset.source || "site",
+    };
+
+    if (statusNode) {
+      statusNode.textContent = "Отправка заявки...";
+      statusNode.classList.remove("is-error", "is-success");
+    }
+    if (submitButton) {
+      submitButton.disabled = true;
+    }
+
+    try {
+      const response = await fetch("./request.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+      const data = await response.json();
+      if (!response.ok || !data.ok) {
+        throw new Error(data.error || "Не удалось отправить заявку");
+      }
+
+      form.reset();
+      form.elements.sourceLabel.value = payload.source === "work-detail" ? "Страница работы" : "Главная страница";
+      form.dataset.source = payload.source;
+      if (payload.workTitle) {
+        form.elements.workTitle.value = payload.workTitle;
+      }
+      if (payload.requestType) {
+        form.elements.requestType.value = payload.requestType;
+      }
+      if (statusNode) {
+        statusNode.textContent = data.emailSent
+          ? "Заявка отправлена. Мы также отправили уведомление на почту мастерской."
+          : "Заявка отправлена. Мы получили её в мастерской.";
+        statusNode.classList.add("is-success");
+      }
+    } catch (error) {
+      if (statusNode) {
+        statusNode.textContent = error.message || "Не удалось отправить заявку";
+        statusNode.classList.add("is-error");
+      }
+    } finally {
+      if (submitButton) {
+        submitButton.disabled = false;
+      }
     }
   });
 }
@@ -378,6 +586,82 @@ function renderSectionCopy(siteSections, browseSections, works) {
   document.querySelector("#contactsTitle").textContent =
     contacts.title || "Связаться с мастерской";
   document.querySelector("#contactsText").textContent = contacts.text || "";
+}
+
+function renderNews(newsData, mediaMap) {
+  const sectionNode = document.querySelector("#news");
+  const grid = document.querySelector("#newsGrid");
+  if (!sectionNode || !grid) {
+    return;
+  }
+
+  const section = newsData?.section || {};
+  const items = (newsData?.items || [])
+    .filter((item) => item.published !== false)
+    .slice()
+    .sort((a, b) => {
+      if (a.featured && !b.featured) {
+        return -1;
+      }
+      if (!a.featured && b.featured) {
+        return 1;
+      }
+      return String(b.publishedAt || "").localeCompare(String(a.publishedAt || "")) || byOrder(a, b);
+    });
+
+  document.querySelector("#newsKicker").textContent = section.kicker || "Новости";
+  document.querySelector("#newsTitle").textContent = section.title || "Новости мастерской";
+  document.querySelector("#newsText").textContent =
+    section.text || "Выставки, новые листы, обновления коллекций и важные события мастерской.";
+
+  if (!items.length) {
+    sectionNode.hidden = true;
+    return;
+  }
+
+  sectionNode.hidden = false;
+  grid.innerHTML = items
+    .map((item) => {
+      const images = (item.imageIds || []).map((id) => mediaMap.get(id)).filter(Boolean);
+      const primaryImage = images[0];
+      const gallery = images.length
+        ? `
+          <div class="news-card__gallery ${images.length === 1 ? "news-card__gallery--single" : ""}">
+            ${images
+              .map(
+                (image) => `
+                  <figure class="news-card__image">
+                    <img
+                      src="${image.src}"
+                      alt="${escapeHtml(image.alt || image.title || item.title)}"
+                      loading="lazy"
+                      data-lightbox-src="${escapeHtml(image.src)}"
+                      data-lightbox-alt="${escapeHtml(image.alt || image.title || item.title)}"
+                    />
+                  </figure>
+                `
+              )
+              .join("")}
+          </div>
+        `
+        : "";
+
+      return `
+        <article class="news-card">
+          <div class="news-card__top">
+            <span class="news-card__date">${escapeHtml(formatRussianDate(item.publishedAt))}</span>
+            ${item.featured ? `<span class="news-card__badge">Важно</span>` : ""}
+          </div>
+          <h3>${escapeHtml(item.title)}</h3>
+          ${item.summary ? `<p class="news-card__summary">${escapeHtml(item.summary)}</p>` : ""}
+          ${gallery}
+          <div class="news-card__body">
+            ${item.bodyHtml || ""}
+          </div>
+        </article>
+      `;
+    })
+    .join("");
 }
 
 function renderFeaturedCollections(collections, mediaMap) {
@@ -801,6 +1085,7 @@ function renderCollectionDetail(collection, works, mediaMap, collectionPage, con
   const collectionWorks = works
     .filter((work) => collection.workIds?.includes(work.id))
     .sort(byOrder);
+  const primaryContact = getPrimaryContact(contacts);
   const metaLabels = collectionPage.hero.metaLabels || {};
   const years = formatYearRange(collection.yearStart, collection.yearEnd);
   const subtitle = (collectionPage.hero.subtitleTemplate || "{seasonLabel}").replace(
@@ -819,7 +1104,6 @@ function renderCollectionDetail(collection, works, mediaMap, collectionPage, con
     "{title}",
     collection.title,
   );
-  const primaryContact = getPrimaryContact(contacts);
 
   return `
     <div class="detail-shell">
@@ -993,7 +1277,7 @@ function renderWorkDetail(work, collection, mediaMap, workPage, contacts) {
           <p>${escapeHtml(workPage.cta.text || "")}</p>
         </div>
         <div class="hero__actions">
-          <a class="button button--primary" href="${escapeHtml(primaryContact?.href || "#contacts")}">${escapeHtml(workPage.cta.primaryLabel || "Запросить работу")}</a>
+          <button class="button button--primary" type="button" data-open-request-modal="true" data-request-title="${escapeHtml(work.title)}">${escapeHtml(workPage.cta.primaryLabel || "Запросить работу")}</button>
           ${
             collection
               ? `<a class="button button--ghost" href="${slugifyRoute("collection", collection.slug)}">${escapeHtml(workPage.cta.secondaryLabel || "Смотреть коллекцию")}</a>`
@@ -1098,6 +1382,8 @@ async function main() {
   try {
     setupMobileMenu();
     setupLightbox();
+    setupRequestForms();
+    setupRequestModal();
 
     const [
       artist,
@@ -1107,6 +1393,7 @@ async function main() {
       exhibitions,
       contacts,
       media,
+      news,
       siteSections,
       browseSections,
       collectionPage,
@@ -1118,6 +1405,7 @@ async function main() {
     renderHero(artist, mediaMap, siteSections, collections, works);
     renderIntro(artist, workshop, exhibitions);
     renderSectionCopy(siteSections, browseSections, works);
+    renderNews(news, mediaMap);
     renderFeaturedCollections(collections, mediaMap);
     renderCollections(collections, mediaMap, browseSections);
     renderWorks(works, collections, mediaMap, browseSections);

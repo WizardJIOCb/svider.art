@@ -18,6 +18,8 @@
 
         <nav class="admin-nav">
           <button class="admin-nav__item is-active" type="button" data-tab="dashboard">Обзор</button>
+          <button class="admin-nav__item" type="button" data-tab="news">Новости</button>
+          <button class="admin-nav__item" type="button" data-tab="requests">Заявки</button>
           <button class="admin-nav__item" type="button" data-tab="works">Гравюры</button>
           <button class="admin-nav__item" type="button" data-tab="collections">Коллекции</button>
           <button class="admin-nav__item" type="button" data-tab="contacts">Контакты</button>
@@ -46,6 +48,189 @@
           <div class="note-card">
             <h3>Что умеет админка</h3>
             <p>Можно редактировать карточки гравюр, коллекции, контакты, основные тексты сайта и загружать изображения для работ прямо на сервер.</p>
+          </div>
+        </section>
+
+        <section class="admin-panel" data-panel="news">
+          <div class="split-layout">
+            <div class="list-card">
+              <div class="list-card__top">
+                <input class="search-input" id="newsSearch" type="search" placeholder="Поиск по новостям" />
+                <button class="button button--primary" type="button" id="addNews">Новая новость</button>
+              </div>
+              <div class="item-list" id="newsList"></div>
+            </div>
+
+            <div class="editor-card">
+              <div class="editor-card__header">
+                <div>
+                  <p class="admin-kicker">Редактор новости</p>
+                  <h3 id="newsEditorTitle">Выберите новость</h3>
+                </div>
+                <div class="editor-card__actions">
+                  <button class="button button--ghost" type="button" id="deleteNews">Удалить</button>
+                  <button class="button button--primary" type="button" id="saveNews">Сохранить новости</button>
+                </div>
+              </div>
+
+              <form class="form-grid" id="newsSectionForm">
+                <h4>Заголовок секции</h4>
+                <label>
+                  Kicker
+                  <input name="kicker" type="text" />
+                </label>
+                <label>
+                  Заголовок
+                  <input name="title" type="text" />
+                </label>
+                <label class="full-width">
+                  Текст секции
+                  <textarea name="text" rows="3"></textarea>
+                </label>
+              </form>
+
+              <form class="form-grid" id="newsForm">
+                <h4>Новость</h4>
+                <label>
+                  Заголовок
+                  <input name="title" type="text" />
+                </label>
+                <label>
+                  Slug
+                  <input name="slug" type="text" />
+                </label>
+                <label>
+                  ID
+                  <input name="id" type="text" />
+                </label>
+                <label>
+                  Дата публикации
+                  <input name="publishedAt" type="date" />
+                </label>
+                <label class="checkbox-field">
+                  <input name="published" type="checkbox" />
+                  <span>Опубликовано</span>
+                </label>
+                <label class="checkbox-field">
+                  <input name="featured" type="checkbox" />
+                  <span>Показывать как важную</span>
+                </label>
+                <label>
+                  Порядок
+                  <input name="order" type="number" />
+                </label>
+                <label class="full-width">
+                  Короткий анонс
+                  <textarea name="summary" rows="3"></textarea>
+                </label>
+                <label class="full-width">
+                  HTML-текст новости
+                  <textarea name="bodyHtml" rows="8"></textarea>
+                </label>
+              </form>
+
+              <div class="upload-card">
+                <div>
+                  <p class="admin-kicker">Изображения новости</p>
+                  <h4>Галерея новости</h4>
+                </div>
+                <div class="upload-grid">
+                  <input id="newsImageFile" type="file" accept="image/*" />
+                  <input id="newsImageTitle" type="text" placeholder="Заголовок изображения" />
+                  <input id="newsImageAlt" type="text" placeholder="Alt-текст" />
+                  <button class="button button--primary" type="button" id="uploadNewsImage">Загрузить изображение</button>
+                </div>
+                <div class="image-preview" id="newsImagePreview"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="admin-panel" data-panel="requests">
+          <div class="split-layout">
+            <div class="list-card">
+              <div class="list-card__top">
+                <input class="search-input" id="requestSearch" type="search" placeholder="Поиск по заявкам" />
+              </div>
+              <div class="item-list" id="requestsList"></div>
+            </div>
+
+            <div class="editor-card">
+              <div class="editor-card__header">
+                <div>
+                  <p class="admin-kicker">Заявки с сайта</p>
+                  <h3 id="requestEditorTitle">Выберите заявку</h3>
+                </div>
+              <div class="editor-card__actions">
+                  <button class="button button--ghost" type="button" id="deleteRequest">Удалить</button>
+                  <button class="button button--primary" type="button" id="saveRequests">Сохранить заявки</button>
+                </div>
+              </div>
+
+              <form class="form-grid" id="requestForm">
+                <label>
+                  ID
+                  <input name="id" type="text" readonly />
+                </label>
+                <label>
+                  Дата
+                  <input name="submittedAt" type="text" readonly />
+                </label>
+                <label>
+                  Статус
+                  <select name="status">
+                    <option value="new">Новая</option>
+                    <option value="in_progress">В работе</option>
+                    <option value="done">Завершена</option>
+                    <option value="archived">В архиве</option>
+                  </select>
+                </label>
+                <label>
+                  Источник
+                  <input name="source" type="text" readonly />
+                </label>
+                <label>
+                  Тип запроса
+                  <input name="requestType" type="text" readonly />
+                </label>
+                <label>
+                  Работа или серия
+                  <input name="workTitle" type="text" readonly />
+                </label>
+                <label>
+                  Имя
+                  <input name="name" type="text" readonly />
+                </label>
+                <label>
+                  Контакт
+                  <input name="contact" type="text" readonly />
+                </label>
+                <label>
+                  Размер / формат
+                  <input name="size" type="text" readonly />
+                </label>
+                <label>
+                  Город
+                  <input name="city" type="text" readonly />
+                </label>
+                <label class="full-width">
+                  Предпочтительный способ связи
+                  <input name="preferredChannel" type="text" readonly />
+                </label>
+                <label class="full-width">
+                  Текст обращения
+                  <textarea name="message" rows="6" readonly></textarea>
+                </label>
+                <label class="full-width">
+                  Комментарий администратора
+                  <textarea name="adminNote" rows="4"></textarea>
+                </label>
+                <label class="full-width">
+                  Статусы уведомлений
+                  <textarea name="notificationsSummary" rows="4" readonly></textarea>
+                </label>
+              </form>
+            </div>
           </div>
         </section>
 

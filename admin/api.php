@@ -12,6 +12,8 @@ $contentFiles = [
     "works" => $root . "/content/works.json",
     "contacts" => $root . "/content/contacts.json",
     "media" => $root . "/content/media.json",
+    "news" => $root . "/content/news.json",
+    "requests" => $root . "/content/requests.json",
     "siteSections" => $root . "/content/site-sections.json",
 ];
 
@@ -28,7 +30,9 @@ function loadJsonFile(string $path)
     if (!is_file($path)) {
         throw new RuntimeException("File not found: {$path}");
     }
-    $data = json_decode((string) file_get_contents($path), true);
+    $raw = (string) file_get_contents($path);
+    $raw = preg_replace('/^\xEF\xBB\xBF/', '', $raw) ?? $raw;
+    $data = json_decode($raw, true);
     if (json_last_error() !== JSON_ERROR_NONE) {
         throw new RuntimeException("Invalid JSON in {$path}: " . json_last_error_msg());
     }
@@ -61,6 +65,7 @@ function getUploadTarget(string $root, string $entityType): string
     return match ($entityType) {
         "work" => $root . "/assets/media/works",
         "collection" => $root . "/assets/media/collections",
+        "news" => $root . "/assets/media/news",
         "workshop" => $root . "/assets/media/workshop",
         default => throw new RuntimeException("Unsupported entity type"),
     };
@@ -115,6 +120,7 @@ try {
         $relativePath = "assets/media/" . match ($entityType) {
             "work" => "works",
             "collection" => "collections",
+            "news" => "news",
             "workshop" => "workshop",
         } . "/" . $fileName;
         $absolutePath = $root . "/" . $relativePath;
@@ -173,6 +179,18 @@ try {
             unset($collection);
             saveJsonFile($contentFiles["collections"], $collections);
             respond(["ok" => true, "data" => ["media" => $media, "collections" => $collections, "mediaItem" => $mediaItem]]);
+        }
+
+        if ($entityType === "news") {
+            $news = loadJsonFile($contentFiles["news"]);
+            foreach (($news["items"] ?? []) as &$item) {
+                if (($item["id"] ?? "") === $entityId) {
+                    $item["imageIds"] = array_values(array_unique(array_merge($item["imageIds"] ?? [], [$mediaId])));
+                }
+            }
+            unset($item);
+            saveJsonFile($contentFiles["news"], $news);
+            respond(["ok" => true, "data" => ["media" => $media, "news" => $news, "mediaItem" => $mediaItem]]);
         }
 
         if ($entityType === "workshop") {
@@ -236,6 +254,13 @@ try {
         $workshop["imageIds"] = array_values(array_filter($workshop["imageIds"] ?? [], fn($id): bool => $id !== $mediaId));
         saveJsonFile($contentFiles["workshop"], $workshop);
 
+        $news = loadJsonFile($contentFiles["news"]);
+        foreach (($news["items"] ?? []) as &$item) {
+            $item["imageIds"] = array_values(array_filter($item["imageIds"] ?? [], fn($id): bool => $id !== $mediaId));
+        }
+        unset($item);
+        saveJsonFile($contentFiles["news"], $news);
+
         respond([
             "ok" => true,
             "data" => [
@@ -243,6 +268,7 @@ try {
                 "works" => $works,
                 "collections" => $collections,
                 "workshop" => $workshop,
+                "news" => $news,
             ],
         ]);
     }
