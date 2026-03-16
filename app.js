@@ -15,9 +15,22 @@ const contentFiles = {
 
 const NEWS_PAGE_SIZE = 3;
 let currentNewsPage = 1;
+const urlParams = new URLSearchParams(window.location.search);
+const shouldFlushCache = ["1", "true", "yes"].includes((urlParams.get("flush_cache") || "").toLowerCase());
+const cacheBuster = shouldFlushCache ? Date.now().toString() : "";
+
+function withCacheBuster(url) {
+  const value = String(url || "");
+  if (!cacheBuster || !value || value.startsWith("data:")) {
+    return value;
+  }
+
+  const separator = value.includes("?") ? "&" : "?";
+  return `${value}${separator}v=${encodeURIComponent(cacheBuster)}`;
+}
 
 async function loadJson(filePath) {
-  const response = await fetch(filePath, { cache: "no-store" });
+  const response = await fetch(withCacheBuster(filePath), { cache: "no-store" });
   if (!response.ok) {
     throw new Error(`Failed to load ${filePath}`);
   }
@@ -1472,7 +1485,14 @@ async function main() {
       workPage,
     ] = await Promise.all(Object.values(contentFiles).map(loadJson));
 
-    const mediaMap = makeMediaMap(media);
+    const mediaPrepared = shouldFlushCache
+      ? media.map((item) => ({
+          ...item,
+          src: withCacheBuster(item.src),
+          thumbnail: withCacheBuster(item.thumbnail),
+        }))
+      : media;
+    const mediaMap = makeMediaMap(mediaPrepared);
 
     renderHero(artist, mediaMap, siteSections, collections, works);
     renderIntro(artist, workshop, exhibitions);
