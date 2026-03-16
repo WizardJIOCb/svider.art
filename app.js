@@ -17,16 +17,32 @@ const NEWS_PAGE_SIZE = 3;
 let currentNewsPage = 1;
 const urlParams = new URLSearchParams(window.location.search);
 const shouldFlushCache = ["1", "true", "yes"].includes((urlParams.get("flush_cache") || "").toLowerCase());
-const cacheBuster = shouldFlushCache ? Date.now().toString() : "";
+const manualCacheBuster = shouldFlushCache ? Date.now().toString() : "";
+let activeCacheBuster = manualCacheBuster;
 
 function withCacheBuster(url) {
   const value = String(url || "");
-  if (!cacheBuster || !value || value.startsWith("data:")) {
+  if (!activeCacheBuster || !value || value.startsWith("data:")) {
     return value;
   }
 
   const separator = value.includes("?") ? "&" : "?";
-  return `${value}${separator}v=${encodeURIComponent(cacheBuster)}`;
+  return `${value}${separator}v=${encodeURIComponent(activeCacheBuster)}`;
+}
+
+async function loadCacheVersion() {
+  const probe = `./cache-version.json?ts=${Date.now()}`;
+  try {
+    const response = await fetch(probe, { cache: "no-store" });
+    if (!response.ok) {
+      return "";
+    }
+    const payload = await response.json();
+    const version = String(payload?.version || "").trim();
+    return version;
+  } catch (_error) {
+    return "";
+  }
 }
 
 async function loadJson(filePath) {
@@ -1470,6 +1486,13 @@ async function main() {
     setupRequestForms();
     setupRequestModal();
 
+    if (!shouldFlushCache) {
+      const version = await loadCacheVersion();
+      if (version) {
+        activeCacheBuster = version;
+      }
+    }
+
     const [
       artist,
       workshop,
@@ -1485,7 +1508,7 @@ async function main() {
       workPage,
     ] = await Promise.all(Object.values(contentFiles).map(loadJson));
 
-    const mediaPrepared = shouldFlushCache
+    const mediaPrepared = activeCacheBuster
       ? media.map((item) => ({
           ...item,
           src: withCacheBuster(item.src),

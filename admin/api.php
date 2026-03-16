@@ -77,6 +77,20 @@ function isLocalMediaPath(string $root, string $relativePath): bool
     return str_starts_with($normalized, "assets/media/") && is_file($root . "/" . $normalized);
 }
 
+function bumpCacheVersion(string $root): void
+{
+    $version = str_replace('.', '', sprintf('%.6f', microtime(true)));
+    $payload = [
+        "version" => $version,
+        "updatedAt" => gmdate("c"),
+    ];
+    $json = json_encode($payload, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
+    if ($json === false) {
+        return;
+    }
+    @file_put_contents($root . "/cache-version.json", $json . PHP_EOL, LOCK_EX);
+}
+
 function normalizeIdList($value): array
 {
     if (!is_array($value)) {
@@ -184,6 +198,7 @@ try {
             }
             unset($work);
             saveJsonFile($contentFiles["works"], $works);
+            bumpCacheVersion($root);
             respond(["ok" => true, "data" => ["media" => $media, "works" => $works, "mediaItem" => $mediaItem]]);
         }
 
@@ -196,6 +211,7 @@ try {
             }
             unset($collection);
             saveJsonFile($contentFiles["collections"], $collections);
+            bumpCacheVersion($root);
             respond(["ok" => true, "data" => ["media" => $media, "collections" => $collections, "mediaItem" => $mediaItem]]);
         }
 
@@ -218,6 +234,7 @@ try {
             }
 
             saveJsonFile($contentFiles["news"], $news);
+            bumpCacheVersion($root);
             respond(["ok" => true, "data" => ["media" => $media, "news" => $news, "mediaItem" => $mediaItem]]);
         }
 
@@ -225,6 +242,7 @@ try {
             $workshop = loadJsonFile($contentFiles["workshop"]);
             $workshop["imageIds"] = normalizeIdList(array_merge(normalizeIdList($workshop["imageIds"] ?? []), [$mediaId]));
             saveJsonFile($contentFiles["workshop"], $workshop);
+            bumpCacheVersion($root);
             respond(["ok" => true, "data" => ["media" => $media, "workshop" => $workshop, "mediaItem" => $mediaItem]]);
         }
     }
@@ -291,6 +309,7 @@ try {
         }
         unset($item);
         saveJsonFile($contentFiles["news"], $news);
+        bumpCacheVersion($root);
 
         respond([
             "ok" => true,
@@ -344,6 +363,7 @@ try {
         }
 
         saveJsonFile($contentFiles["collections"], $collections);
+        bumpCacheVersion($root);
         respond(["ok" => true, "data" => ["collections" => $collections]]);
     }
 
@@ -363,6 +383,7 @@ try {
         }
 
         saveJsonFile($contentFiles[$section], $body["data"] ?? null);
+        bumpCacheVersion($root);
         respond(["ok" => true]);
     }
 
