@@ -13,6 +13,9 @@ const contentFiles = {
   workPage: "./content/work-page.json",
 };
 
+const NEWS_PAGE_SIZE = 3;
+let currentNewsPage = 1;
+
 async function loadJson(filePath) {
   const response = await fetch(filePath, { cache: "no-store" });
   if (!response.ok) {
@@ -601,7 +604,8 @@ function renderSectionCopy(siteSections, browseSections, works) {
 function renderNews(newsData, mediaMap) {
   const sectionNode = document.querySelector("#news");
   const grid = document.querySelector("#newsGrid");
-  if (!sectionNode || !grid) {
+  const paginationNode = document.querySelector("#newsPagination");
+  if (!sectionNode || !grid || !paginationNode) {
     return;
   }
 
@@ -610,13 +614,17 @@ function renderNews(newsData, mediaMap) {
     .filter((item) => item.published !== false)
     .slice()
     .sort((a, b) => {
+      const byDate = String(b.publishedAt || "").localeCompare(String(a.publishedAt || ""));
+      if (byDate) {
+        return byDate;
+      }
       if (a.featured && !b.featured) {
         return -1;
       }
       if (!a.featured && b.featured) {
         return 1;
       }
-      return String(b.publishedAt || "").localeCompare(String(a.publishedAt || "")) || byOrder(a, b);
+      return byOrder(a, b);
     });
 
   document.querySelector("#newsKicker").textContent = section.kicker || "Новости";
@@ -626,14 +634,20 @@ function renderNews(newsData, mediaMap) {
 
   if (!items.length) {
     sectionNode.hidden = true;
+    paginationNode.hidden = true;
+    paginationNode.innerHTML = "";
     return;
   }
 
+  const totalPages = Math.max(1, Math.ceil(items.length / NEWS_PAGE_SIZE));
+  currentNewsPage = Math.min(Math.max(1, currentNewsPage), totalPages);
+  const start = (currentNewsPage - 1) * NEWS_PAGE_SIZE;
+  const pagedItems = items.slice(start, start + NEWS_PAGE_SIZE);
+
   sectionNode.hidden = false;
-  grid.innerHTML = items
+  grid.innerHTML = pagedItems
     .map((item) => {
       const images = normalizeIdList(item.imageIds).map((id) => mediaMap.get(id)).filter(Boolean);
-      const primaryImage = images[0];
       const gallery = images.length
         ? `
           <div class="news-card__gallery ${images.length === 1 ? "news-card__gallery--single" : ""}">
@@ -672,6 +686,30 @@ function renderNews(newsData, mediaMap) {
       `;
     })
     .join("");
+
+  if (totalPages <= 1) {
+    paginationNode.hidden = true;
+    paginationNode.innerHTML = "";
+    return;
+  }
+
+  paginationNode.hidden = false;
+  paginationNode.innerHTML = `
+    <button class="news-pagination__button" type="button" data-news-page="${currentNewsPage - 1}" ${currentNewsPage <= 1 ? "disabled" : ""}>Назад</button>
+    <span class="news-pagination__status">Страница ${currentNewsPage} из ${totalPages}</span>
+    <button class="news-pagination__button" type="button" data-news-page="${currentNewsPage + 1}" ${currentNewsPage >= totalPages ? "disabled" : ""}>Вперёд</button>
+  `;
+
+  paginationNode.querySelectorAll("[data-news-page]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const nextPage = Number(button.getAttribute("data-news-page"));
+      if (!Number.isFinite(nextPage) || nextPage < 1 || nextPage > totalPages || nextPage === currentNewsPage) {
+        return;
+      }
+      currentNewsPage = nextPage;
+      renderNews(newsData, mediaMap);
+    });
+  });
 }
 
 function renderFeaturedCollections(collections, mediaMap) {

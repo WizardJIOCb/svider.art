@@ -533,6 +533,34 @@ a {
   gap: 24px;
 }
 
+.news-pagination {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.news-pagination__button {
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.85);
+  color: var(--ink);
+  padding: 8px 14px;
+  border-radius: 999px;
+  font: inherit;
+  cursor: pointer;
+}
+
+.news-pagination__button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.news-pagination__status {
+  color: var(--ink-soft);
+  font-size: 14px;
+}
+
 .news-card {
   padding: 28px;
   border-radius: var(--radius-lg);
