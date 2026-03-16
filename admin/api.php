@@ -201,7 +201,10 @@ try {
 
         if ($entityType === "news") {
             $news = loadJsonFile($contentFiles["news"]);
-            foreach (($news["items"] ?? []) as &$item) {
+            if (!isset($news["items"]) || !is_array($news["items"])) {
+                $news["items"] = [];
+            }
+            foreach ($news["items"] as &$item) {
                 if (($item["id"] ?? "") === $entityId) {
                     $item["imageIds"] = normalizeIdList(array_merge(normalizeIdList($item["imageIds"] ?? []), [$mediaId]));
                 }
@@ -273,7 +276,10 @@ try {
         saveJsonFile($contentFiles["workshop"], $workshop);
 
         $news = loadJsonFile($contentFiles["news"]);
-        foreach (($news["items"] ?? []) as &$item) {
+        if (!isset($news["items"]) || !is_array($news["items"])) {
+            $news["items"] = [];
+        }
+        foreach ($news["items"] as &$item) {
             $item["imageIds"] = array_values(array_filter(normalizeIdList($item["imageIds"] ?? []), fn($id): bool => $id !== $mediaId));
         }
         unset($item);
