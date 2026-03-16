@@ -25,6 +25,16 @@ function makeMediaMap(media) {
   return new Map(media.map((item) => [item.id, item]));
 }
 
+function normalizeIdList(value) {
+  if (Array.isArray(value)) {
+    return value.map((id) => String(id || "").trim()).filter(Boolean);
+  }
+  if (typeof value === "string" && value.trim()) {
+    return [value.trim()];
+  }
+  return [];
+}
+
 function escapeHtml(value) {
   return String(value ?? "")
     .replaceAll("&", "&amp;")
@@ -622,7 +632,7 @@ function renderNews(newsData, mediaMap) {
   sectionNode.hidden = false;
   grid.innerHTML = items
     .map((item) => {
-      const images = (item.imageIds || []).map((id) => mediaMap.get(id)).filter(Boolean);
+      const images = normalizeIdList(item.imageIds).map((id) => mediaMap.get(id)).filter(Boolean);
       const primaryImage = images[0];
       const gallery = images.length
         ? `

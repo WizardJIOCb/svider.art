@@ -77,6 +77,24 @@ function isLocalMediaPath(string $root, string $relativePath): bool
     return str_starts_with($normalized, "assets/media/") && is_file($root . "/" . $normalized);
 }
 
+function normalizeIdList($value): array
+{
+    if (!is_array($value)) {
+        $value = is_string($value) && trim($value) !== "" ? [$value] : [];
+    }
+
+    $normalized = [];
+    foreach ($value as $item) {
+        $id = trim((string) $item);
+        if ($id === "") {
+            continue;
+        }
+        $normalized[] = $id;
+    }
+
+    return array_values(array_unique($normalized));
+}
+
 try {
     $action = $_GET["action"] ?? null;
 
@@ -161,7 +179,7 @@ try {
             $works = loadJsonFile($contentFiles["works"]);
             foreach ($works as &$work) {
                 if (($work["id"] ?? "") === $entityId) {
-                    $work["imageIds"] = array_values(array_unique(array_merge($work["imageIds"] ?? [], [$mediaId])));
+                    $work["imageIds"] = normalizeIdList(array_merge(normalizeIdList($work["imageIds"] ?? []), [$mediaId]));
                 }
             }
             unset($work);
@@ -172,7 +190,7 @@ try {
         if ($entityType === "collection") {
             $collections = loadJsonFile($contentFiles["collections"]);
             foreach ($collections as &$collection) {
-                if (($collection["id"] ?? "") === $entityId && empty($collection["coverImageId"])) {
+                if (($collection["id"] ?? "") === $entityId) {
                     $collection["coverImageId"] = $mediaId;
                 }
             }
@@ -185,7 +203,7 @@ try {
             $news = loadJsonFile($contentFiles["news"]);
             foreach (($news["items"] ?? []) as &$item) {
                 if (($item["id"] ?? "") === $entityId) {
-                    $item["imageIds"] = array_values(array_unique(array_merge($item["imageIds"] ?? [], [$mediaId])));
+                    $item["imageIds"] = normalizeIdList(array_merge(normalizeIdList($item["imageIds"] ?? []), [$mediaId]));
                 }
             }
             unset($item);
@@ -195,7 +213,7 @@ try {
 
         if ($entityType === "workshop") {
             $workshop = loadJsonFile($contentFiles["workshop"]);
-            $workshop["imageIds"] = array_values(array_unique(array_merge($workshop["imageIds"] ?? [], [$mediaId])));
+            $workshop["imageIds"] = normalizeIdList(array_merge(normalizeIdList($workshop["imageIds"] ?? []), [$mediaId]));
             saveJsonFile($contentFiles["workshop"], $workshop);
             respond(["ok" => true, "data" => ["media" => $media, "workshop" => $workshop, "mediaItem" => $mediaItem]]);
         }
@@ -235,8 +253,8 @@ try {
 
         $works = loadJsonFile($contentFiles["works"]);
         foreach ($works as &$work) {
-            $work["imageIds"] = array_values(array_filter($work["imageIds"] ?? [], fn($id): bool => $id !== $mediaId));
-            $work["detailImageIds"] = array_values(array_filter($work["detailImageIds"] ?? [], fn($id): bool => $id !== $mediaId));
+            $work["imageIds"] = array_values(array_filter(normalizeIdList($work["imageIds"] ?? []), fn($id): bool => $id !== $mediaId));
+            $work["detailImageIds"] = array_values(array_filter(normalizeIdList($work["detailImageIds"] ?? []), fn($id): bool => $id !== $mediaId));
         }
         unset($work);
         saveJsonFile($contentFiles["works"], $works);
@@ -251,12 +269,12 @@ try {
         saveJsonFile($contentFiles["collections"], $collections);
 
         $workshop = loadJsonFile($contentFiles["workshop"]);
-        $workshop["imageIds"] = array_values(array_filter($workshop["imageIds"] ?? [], fn($id): bool => $id !== $mediaId));
+        $workshop["imageIds"] = array_values(array_filter(normalizeIdList($workshop["imageIds"] ?? []), fn($id): bool => $id !== $mediaId));
         saveJsonFile($contentFiles["workshop"], $workshop);
 
         $news = loadJsonFile($contentFiles["news"]);
         foreach (($news["items"] ?? []) as &$item) {
-            $item["imageIds"] = array_values(array_filter($item["imageIds"] ?? [], fn($id): bool => $id !== $mediaId));
+            $item["imageIds"] = array_values(array_filter(normalizeIdList($item["imageIds"] ?? []), fn($id): bool => $id !== $mediaId));
         }
         unset($item);
         saveJsonFile($contentFiles["news"], $news);
@@ -271,6 +289,49 @@ try {
                 "news" => $news,
             ],
         ]);
+    }
+
+    if ($_SERVER["REQUEST_METHOD"] === "POST" && $action === "set-collection-cover") {
+        $body = json_decode((string) file_get_contents("php://input"), true);
+        if (!is_array($body)) {
+            throw new RuntimeException("Invalid JSON payload");
+        }
+
+        $collectionId = trim((string) ($body["collectionId"] ?? ""));
+        $mediaId = trim((string) ($body["mediaId"] ?? ""));
+        if ($collectionId === "" || $mediaId === "") {
+            throw new RuntimeException("Missing collectionId or mediaId");
+        }
+
+        $media = loadJsonFile($contentFiles["media"]);
+        $mediaExists = false;
+        foreach ($media as $item) {
+            if (($item["id"] ?? "") === $mediaId) {
+                $mediaExists = true;
+                break;
+            }
+        }
+        if (!$mediaExists) {
+            throw new RuntimeException("Image not found");
+        }
+
+        $collections = loadJsonFile($contentFiles["collections"]);
+        $found = false;
+        foreach ($collections as &$collection) {
+            if (($collection["id"] ?? "") === $collectionId) {
+                $collection["coverImageId"] = $mediaId;
+                $found = true;
+                break;
+            }
+        }
+        unset($collection);
+
+        if (!$found) {
+            throw new RuntimeException("Collection not found");
+        }
+
+        saveJsonFile($contentFiles["collections"], $collections);
+        respond(["ok" => true, "data" => ["collections" => $collections]]);
     }
 
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
