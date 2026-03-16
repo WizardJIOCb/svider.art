@@ -534,31 +534,99 @@ a {
 }
 
 .news-pagination {
-  margin-top: 20px;
+  margin-top: 28px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  gap: 10px;
+}
+
+.news-pagination__shell {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(247, 239, 226, 0.95));
+  border: 1px solid rgba(143, 112, 73, 0.2);
+  box-shadow: 0 10px 24px rgba(37, 28, 20, 0.12);
+}
+
+.news-pagination__pages {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .news-pagination__button {
-  border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.85);
+  appearance: none;
+  border: 1px solid rgba(143, 112, 73, 0.24);
+  background: rgba(255, 255, 255, 0.9);
   color: var(--ink);
-  padding: 8px 14px;
+  min-width: 36px;
+  height: 36px;
+  padding: 0 10px;
   border-radius: 999px;
-  font: inherit;
+  font: 600 14px/1 var(--font-body);
   cursor: pointer;
+  transition: transform 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.news-pagination__button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  border-color: rgba(143, 112, 73, 0.45);
+  background: #fff;
+}
+
+.news-pagination__button--nav {
+  font-size: 20px;
+  line-height: 1;
+  padding-bottom: 2px;
+}
+
+.news-pagination__button--page.is-active {
+  background: linear-gradient(180deg, rgba(159, 118, 71, 0.96), rgba(142, 102, 57, 0.96));
+  color: #fffaf2;
+  border-color: rgba(130, 93, 52, 0.9);
+  box-shadow: 0 6px 16px rgba(130, 93, 52, 0.28);
+}
+
+.news-pagination__ellipsis {
+  color: var(--ink-muted);
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  padding: 0 2px;
 }
 
 .news-pagination__button:disabled {
-  opacity: 0.45;
+  opacity: 0.35;
   cursor: not-allowed;
+  transform: none;
 }
 
 .news-pagination__status {
   color: var(--ink-soft);
-  font-size: 14px;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 640px) {
+  .news-pagination__shell {
+    gap: 6px;
+    padding: 6px;
+  }
+
+  .news-pagination__button {
+    min-width: 32px;
+    height: 32px;
+    font-size: 13px;
+  }
+
+  .news-pagination__button--nav {
+    font-size: 18px;
+  }
 }
 
 .news-card {

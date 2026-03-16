@@ -51,6 +51,22 @@ function byOrder(a, b) {
   return (a.order ?? 999) - (b.order ?? 999);
 }
 
+function buildNewsPageItems(totalPages, currentPage) {
+  if (totalPages <= 7) {
+    return Array.from({ length: totalPages }, (_, i) => i + 1);
+  }
+
+  if (currentPage <= 4) {
+    return [1, 2, 3, 4, 5, "...", totalPages];
+  }
+
+  if (currentPage >= totalPages - 3) {
+    return [1, "...", totalPages - 4, totalPages - 3, totalPages - 2, totalPages - 1, totalPages];
+  }
+
+  return [1, "...", currentPage - 1, currentPage, currentPage + 1, "...", totalPages];
+}
+
 function slugifyRoute(prefix, slug) {
   return `#${prefix}/${slug}`;
 }
@@ -690,10 +706,22 @@ function renderNews(newsData, mediaMap) {
   }
 
   paginationNode.hidden = false;
+  const pageItems = buildNewsPageItems(totalPages, currentNewsPage);
   paginationNode.innerHTML = `
-    <button class="news-pagination__button" type="button" data-news-page="${currentNewsPage - 1}" ${currentNewsPage <= 1 ? "disabled" : ""}>Назад</button>
+    <div class="news-pagination__shell">
+      <button class="news-pagination__button news-pagination__button--nav" type="button" data-news-page="${currentNewsPage - 1}" ${currentNewsPage <= 1 ? "disabled" : ""} aria-label="Предыдущая страница">‹</button>
+      <div class="news-pagination__pages">
+        ${pageItems
+          .map((item) =>
+            item === "..."
+              ? `<span class="news-pagination__ellipsis">…</span>`
+              : `<button class="news-pagination__button news-pagination__button--page ${item === currentNewsPage ? "is-active" : ""}" type="button" data-news-page="${item}" aria-label="Страница ${item}" ${item === currentNewsPage ? "aria-current=\"page\"" : ""}>${item}</button>`
+          )
+          .join("")}
+      </div>
+      <button class="news-pagination__button news-pagination__button--nav" type="button" data-news-page="${currentNewsPage + 1}" ${currentNewsPage >= totalPages ? "disabled" : ""} aria-label="Следующая страница">›</button>
+    </div>
     <span class="news-pagination__status">Страница ${currentNewsPage} из ${totalPages}</span>
-    <button class="news-pagination__button" type="button" data-news-page="${currentNewsPage + 1}" ${currentNewsPage >= totalPages ? "disabled" : ""}>Вперёд</button>
   `;
 
   paginationNode.querySelectorAll("[data-news-page]").forEach((button) => {
