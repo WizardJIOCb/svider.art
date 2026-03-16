@@ -14,7 +14,7 @@ const contentFiles = {
 };
 
 async function loadJson(filePath) {
-  const response = await fetch(filePath);
+  const response = await fetch(filePath, { cache: "no-store" });
   if (!response.ok) {
     throw new Error(`Failed to load ${filePath}`);
   }
