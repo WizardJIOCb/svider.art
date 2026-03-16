@@ -684,9 +684,16 @@ a {
 
 .news-card h3 {
   max-width: none;
-  font-size: clamp(30px, 4vw, 42px);
+  font-size: 30px;
   line-height: 0.96;
   margin: 0 0 14px;
+}
+
+@media (max-width: 640px) {
+  .news-card h3 {
+    font-size: 26px;
+    line-height: 1;
+  }
 }
 
 .news-card__summary {
