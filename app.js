@@ -614,17 +614,13 @@ function renderNews(newsData, mediaMap) {
     .filter((item) => item.published !== false)
     .slice()
     .sort((a, b) => {
-      const byDate = String(b.publishedAt || "").localeCompare(String(a.publishedAt || ""));
-      if (byDate) {
-        return byDate;
-      }
       if (a.featured && !b.featured) {
         return -1;
       }
       if (!a.featured && b.featured) {
         return 1;
       }
-      return byOrder(a, b);
+      return String(b.publishedAt || "").localeCompare(String(a.publishedAt || "")) || byOrder(a, b);
     });
 
   document.querySelector("#newsKicker").textContent = section.kicker || "Новости";
