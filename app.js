@@ -1498,7 +1498,9 @@ async function main() {
 
     applyRoute(routeData);
     window.addEventListener("hashchange", () => applyRoute(routeData));
+    document.documentElement.classList.remove("is-hydrating");
   } catch (error) {
+    document.documentElement.classList.remove("is-hydrating");
     renderError(error);
   }
 }

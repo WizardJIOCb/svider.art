@@ -30,6 +30,19 @@ html {
   scroll-padding-top: var(--anchor-offset);
 }
 
+html.is-hydrating .page-shell {
+  opacity: 0;
+  visibility: hidden;
+}
+
+html.is-hydrating .page-grain {
+  opacity: 0;
+}
+
+html:not(.is-hydrating) .page-shell {
+  transition: opacity 0.2s ease;
+}
+
 body {
   margin: 0;
   min-height: 100vh;
