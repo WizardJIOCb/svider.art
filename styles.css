@@ -1661,7 +1661,9 @@ a {
     padding: 14px;
     border: 1px solid var(--line);
     border-radius: 18px;
-    background: rgba(255, 252, 247, 0.9);
+    background: var(--paper-strong);
+    backdrop-filter: none;
+    border-color: var(--line-strong);
     box-shadow: var(--shadow-soft);
     opacity: 0;
     max-height: 0;
