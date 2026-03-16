@@ -685,14 +685,14 @@ a {
 .news-card h3 {
   max-width: none;
   font-size: 30px;
-  line-height: 0.96;
+  line-height: 1.2;
   margin: 0 0 14px;
 }
 
 @media (max-width: 640px) {
   .news-card h3 {
     font-size: 26px;
-    line-height: 1;
+    line-height: 1.2;
   }
 }
 
