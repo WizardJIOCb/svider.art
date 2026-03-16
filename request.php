@@ -102,7 +102,8 @@ try {
 
     $contacts = loadJsonFile($contactsPath);
     $notificationConfig = loadNotificationConfig($root);
-    $notifications = notifyAboutRequest($request, is_array($contacts) ? $contacts : [], $notificationConfig);
+    $siteConfig = loadSiteConfig($root);
+    $notifications = notifyAboutRequest($request, is_array($contacts) ? $contacts : [], $notificationConfig, $siteConfig);
 
     $requests[0]["notifications"] = $notifications;
     saveJsonFile($requestsPath, $requests);

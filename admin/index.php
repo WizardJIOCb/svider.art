@@ -230,6 +230,7 @@
                   <textarea name="notificationsSummary" rows="4" readonly></textarea>
                 </label>
               </form>
+
             </div>
           </div>
         </section>
@@ -421,6 +422,20 @@
                   <textarea name="sourceLinks" rows="4"></textarea>
                 </label>
               </form>
+
+              <div class="upload-card">
+                <div>
+                  <p class="admin-kicker">Изображения коллекции</p>
+                  <h4>Обложка и галерея</h4>
+                </div>
+                <div class="upload-grid">
+                  <input id="collectionImageFile" type="file" accept="image/*" />
+                  <input id="collectionImageTitle" type="text" placeholder="Заголовок изображения" />
+                  <input id="collectionImageAlt" type="text" placeholder="Alt-текст" />
+                  <button class="button button--primary" type="button" id="uploadCollectionImage">Загрузить изображение</button>
+                </div>
+                <div class="image-preview" id="collectionImagePreview"></div>
+              </div>
             </div>
           </div>
         </section>

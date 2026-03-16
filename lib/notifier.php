@@ -12,7 +12,77 @@ function loadNotificationConfig(string $root): array
     return is_array($config) ? $config : [];
 }
 
-function notifyAboutRequest(array $request, array $contacts, array $config): array
+function loadSiteConfig(string $root): array
+{
+    $configPath = $root . "/config/site.php";
+    if (!is_file($configPath)) {
+        return [];
+    }
+
+    $config = require $configPath;
+    return is_array($config) ? $config : [];
+}
+
+function normalizeSiteHosts(array $siteConfig): array
+{
+    $hosts = [];
+    $primary = trim((string) ($siteConfig["primary_domain"] ?? $siteConfig["domain"] ?? ($siteConfig["domains"]["primary"] ?? "")));
+    if ($primary !== "") {
+        $hosts[] = $primary;
+    }
+
+    $aliasSources = [];
+    if (array_key_exists("mirror_domains", $siteConfig)) {
+        $aliasSources[] = $siteConfig["mirror_domains"];
+    }
+    if (array_key_exists("aliases", $siteConfig)) {
+        $aliasSources[] = $siteConfig["aliases"];
+    }
+    if (isset($siteConfig["domains"]) && is_array($siteConfig["domains"]) && array_key_exists("aliases", $siteConfig["domains"])) {
+        $aliasSources[] = $siteConfig["domains"]["aliases"];
+    }
+
+    foreach ($aliasSources as $source) {
+        if (!is_array($source)) {
+            $source = [$source];
+        }
+
+        foreach ($source as $entry) {
+            $entry = trim((string) $entry);
+            if ($entry === "" || in_array($entry, $hosts, true)) {
+                continue;
+            }
+            $hosts[] = $entry;
+        }
+    }
+
+    return $hosts;
+}
+
+function getSiteLabel(array $siteConfig): string
+{
+    if (!empty($siteConfig["label"])) {
+        return (string) $siteConfig["label"];
+    }
+    if (!empty($siteConfig["name"])) {
+        return (string) $siteConfig["name"];
+    }
+
+    $hosts = normalizeSiteHosts($siteConfig);
+    if ($hosts) {
+        return implode(" / ", $hosts);
+    }
+
+    return "svider.art";
+}
+
+function getSitePrimaryDomain(array $siteConfig): string
+{
+    $hosts = normalizeSiteHosts($siteConfig);
+    return $hosts[0] ?? "svider.art";
+}
+
+function notifyAboutRequest(array $request, array $contacts, array $config, array $siteConfig): array
 {
     $results = [
         "email" => ["enabled" => false, "sent" => false, "message" => "not configured"],
@@ -21,10 +91,10 @@ function notifyAboutRequest(array $request, array $contacts, array $config): arr
         "max" => ["enabled" => false, "sent" => false, "message" => "not configured"],
     ];
 
-    $results["email"] = notifyViaEmail($request, $contacts, $config["email"] ?? []);
-    $results["telegram"] = notifyViaTelegram($request, $config["telegram"] ?? []);
-    $results["whatsapp"] = notifyViaWebhookChannel($request, $config["whatsapp"] ?? [], "WhatsApp");
-    $results["max"] = notifyViaWebhookChannel($request, $config["max"] ?? [], "MAX");
+    $results["email"] = notifyViaEmail($request, $contacts, $config["email"] ?? [], $siteConfig);
+    $results["telegram"] = notifyViaTelegram($request, $config["telegram"] ?? [], $siteConfig);
+    $results["whatsapp"] = notifyViaWebhookChannel($request, $config["whatsapp"] ?? [], "WhatsApp", $siteConfig);
+    $results["max"] = notifyViaWebhookChannel($request, $config["max"] ?? [], "MAX", $siteConfig);
 
     return $results;
 }
@@ -54,10 +124,12 @@ function requestFieldValue(array $request, string $key, string $fallback = "Не
     return $value !== "" ? $value : $fallback;
 }
 
-function requestNotificationLines(array $request): array
+function requestNotificationLines(array $request, array $siteConfig): array
 {
+    $siteLabel = getSiteLabel($siteConfig);
+
     return [
-        "Новая заявка с сайта svider.art",
+        "Новая заявка с сайта {$siteLabel}",
         "",
         "Имя: " . requestFieldValue($request, "name"),
         "Контакт: " . requestFieldValue($request, "contact"),
@@ -73,9 +145,9 @@ function requestNotificationLines(array $request): array
     ];
 }
 
-function requestNotificationText(array $request): string
+function requestNotificationText(array $request, array $siteConfig): string
 {
-    return implode(PHP_EOL, requestNotificationLines($request));
+    return implode(PHP_EOL, requestNotificationLines($request, $siteConfig));
 }
 
 function telegramEscape(string $value): string
@@ -83,10 +155,11 @@ function telegramEscape(string $value): string
     return htmlspecialchars($value, ENT_QUOTES | ENT_SUBSTITUTE, "UTF-8");
 }
 
-function requestNotificationTelegramText(array $request): string
+function requestNotificationTelegramText(array $request, array $siteConfig): string
 {
+    $siteLabel = getSiteLabel($siteConfig);
     $lines = [
-        "<b>Новая заявка с сайта svider.art</b>",
+        "<b>Новая заявка с сайта {$siteLabel}</b>",
         "",
         "Тип запроса: <b>" . telegramEscape(humanizeRequestType((string) ($request["requestType"] ?? ""))) . "</b>",
         "Имя: <b>" . telegramEscape(requestFieldValue($request, "name")) . "</b>",
@@ -115,12 +188,14 @@ function firstEmailContactForNotifications(array $contacts): ?string
     return null;
 }
 
-function notifyViaEmail(array $request, array $contacts, array $config): array
+function notifyViaEmail(array $request, array $contacts, array $config, array $siteConfig): array
 {
     $enabled = (bool) ($config["enabled"] ?? false);
     $to = (string) ($config["to"] ?? firstEmailContactForNotifications($contacts) ?? "");
-    $from = (string) ($config["from"] ?? "no-reply@svider.art");
-    $fromName = (string) ($config["from_name"] ?? "svider.art");
+    $siteLabel = getSiteLabel($siteConfig);
+    $primaryDomain = getSitePrimaryDomain($siteConfig);
+    $from = (string) ($config["from"] ?? "no-reply@{$primaryDomain}");
+    $fromName = (string) ($config["from_name"] ?? $siteLabel);
 
     if (!$enabled) {
         return ["enabled" => false, "sent" => false, "message" => "disabled"];
@@ -130,14 +205,14 @@ function notifyViaEmail(array $request, array $contacts, array $config): array
         return ["enabled" => true, "sent" => false, "message" => "empty recipient"];
     }
 
-    $subject = "Новая заявка с сайта svider.art";
-    $body = requestNotificationText($request);
+    $subject = "Новая заявка с сайта {$siteLabel}";
+    $body = requestNotificationText($request, $siteConfig);
     $transport = (string) ($config["transport"] ?? "mail");
 
     try {
         if ($transport === "smtp") {
             $smtp = is_array($config["smtp"] ?? null) ? $config["smtp"] : [];
-            smtpSendMail($to, $subject, $body, $from, $fromName, $smtp);
+            smtpSendMail($to, $subject, $body, $from, $fromName, $siteConfig, $smtp);
             return ["enabled" => true, "sent" => true, "message" => "sent via smtp"];
         }
 
@@ -157,7 +232,7 @@ function notifyViaEmail(array $request, array $contacts, array $config): array
     }
 }
 
-function smtpSendMail(string $to, string $subject, string $body, string $from, string $fromName, array $smtp): void
+function smtpSendMail(string $to, string $subject, string $body, string $from, string $fromName, array $siteConfig, array $smtp): void
 {
     $host = (string) ($smtp["host"] ?? "");
     $port = (int) ($smtp["port"] ?? 465);
@@ -179,14 +254,15 @@ function smtpSendMail(string $to, string $subject, string $body, string $from, s
     stream_set_timeout($socket, $timeout);
 
     smtpExpect($socket, [220]);
-    smtpCommand($socket, "EHLO svider.art", [250]);
+    $smtpHostLabel = getSitePrimaryDomain($siteConfig);
+    smtpCommand($socket, "EHLO {$smtpHostLabel}", [250]);
 
     if ($encryption === "tls") {
         smtpCommand($socket, "STARTTLS", [220]);
         if (!stream_socket_enable_crypto($socket, true, STREAM_CRYPTO_METHOD_TLS_CLIENT)) {
             throw new RuntimeException("Failed to start TLS");
         }
-        smtpCommand($socket, "EHLO svider.art", [250]);
+        smtpCommand($socket, "EHLO {$smtpHostLabel}", [250]);
     }
 
     smtpCommand($socket, "AUTH LOGIN", [334]);
@@ -235,7 +311,7 @@ function smtpExpect($socket, array $expectedCodes): string
     return $response;
 }
 
-function notifyViaTelegram(array $request, array $config): array
+function notifyViaTelegram(array $request, array $config, array $siteConfig): array
 {
     $enabled = (bool) ($config["enabled"] ?? false);
     if (!$enabled) {
@@ -268,7 +344,7 @@ function notifyViaTelegram(array $request, array $config): array
     foreach ($chatIds as $chatId) {
         $payload = [
             "chat_id" => $chatId,
-            "text" => requestNotificationTelegramText($request),
+            "text" => requestNotificationTelegramText($request, $siteConfig),
             "parse_mode" => "HTML",
             "disable_web_page_preview" => true,
         ];
@@ -298,7 +374,7 @@ function notifyViaTelegram(array $request, array $config): array
     ];
 }
 
-function notifyViaWebhookChannel(array $request, array $config, string $label): array
+function notifyViaWebhookChannel(array $request, array $config, string $label, array $siteConfig): array
 {
     $enabled = (bool) ($config["enabled"] ?? false);
     if (!$enabled) {
@@ -312,7 +388,7 @@ function notifyViaWebhookChannel(array $request, array $config, string $label): 
 
     $payload = [
         "service" => strtolower($label),
-        "text" => requestNotificationText($request),
+        "text" => requestNotificationText($request, $siteConfig),
         "request" => $request,
     ];
 
