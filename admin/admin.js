@@ -576,6 +576,9 @@ async function deleteCurrentNews() {
 }
 
 async function uploadNewsImage() {
+  syncNewsSectionFormToState();
+  syncNewsFormToState();
+
   const news = getNewsById(currentNewsId);
   if (!news) {
     setStatus("Сначала выберите новость, а затем загрузите изображение.", true);
@@ -593,6 +596,9 @@ async function uploadNewsImage() {
   formData.append("entityId", news.id);
   formData.append("title", document.querySelector("#newsImageTitle").value.trim() || news.title);
   formData.append("alt", document.querySelector("#newsImageAlt").value.trim() || `Изображение для новости «${news.title}».`);
+
+  setStatus("Сохранение новости перед загрузкой изображения...");
+  await saveSection("news", state.news);
 
   setStatus("Загрузка изображения...");
   const result = await apiUpload(formData);

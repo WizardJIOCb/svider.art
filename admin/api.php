@@ -204,12 +204,19 @@ try {
             if (!isset($news["items"]) || !is_array($news["items"])) {
                 $news["items"] = [];
             }
+            $newsFound = false;
             foreach ($news["items"] as &$item) {
                 if (($item["id"] ?? "") === $entityId) {
+                    $newsFound = true;
                     $item["imageIds"] = normalizeIdList(array_merge(normalizeIdList($item["imageIds"] ?? []), [$mediaId]));
                 }
             }
             unset($item);
+
+            if (!$newsFound) {
+                throw new RuntimeException("Новость не найдена. Сначала сохраните новость, затем загрузите изображение.");
+            }
+
             saveJsonFile($contentFiles["news"], $news);
             respond(["ok" => true, "data" => ["media" => $media, "news" => $news, "mediaItem" => $mediaItem]]);
         }
