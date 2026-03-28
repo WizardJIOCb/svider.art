@@ -476,6 +476,34 @@ function setupRequestForms() {
   });
 }
 
+function renderBrand(siteSections) {
+  const brand = siteSections?.brand || {};
+  const eyebrow = document.querySelector(".brand__eyebrow");
+  const name = document.querySelector(".brand__name");
+  if (eyebrow) {
+    eyebrow.textContent = brand.eyebrow || "Гравюрная мастерская";
+  }
+  if (name) {
+    name.textContent = brand.name || "Сергей Михайлович Свидер";
+  }
+}
+
+function renderHeroNotes(siteSections) {
+  const notes = siteSections?.home?.heroNotes || {};
+  const notesSection = document.querySelector(".hero-notes");
+  if (!notesSection) return;
+
+  const approachLabel = notesSection.querySelector(".hero-note:first-child .hero-note__label");
+  const approachText = notesSection.querySelector(".hero-note:first-child p");
+  const collectionsLabel = notesSection.querySelector(".hero-note:last-child .hero-note__label");
+  const collectionsText = notesSection.querySelector(".hero-note:last-child p");
+
+  if (approachLabel) approachLabel.textContent = notes.approachLabel || "Подход";
+  if (approachText) approachText.textContent = notes.approachText || "";
+  if (collectionsLabel) collectionsLabel.textContent = notes.collectionsLabel || "Коллекции";
+  if (collectionsText) collectionsText.textContent = notes.collectionsText || "";
+}
+
 function renderHero(artist, mediaMap, siteSections, collections, works) {
   const hero = siteSections?.home?.hero || {};
   const visual = document.querySelector("#heroVisual");
@@ -1517,10 +1545,19 @@ async function main() {
       : media;
     const mediaMap = makeMediaMap(mediaPrepared);
 
+    renderBrand(siteSections);
+    renderHeroNotes(siteSections);
     renderHero(artist, mediaMap, siteSections, collections, works);
     renderIntro(artist, workshop, exhibitions);
     renderSectionCopy(siteSections, browseSections, works);
     renderNews(news, mediaMap);
+
+    // Featured works section visibility
+    const featuredSection = document.querySelector("#featured");
+    if (featuredSection) {
+      featuredSection.hidden = browseSections?.featuredCollectionsEnabled === false;
+    }
+
     renderFeaturedCollections(collections, mediaMap);
     renderCollections(collections, mediaMap, browseSections);
     renderWorks(works, collections, mediaMap, browseSections);

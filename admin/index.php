@@ -540,6 +540,46 @@
                   <textarea name="supportText" rows="4"></textarea>
                 </label>
               </form>
+
+              <form class="form-grid" id="brandForm">
+                <h4>Шапка сайта</h4>
+                <label>
+                  Подпись над именем
+                  <input name="eyebrow" type="text" />
+                </label>
+                <label class="full-width">
+                  Имя мастера
+                  <input name="name" type="text" />
+                </label>
+              </form>
+
+              <form class="form-grid" id="heroNotesForm">
+                <h4>Блоки под героем</h4>
+                <label>
+                  Метка «Подход»
+                  <input name="approachLabel" type="text" />
+                </label>
+                <label class="full-width">
+                  Текст «Подход»
+                  <textarea name="approachText" rows="3"></textarea>
+                </label>
+                <label>
+                  Метка «Коллекции»
+                  <input name="collectionsLabel" type="text" />
+                </label>
+                <label class="full-width">
+                  Текст «Коллекции»
+                  <textarea name="collectionsText" rows="3"></textarea>
+                </label>
+              </form>
+
+              <form class="form-grid full-span" id="visibilityForm">
+                <h4>Отображение блоков</h4>
+                <label class="checkbox-field">
+                  <input name="featuredCollectionsEnabled" type="checkbox" />
+                  <span>Показывать блок «Избранные работы» на главной</span>
+                </label>
+              </form>
             </div>
           </div>
         </section>

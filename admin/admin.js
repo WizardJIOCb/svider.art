@@ -10,6 +10,7 @@ const state = {
   news: null,
   requests: [],
   siteSections: null,
+  browseSections: null,
 };
 
 let currentWorkId = null;
@@ -994,6 +995,10 @@ function renderSettings() {
   const artistForm = document.querySelector("#artistForm");
   const workshopForm = document.querySelector("#workshopForm");
   const heroForm = document.querySelector("#heroForm");
+  const brandForm = document.querySelector("#brandForm");
+  const heroNotesForm = document.querySelector("#heroNotesForm");
+  const visibilityForm = document.querySelector("#visibilityForm");
+
   if (artistForm && state.artist) {
     artistForm.elements.fullName.value = state.artist.fullName || "";
     artistForm.elements.shortName.value = state.artist.shortName || "";
@@ -1016,12 +1021,30 @@ function renderSettings() {
     heroForm.elements.text.value = hero.text || "";
     heroForm.elements.supportText.value = hero.supportText || "";
   }
+  if (brandForm) {
+    const brand = state.siteSections?.brand || {};
+    brandForm.elements.eyebrow.value = brand.eyebrow || "";
+    brandForm.elements.name.value = brand.name || "";
+  }
+  if (heroNotesForm) {
+    const heroNotes = state.siteSections?.home?.heroNotes || {};
+    heroNotesForm.elements.approachLabel.value = heroNotes.approachLabel || "";
+    heroNotesForm.elements.approachText.value = heroNotes.approachText || "";
+    heroNotesForm.elements.collectionsLabel.value = heroNotes.collectionsLabel || "";
+    heroNotesForm.elements.collectionsText.value = heroNotes.collectionsText || "";
+  }
+  if (visibilityForm) {
+    visibilityForm.elements.featuredCollectionsEnabled.checked = state.browseSections?.featuredCollectionsEnabled !== false;
+  }
 }
 
 function syncSettingsFormsToState() {
   const artistForm = document.querySelector("#artistForm");
   const workshopForm = document.querySelector("#workshopForm");
   const heroForm = document.querySelector("#heroForm");
+  const brandForm = document.querySelector("#brandForm");
+  const heroNotesForm = document.querySelector("#heroNotesForm");
+  const visibilityForm = document.querySelector("#visibilityForm");
 
   Object.assign(state.artist, {
     fullName: artistForm.elements.fullName.value.trim(),
@@ -1046,6 +1069,32 @@ function syncSettingsFormsToState() {
     text: heroForm.elements.text.value.trim(),
     supportText: heroForm.elements.supportText.value.trim(),
   });
+
+  // Brand settings
+  if (!state.siteSections.brand) {
+    state.siteSections.brand = {};
+  }
+  Object.assign(state.siteSections.brand, {
+    eyebrow: brandForm.elements.eyebrow.value.trim(),
+    name: brandForm.elements.name.value.trim(),
+  });
+
+  // Hero notes settings
+  if (!state.siteSections.home.heroNotes) {
+    state.siteSections.home.heroNotes = {};
+  }
+  Object.assign(state.siteSections.home.heroNotes, {
+    approachLabel: heroNotesForm.elements.approachLabel.value.trim(),
+    approachText: heroNotesForm.elements.approachText.value.trim(),
+    collectionsLabel: heroNotesForm.elements.collectionsLabel.value.trim(),
+    collectionsText: heroNotesForm.elements.collectionsText.value.trim(),
+  });
+
+  // Browse sections settings
+  if (!state.browseSections) {
+    state.browseSections = {};
+  }
+  state.browseSections.featuredCollectionsEnabled = visibilityForm.elements.featuredCollectionsEnabled.checked;
 }
 
 async function saveSection(section, data) {
@@ -1111,6 +1160,7 @@ async function saveSettings() {
   await saveSection("artist", state.artist);
   await saveSection("workshop", state.workshop);
   await saveSection("siteSections", state.siteSections);
+  await saveSection("browseSections", state.browseSections);
   setStatus("Настройки сохранены");
 }
 
