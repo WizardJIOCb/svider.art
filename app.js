@@ -606,6 +606,7 @@ function renderIntro(artist, workshop, exhibitions) {
 function renderSectionCopy(siteSections, browseSections, works) {
   const home = siteSections?.home || {};
   const intro = home.intro || {};
+  const featuredCollections = browseSections?.collections?.featuredSection || {};
   const collections = browseSections?.collections?.section || {};
   const catalog = browseSections?.catalog?.section || {};
   const order = siteSections?.order || {};
@@ -633,6 +634,11 @@ function renderSectionCopy(siteSections, browseSections, works) {
 
   document.querySelector("#collectionsKicker").textContent =
     collections.kicker || "Коллекции";
+  document.querySelector("#featuredCollectionsTitle").textContent =
+    featuredCollections.title || "Сезоны, серии и ключевые циклы";
+  document.querySelector("#featuredCollectionsText").textContent =
+    featuredCollections.text ||
+    "Работы Сергея Свидера раскрываются не только как отдельные листы, но и как цельные серии, связанные общими темами, состояниями и внутренним ритмом.";
   document.querySelector("#collectionsTitle").textContent =
     collections.title || "Сезоны, серии и авторские циклы";
   document.querySelector("#collectionsText").textContent = collections.text || "";

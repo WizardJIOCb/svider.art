@@ -49,6 +49,47 @@ function respond(array $payload, int $status = 200): void
     exit;
 }
 
+function maybeFixMojibakeString(string $value): string
+{
+    if ($value === "") {
+        return $value;
+    }
+
+    // Common mojibake markers that appear when UTF-8 text was decoded as CP1251.
+    // These symbols should almost never appear in normal Russian content.
+    if (!preg_match('/[ЂЃ‚ѓ„…†‡€‰Љ‹ЊЋЏђўќџЎЈЄІЇҐµ¶ё№єіґї]/u', $value)) {
+        return $value;
+    }
+
+    $cp1251 = @iconv("UTF-8", "Windows-1251//IGNORE", $value);
+    if (!is_string($cp1251) || $cp1251 === "") {
+        return $value;
+    }
+
+    $fixed = @iconv("Windows-1251", "UTF-8//IGNORE", $cp1251);
+    if (!is_string($fixed) || $fixed === "") {
+        return $value;
+    }
+
+    return $fixed;
+}
+
+function normalizeTextEncoding($value)
+{
+    if (is_string($value)) {
+        return maybeFixMojibakeString($value);
+    }
+
+    if (is_array($value)) {
+        foreach ($value as $key => $item) {
+            $value[$key] = normalizeTextEncoding($item);
+        }
+        return $value;
+    }
+
+    return $value;
+}
+
 function loadJsonFile(string $path)
 {
     global $sectionByPath;
@@ -57,7 +98,10 @@ function loadJsonFile(string $path)
         $contentDb = getContentDb();
         $section = $sectionByPath[$path];
         if (contentStoreHasSection($contentDb, $section)) {
-            return contentStoreLoadSection($contentDb, $section);
+            $data = contentStoreLoadSection($contentDb, $section);
+            // Keep JSON mirrors in sync for the public frontend that reads content/*.json directly.
+            saveJsonFile($path, $data);
+            return $data;
         }
 
         if (!isFileFallbackEnabled()) {
@@ -74,6 +118,7 @@ function loadJsonFile(string $path)
     if (json_last_error() !== JSON_ERROR_NONE) {
         throw new RuntimeException("Invalid JSON in {$path}: " . json_last_error_msg());
     }
+    $data = normalizeTextEncoding($data);
 
     if (isset($sectionByPath[$path])) {
         contentStoreSaveSection($contentDb, $sectionByPath[$path], $data);
@@ -85,11 +130,11 @@ function loadJsonFile(string $path)
 function saveJsonFile(string $path, $data): void
 {
     global $sectionByPath;
+    $data = normalizeTextEncoding($data);
 
     if (isset($sectionByPath[$path])) {
         $contentDb = getContentDb();
         contentStoreSaveSection($contentDb, $sectionByPath[$path], $data);
-        return;
     }
 
     $json = json_encode($data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);

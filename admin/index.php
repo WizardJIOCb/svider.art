@@ -491,6 +491,20 @@
                     <textarea name="sourceLinks" rows="3"></textarea>
                   </label>
                 </form>
+
+                <div class="upload-card" style="margin-top: 1rem;">
+                  <div>
+                    <p class="admin-kicker">Изображение работы</p>
+                    <h4>Карточка работы</h4>
+                  </div>
+                  <div class="upload-grid">
+                    <input id="seasonWorkImageFile" type="file" accept="image/*" />
+                    <input id="seasonWorkImageTitle" type="text" placeholder="Заголовок изображения" />
+                    <input id="seasonWorkImageAlt" type="text" placeholder="Alt-текст" />
+                    <button class="button button--primary" type="button" id="uploadSeasonWorkImage">Загрузить изображение</button>
+                  </div>
+                  <div class="image-preview" id="seasonWorkImagePreview"></div>
+                </div>
               </div>
             </div>
           </div>
@@ -839,6 +853,26 @@
                 <label class="checkbox-field">
                   <input name="featuredCollectionsEnabled" type="checkbox" />
                   <span>Показывать блок «Избранные работы» на главной</span>
+                </label>
+              </form>
+
+              <form class="form-grid full-span" id="collectionsBlocksForm">
+                <h4>Блоки сезонов на главной</h4>
+                <label class="full-width">
+                  Заголовок «Сезоны, серии и ключевые циклы»
+                  <input name="featuredTitle" type="text" />
+                </label>
+                <label class="full-width">
+                  Описание «Сезоны, серии и ключевые циклы»
+                  <textarea name="featuredText" rows="3"></textarea>
+                </label>
+                <label class="full-width">
+                  Заголовок «Сезоны, серии и авторские циклы»
+                  <input name="collectionsTitle" type="text" />
+                </label>
+                <label class="full-width">
+                  Описание «Сезоны, серии и авторские циклы»
+                  <textarea name="collectionsText" rows="3"></textarea>
                 </label>
               </form>
             </div>

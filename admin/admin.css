@@ -135,6 +135,18 @@ select {
   background: rgba(255, 255, 255, 0.55);
   border: 1px solid var(--line);
   color: var(--muted);
+  transition: background-color 0.45s ease, border-color 0.45s ease, color 0.45s ease;
+}
+
+.admin-status.is-saved {
+  background: #dff4df;
+  border-color: #8bcf8b;
+  color: #174817;
+}
+
+.admin-status.is-hidden {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .admin-panel {
@@ -247,8 +259,30 @@ select {
   font-size: 0.88rem;
 }
 
+.season-table-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.season-table__main {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.season-table__actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
 .editor-card {
   padding: 1rem;
+}
+
+.editor-card.is-hidden {
+  display: none;
 }
 
 .editor-card__header {
@@ -313,6 +347,27 @@ select {
   margin-top: 1.2rem;
   padding-top: 1rem;
   border-top: 1px solid var(--line);
+}
+
+.settings-logo-preview {
+  margin-top: 0.75rem;
+  padding: 0.75rem;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.68);
+}
+
+.settings-logo-preview.is-hidden {
+  display: none;
+}
+
+.settings-logo-preview img {
+  display: block;
+  max-width: min(100%, 260px);
+  max-height: 84px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
 }
 
 .upload-grid {
@@ -400,6 +455,7 @@ select {
   border: 1px solid transparent;
   text-decoration: none;
   cursor: pointer;
+  transition: background-color 0.45s ease, border-color 0.45s ease, color 0.45s ease;
 }
 
 .button--primary {
@@ -417,6 +473,12 @@ select {
   background: transparent;
   color: var(--danger);
   border-color: rgba(143, 63, 57, 0.2);
+}
+
+.button.button--primary.is-saved {
+  background: #cfeecf;
+  border-color: #8bcf8b;
+  color: #174817;
 }
 
 .button--tiny {
@@ -458,6 +520,11 @@ select {
   .list-card__top,
   .admin-header {
     align-items: start;
+    flex-direction: column;
+  }
+
+  .season-table-row {
+    align-items: flex-start;
     flex-direction: column;
   }
 }

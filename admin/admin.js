@@ -18,6 +18,7 @@ let currentWorkId = null;
 let currentCollectionId = null;
 let currentNewsId = null;
 let currentRequestId = null;
+let seasonEditorMode = "collections";
 const saveFlashTimers = new WeakMap();
 let statusFlashTimer = null;
 let statusHideTimer = null;
@@ -1065,6 +1066,9 @@ function ensureSeasonsState() {
   if (!state.browseSections.collections.section) {
     state.browseSections.collections.section = {};
   }
+  if (!state.browseSections.collections.featuredSection) {
+    state.browseSections.collections.featuredSection = {};
+  }
   if (!state.browseSections.collections.page) {
     state.browseSections.collections.page = {};
   }
@@ -1077,6 +1081,65 @@ function ensureSeasonsState() {
   if (!state.collectionPage.body) {
     state.collectionPage.body = {};
   }
+}
+
+function setSeasonEditorMode(mode) {
+  seasonEditorMode = mode;
+  const panel = document.querySelector('[data-panel="seasons"]');
+  if (!panel) return;
+
+  const listCard = panel.querySelector(".split-layout > .list-card");
+  const editorCard = panel.querySelector(".split-layout > .editor-card");
+  const collectionForm = document.querySelector("#seasonCollectionForm");
+  const collectionImageBlock = document.querySelector("#seasonCollectionImagePreview")?.closest(".upload-card");
+  const worksBlock = document.querySelector("#seasonWorksList")?.closest(".upload-card");
+  const deleteCollectionButton = document.querySelector("#deleteSeasonCollection");
+
+  const isCollectionsList = mode === "collections";
+  const isCollectionEditor = mode === "collection";
+  const isWorksEditor = mode === "works" || mode === "work";
+
+  if (listCard) listCard.classList.toggle("is-hidden", !isCollectionsList);
+  if (editorCard) editorCard.classList.toggle("is-hidden", isCollectionsList);
+  if (collectionForm) collectionForm.classList.toggle("is-hidden", !isCollectionEditor);
+  if (collectionImageBlock) collectionImageBlock.classList.toggle("is-hidden", !isCollectionEditor);
+  if (worksBlock) worksBlock.classList.toggle("is-hidden", !isWorksEditor);
+  if (deleteCollectionButton) deleteCollectionButton.classList.toggle("is-hidden", !isCollectionEditor);
+}
+
+function formatSeasonDate(collection) {
+  const start = collection?.yearStart;
+  const end = collection?.yearEnd;
+  if (start && end) {
+    return start === end ? String(start) : `${start}–${end}`;
+  }
+  if (start || end) {
+    return String(start || end);
+  }
+  return collection?.period || "—";
+}
+
+function deleteSeasonCollectionById(collectionId) {
+  if (!collectionId) return;
+  const collection = getCollectionById(collectionId);
+  if (!collection) return;
+
+  const confirmed = window.confirm(`Удалить сезон «${collection.title}»?`);
+  if (!confirmed) return;
+
+  state.collections = state.collections.filter((item) => item.id !== collectionId);
+  if (state.collections.length) {
+    const fallbackId = state.collections[0].id;
+    state.works.forEach((work) => {
+      if (work.collectionId === collectionId) {
+        work.collectionId = fallbackId;
+      }
+    });
+  }
+  currentCollectionId = state.collections[0]?.id || null;
+  syncCollectionWorkIds();
+  seasonEditorMode = "collections";
+  renderAll();
 }
 
 function renderSeasons() {
@@ -1116,6 +1179,11 @@ function renderSeasons() {
   populateSeasonCollectionForm();
   renderSeasonWorks();
   populateSeasonWorkForm();
+  const legacySettingsGrid = sectionForm.closest(".settings-grid");
+  if (legacySettingsGrid) {
+    legacySettingsGrid.classList.add("is-hidden");
+  }
+  setSeasonEditorMode(seasonEditorMode);
 }
 
 function syncSeasonSectionFormsToState() {
@@ -1170,21 +1238,35 @@ function renderSeasonCollectionsList() {
 
   listNode.innerHTML = items
     .map((collection) => {
-      const metaParts = [collection.season || "", collection.yearStart || ""].filter(Boolean);
+      const worksCount = state.works.filter((work) => work.collectionId === collection.id).length;
       return `
-        <button class="item-card ${collection.id === currentCollectionId ? "is-active" : ""}" type="button" data-season-collection-id="${escapeHtml(collection.id)}">
-          <strong>${escapeHtml(collection.title)}</strong>
-          <span class="item-card__meta">${escapeHtml(metaParts.join(" • "))}</span>
-        </button>
+        <article class="item-card ${collection.id === currentCollectionId ? "is-active" : ""}">
+          <div>
+            <strong>${escapeHtml(collection.title)}</strong>
+            <span class="item-card__meta">Дата сезона: ${escapeHtml(formatSeasonDate(collection))}</span>
+            <span class="item-card__meta">Работ: ${worksCount}</span>
+          </div>
+          <div class="editor-card__actions" style="margin-top: 0.5rem;">
+            <button class="button button--ghost button--tiny" type="button" data-season-edit-id="${escapeHtml(collection.id)}">Редактировать</button>
+            <button class="button button--danger button--tiny" type="button" data-season-delete-id="${escapeHtml(collection.id)}">Удалить</button>
+          </div>
+        </article>
       `;
     })
     .join("");
 
-  listNode.querySelectorAll("[data-season-collection-id]").forEach((button) => {
+  listNode.querySelectorAll("[data-season-edit-id]").forEach((button) => {
     button.addEventListener("click", () => {
-      currentCollectionId = button.dataset.seasonCollectionId;
+      currentCollectionId = button.dataset.seasonEditId;
+      seasonEditorMode = "collection";
       renderSeasons();
       scrollToAdminEditor("seasonCollectionEditorTitle");
+    });
+  });
+
+  listNode.querySelectorAll("[data-season-delete-id]").forEach((button) => {
+    button.addEventListener("click", () => {
+      deleteSeasonCollectionById(button.dataset.seasonDeleteId);
     });
   });
 }
@@ -1370,21 +1452,27 @@ function renderSeasonWorks() {
     ? works.length
       ? works
           .map((work) => {
-            const meta = [work.year || "", work.technique || ""].filter(Boolean).join(" • ");
+            const meta = [work.year || "", work.technique || ""].filter(Boolean).join(" ? ");
             return `
-              <button class="item-card ${work.id === currentWorkId ? "is-active" : ""}" type="button" data-season-work-id="${escapeHtml(work.id)}">
-                <strong>${escapeHtml(work.title)}</strong>
-                <span class="item-card__meta">${escapeHtml(meta)}</span>
-              </button>
+              <article class="item-card ${work.id === currentWorkId ? "is-active" : ""}">
+                <div>
+                  <strong>${escapeHtml(work.title)}</strong>
+                  <span class="item-card__meta">${escapeHtml(meta)}</span>
+                </div>
+                <div class="editor-card__actions" style="margin-top: 0.5rem;">
+                  <button class="button button--ghost button--tiny" type="button" data-season-work-edit-id="${escapeHtml(work.id)}">Редактировать</button>
+                </div>
+              </article>
             `;
           })
           .join("")
-      : `<div class="note-card"><p>В этом сезоне пока нет работ.</p></div>`
-    : `<div class="note-card"><p>Сначала выберите сезон.</p></div>`;
+      : `<div class="note-card"><p>No works in this season yet.</p></div>`
+    : `<div class="note-card"><p>Select a season first.</p></div>`;
 
-  listNode.querySelectorAll("[data-season-work-id]").forEach((button) => {
+  listNode.querySelectorAll("[data-season-work-edit-id]").forEach((button) => {
     button.addEventListener("click", () => {
-      currentWorkId = button.dataset.seasonWorkId;
+      currentWorkId = button.dataset.seasonWorkEditId;
+      seasonEditorMode = "work";
       renderSeasonWorks();
       populateSeasonWorkForm();
       scrollToAdminEditor("seasonWorkEditorTitle");
@@ -1403,6 +1491,7 @@ function populateSeasonWorkForm() {
   if (!work || work.collectionId !== currentCollectionId) {
     form.reset();
     titleNode.textContent = "Выберите работу";
+    renderSeasonWorkImages(null);
     return;
   }
 
@@ -1419,6 +1508,70 @@ function populateSeasonWorkForm() {
   form.elements.shortDescription.value = work.shortDescription || "";
   form.elements.fullDescription.value = work.fullDescription || "";
   form.elements.sourceLinks.value = (work.sourceLinks || []).join("\n");
+  renderSeasonWorkImages(work);
+}
+
+function renderSeasonWorkImages(work) {
+  const node = document.querySelector("#seasonWorkImagePreview");
+  if (!node) {
+    return;
+  }
+
+  if (!work || work.collectionId !== currentCollectionId) {
+    node.innerHTML = `<div class="note-card"><p>Выберите работу, чтобы загрузить и просмотреть изображения.</p></div>`;
+    return;
+  }
+
+  const mediaMap = getMediaMap();
+  const images = normalizeIdList(work.imageIds)
+    .map((id) => mediaMap.get(id))
+    .filter(Boolean);
+
+  node.innerHTML = images.length
+    ? images
+        .map(
+          (image) => `
+            <article class="image-preview__card">
+              <img src="/${escapeHtml(image.src)}" alt="${escapeHtml(image.alt || image.title || "")}" />
+              <div class="image-preview__caption">
+                <span>${escapeHtml(getMediaDisplayTitle(image))}</span>
+                <button class="button button--danger button--tiny" type="button" data-season-work-delete-image-id="${escapeHtml(image.id)}">Удалить</button>
+              </div>
+            </article>
+          `,
+        )
+        .join("")
+    : `<div class="note-card"><p>У этой работы пока нет загруженных изображений.</p></div>`;
+
+  node.querySelectorAll("[data-season-work-delete-image-id]").forEach((button) => {
+    button.addEventListener("click", async () => {
+      const mediaId = button.dataset.seasonWorkDeleteImageId;
+      const image = images.find((item) => item.id === mediaId);
+      const ok = window.confirm(
+        `Удалить изображение${image ? ` «${getMediaDisplayTitle(image)}»` : ""}? Оно будет удалено и с сервера, и из базы сайта.`,
+      );
+      if (!ok) return;
+      try {
+        setStatus("Удаление изображения...");
+        const result = await apiDeleteImage(mediaId);
+        state.media = result.data.media;
+        state.works = result.data.works;
+        state.collections = result.data.collections;
+        if (result.data.workshop) {
+          state.workshop = result.data.workshop;
+        }
+        if (result.data.news) {
+          state.news = result.data.news;
+        }
+        renderSeasonWorks();
+        populateSeasonWorkForm();
+        renderDashboard();
+        setStatus("Изображение удалено");
+      } catch (error) {
+        handleError(error);
+      }
+    });
+  });
 }
 
 function syncSeasonWorkFormToState() {
@@ -1500,6 +1653,56 @@ async function uploadSeasonCollectionImage() {
   setStatus("Изображение загружено");
 }
 
+async function uploadSeasonWorkImage() {
+  syncSeasonCollectionFormToState();
+  syncSeasonWorkFormToState();
+  syncCollectionWorkIds();
+
+  const work = getWorkById(currentWorkId);
+  if (!work || work.collectionId !== currentCollectionId) {
+    setStatus("Сначала выберите работу сезона, а затем загрузите изображение.", true);
+    return;
+  }
+
+  const fileInput = document.querySelector("#seasonWorkImageFile");
+  const file = fileInput?.files?.[0];
+  if (!file) {
+    setStatus("Выберите файл изображения.", true);
+    return;
+  }
+
+  const titleInput = document.querySelector("#seasonWorkImageTitle");
+  const altInput = document.querySelector("#seasonWorkImageAlt");
+
+  const formData = new FormData();
+  formData.append("file", file);
+  formData.append("entityType", "work");
+  formData.append("entityId", work.id);
+  formData.append("title", titleInput?.value.trim() || work.title || "Работа");
+  formData.append("alt", altInput?.value.trim() || `Изображение для работы «${work.title || "Без названия"}».`);
+
+  setStatus("Сохранение сезона перед загрузкой изображения...");
+  await saveSection("collections", state.collections);
+  await saveSection("works", state.works);
+
+  setStatus("Загрузка изображения...");
+  const result = await apiUpload(formData);
+  state.media = result.data.media;
+  if (result.data.works) {
+    state.works = result.data.works;
+  }
+
+  renderSeasonWorks();
+  populateSeasonWorkForm();
+  renderWorks();
+  renderDashboard();
+
+  if (fileInput) fileInput.value = "";
+  if (titleInput) titleInput.value = "";
+  if (altInput) altInput.value = "";
+  setStatus("Изображение загружено");
+}
+
 async function deleteCurrentSeasonWork() {
   const work = getWorkById(currentWorkId);
   if (!work || work.collectionId !== currentCollectionId) {
@@ -1570,6 +1773,7 @@ function renderSettings() {
   const heroNotesForm = document.querySelector("#heroNotesForm");
   const workshopIntroLogoForm = document.querySelector("#workshopIntroLogoForm");
   const visibilityForm = document.querySelector("#visibilityForm");
+  const collectionsBlocksForm = document.querySelector("#collectionsBlocksForm");
 
   if (artistForm && state.artist) {
     artistForm.elements.fullName.value = state.artist.fullName || "";
@@ -1630,6 +1834,16 @@ function renderSettings() {
   if (visibilityForm) {
     visibilityForm.elements.featuredCollectionsEnabled.checked = state.browseSections?.featuredCollectionsEnabled !== false;
   }
+  if (collectionsBlocksForm) {
+    const featuredSection = state.browseSections?.collections?.featuredSection || {};
+    const collectionsSection = state.browseSections?.collections?.section || {};
+    collectionsBlocksForm.elements.featuredTitle.value = featuredSection.title || "Сезоны, серии и ключевые циклы";
+    collectionsBlocksForm.elements.featuredText.value =
+      featuredSection.text ||
+      "Работы Сергея Свидера раскрываются не только как отдельные листы, но и как цельные серии, связанные общими темами, состояниями и внутренним ритмом.";
+    collectionsBlocksForm.elements.collectionsTitle.value = collectionsSection.title || "";
+    collectionsBlocksForm.elements.collectionsText.value = collectionsSection.text || "";
+  }
 }
 
 function syncSettingsFormsToState() {
@@ -1640,6 +1854,7 @@ function syncSettingsFormsToState() {
   const heroNotesForm = document.querySelector("#heroNotesForm");
   const workshopIntroLogoForm = document.querySelector("#workshopIntroLogoForm");
   const visibilityForm = document.querySelector("#visibilityForm");
+  const collectionsBlocksForm = document.querySelector("#collectionsBlocksForm");
 
   Object.assign(state.artist, {
     fullName: artistForm.elements.fullName.value.trim(),
@@ -1703,7 +1918,22 @@ function syncSettingsFormsToState() {
   if (!state.browseSections) {
     state.browseSections = {};
   }
+  if (!state.browseSections.collections) {
+    state.browseSections.collections = {};
+  }
+  if (!state.browseSections.collections.section) {
+    state.browseSections.collections.section = {};
+  }
+  if (!state.browseSections.collections.featuredSection) {
+    state.browseSections.collections.featuredSection = {};
+  }
   state.browseSections.featuredCollectionsEnabled = visibilityForm.elements.featuredCollectionsEnabled.checked;
+  if (collectionsBlocksForm) {
+    state.browseSections.collections.featuredSection.title = collectionsBlocksForm.elements.featuredTitle.value.trim();
+    state.browseSections.collections.featuredSection.text = collectionsBlocksForm.elements.featuredText.value.trim();
+    state.browseSections.collections.section.title = collectionsBlocksForm.elements.collectionsTitle.value.trim();
+    state.browseSections.collections.section.text = collectionsBlocksForm.elements.collectionsText.value.trim();
+  }
 }
 
 async function saveSection(section, data) {
@@ -1992,6 +2222,7 @@ function bindActions() {
   document
     .querySelector("#uploadSeasonCollectionImage")
     ?.addEventListener("click", () => uploadSeasonCollectionImage().catch(handleError));
+  document.querySelector("#uploadSeasonWorkImage")?.addEventListener("click", () => uploadSeasonWorkImage().catch(handleError));
   document.querySelector("#uploadWorkshopIntroLogo")?.addEventListener("click", () => uploadWorkshopIntroLogo().catch(handleError));
 
   document.querySelector("#addNews").addEventListener("click", () => {
@@ -2009,23 +2240,13 @@ function bindActions() {
     const collection = createEmptyCollection();
     state.collections.push(collection);
     currentCollectionId = collection.id;
+    seasonEditorMode = "collection";
     renderAll();
   });
 
   document.querySelector("#deleteSeasonCollection")?.addEventListener("click", () => {
     if (!currentCollectionId) return;
-    state.collections = state.collections.filter((item) => item.id !== currentCollectionId);
-    if (state.collections.length) {
-      const fallbackId = state.collections[0].id;
-      state.works.forEach((work) => {
-        if (work.collectionId === currentCollectionId) {
-          work.collectionId = fallbackId;
-        }
-      });
-    }
-    currentCollectionId = state.collections[0]?.id || null;
-    syncCollectionWorkIds();
-    renderAll();
+    deleteSeasonCollectionById(currentCollectionId);
   });
 
   document.querySelector("#addSeasonWork")?.addEventListener("click", () => {
@@ -2037,6 +2258,7 @@ function bindActions() {
     work.collectionId = currentCollectionId;
     state.works.unshift(work);
     currentWorkId = work.id;
+    seasonEditorMode = "work";
     syncCollectionWorkIds();
     renderAll();
   });
@@ -2104,3 +2326,4 @@ document.addEventListener("DOMContentLoaded", () => {
   bindActions();
   loadBootstrap().catch(handleError);
 });
+
