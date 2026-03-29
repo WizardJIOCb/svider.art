@@ -4,6 +4,7 @@ declare(strict_types=1);
 header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
 
 $root = dirname(__DIR__);
+require_once $root . "/lib/content_store.php";
 
 $contentFiles = [
     "artist" => $root . "/content/artist.json",
@@ -15,7 +16,30 @@ $contentFiles = [
     "news" => $root . "/content/news.json",
     "requests" => $root . "/content/requests.json",
     "siteSections" => $root . "/content/site-sections.json",
+    "browseSections" => $root . "/content/browse-sections.json",
+    "collectionPage" => $root . "/content/collection-page.json",
 ];
+$publicContentFiles = [
+    "artist" => $root . "/content/artist.json",
+    "workshop" => $root . "/content/workshop.json",
+    "collections" => $root . "/content/collections.json",
+    "works" => $root . "/content/works.json",
+    "exhibitions" => $root . "/content/exhibitions.json",
+    "contacts" => $root . "/content/contacts.json",
+    "media" => $root . "/content/media.json",
+    "news" => $root . "/content/news.json",
+    "siteSections" => $root . "/content/site-sections.json",
+    "browseSections" => $root . "/content/browse-sections.json",
+    "collectionPage" => $root . "/content/collection-page.json",
+    "workPage" => $root . "/content/work-page.json",
+];
+$sectionByPath = [];
+foreach ($publicContentFiles as $section => $path) {
+    $sectionByPath[$path] = $section;
+}
+$contentDb = null;
+$runtimeSettingsSection = "runtimeSettings";
+$runtimeSettingsCache = null;
 
 function respond(array $payload, int $status = 200): void
 {
@@ -27,6 +51,20 @@ function respond(array $payload, int $status = 200): void
 
 function loadJsonFile(string $path)
 {
+    global $sectionByPath;
+
+    if (isset($sectionByPath[$path])) {
+        $contentDb = getContentDb();
+        $section = $sectionByPath[$path];
+        if (contentStoreHasSection($contentDb, $section)) {
+            return contentStoreLoadSection($contentDb, $section);
+        }
+
+        if (!isFileFallbackEnabled()) {
+            throw new RuntimeException("DB section not found and file fallback is disabled: {$section}");
+        }
+    }
+
     if (!is_file($path)) {
         throw new RuntimeException("File not found: {$path}");
     }
@@ -36,11 +74,24 @@ function loadJsonFile(string $path)
     if (json_last_error() !== JSON_ERROR_NONE) {
         throw new RuntimeException("Invalid JSON in {$path}: " . json_last_error_msg());
     }
+
+    if (isset($sectionByPath[$path])) {
+        contentStoreSaveSection($contentDb, $sectionByPath[$path], $data);
+    }
+
     return $data;
 }
 
 function saveJsonFile(string $path, $data): void
 {
+    global $sectionByPath;
+
+    if (isset($sectionByPath[$path])) {
+        $contentDb = getContentDb();
+        contentStoreSaveSection($contentDb, $sectionByPath[$path], $data);
+        return;
+    }
+
     $json = json_encode($data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
     if ($json === false) {
         throw new RuntimeException("Failed to encode JSON for {$path}");
@@ -109,14 +160,78 @@ function normalizeIdList($value): array
     return array_values(array_unique($normalized));
 }
 
+function getContentDb(): PDO
+{
+    global $contentDb, $root;
+    if ($contentDb instanceof PDO) {
+        return $contentDb;
+    }
+
+    $contentDb = openContentStore($root);
+    return $contentDb;
+}
+
+function loadRuntimeSettingsFromDb(): array
+{
+    global $runtimeSettingsSection;
+    $db = getContentDb();
+    if (!contentStoreHasSection($db, $runtimeSettingsSection)) {
+        return ["fileFallbackEnabled" => false];
+    }
+
+    $raw = contentStoreLoadSection($db, $runtimeSettingsSection);
+    if (!is_array($raw)) {
+        return ["fileFallbackEnabled" => false];
+    }
+
+    return [
+        "fileFallbackEnabled" => (bool) ($raw["fileFallbackEnabled"] ?? false),
+    ];
+}
+
+function getRuntimeSettings(bool $reload = false): array
+{
+    global $runtimeSettingsCache;
+    if ($runtimeSettingsCache !== null && !$reload) {
+        return $runtimeSettingsCache;
+    }
+
+    $runtimeSettingsCache = loadRuntimeSettingsFromDb();
+    return $runtimeSettingsCache;
+}
+
+function saveRuntimeSettings(array $settings): void
+{
+    global $runtimeSettingsSection, $runtimeSettingsCache;
+    $normalized = [
+        "fileFallbackEnabled" => (bool) ($settings["fileFallbackEnabled"] ?? false),
+    ];
+    contentStoreSaveSection(getContentDb(), $runtimeSettingsSection, $normalized);
+    $runtimeSettingsCache = $normalized;
+}
+
+function isFileFallbackEnabled(): bool
+{
+    return (bool) (getRuntimeSettings()["fileFallbackEnabled"] ?? false);
+}
+
 try {
     $action = $_GET["action"] ?? null;
+
+    if ($_SERVER["REQUEST_METHOD"] === "GET" && $action === "public-content") {
+        $data = [];
+        foreach ($publicContentFiles as $key => $path) {
+            $data[$key] = loadJsonFile($path);
+        }
+        respond(["ok" => true, "data" => $data]);
+    }
 
     if ($_SERVER["REQUEST_METHOD"] === "GET" && $action === "bootstrap") {
         $data = [];
         foreach ($contentFiles as $key => $path) {
             $data[$key] = loadJsonFile($path);
         }
+        $data["runtimeSettings"] = getRuntimeSettings();
         respond(["ok" => true, "data" => $data]);
     }
 
@@ -224,7 +339,8 @@ try {
             foreach ($news["items"] as &$item) {
                 if (($item["id"] ?? "") === $entityId) {
                     $newsFound = true;
-                    $item["imageIds"] = normalizeIdList(array_merge(normalizeIdList($item["imageIds"] ?? []), [$mediaId]));
+                    // Put freshly uploaded image first so the news card updates immediately.
+                    $item["imageIds"] = normalizeIdList(array_merge([$mediaId], normalizeIdList($item["imageIds"] ?? [])));
                 }
             }
             unset($item);
@@ -240,7 +356,8 @@ try {
 
         if ($entityType === "workshop") {
             $workshop = loadJsonFile($contentFiles["workshop"]);
-            $workshop["imageIds"] = normalizeIdList(array_merge(normalizeIdList($workshop["imageIds"] ?? []), [$mediaId]));
+            // Put freshly uploaded workshop image first so the public block updates immediately.
+            $workshop["imageIds"] = normalizeIdList(array_merge([$mediaId], normalizeIdList($workshop["imageIds"] ?? [])));
             saveJsonFile($contentFiles["workshop"], $workshop);
             bumpCacheVersion($root);
             respond(["ok" => true, "data" => ["media" => $media, "workshop" => $workshop, "mediaItem" => $mediaItem]]);
@@ -378,6 +495,11 @@ try {
         }
 
         $section = (string) ($body["section"] ?? "");
+        if ($section === $runtimeSettingsSection) {
+            $incoming = is_array($body["data"] ?? null) ? $body["data"] : [];
+            saveRuntimeSettings($incoming);
+            respond(["ok" => true, "data" => getRuntimeSettings()]);
+        }
         if (!array_key_exists($section, $contentFiles)) {
             throw new RuntimeException("Недопустимый раздел для сохранения");
         }

@@ -11,12 +11,16 @@ const state = {
   requests: [],
   siteSections: null,
   browseSections: null,
+  collectionPage: null,
 };
 
 let currentWorkId = null;
 let currentCollectionId = null;
 let currentNewsId = null;
 let currentRequestId = null;
+const saveFlashTimers = new WeakMap();
+let statusFlashTimer = null;
+let statusHideTimer = null;
 
 function escapeHtml(value) {
   return String(value ?? "")
@@ -39,11 +43,109 @@ function byOrder(a, b) {
   return (a.order ?? 999) - (b.order ?? 999);
 }
 
+function normalizePublicAssetPath(value) {
+  const src = String(value || "").trim();
+  if (!src) return "";
+  if (src.startsWith("data:")) {
+    return src;
+  }
+  if (/^https?:\/\//i.test(src)) {
+    try {
+      const url = new URL(src);
+      if (url.pathname.startsWith("/admin/assets/")) {
+        url.pathname = url.pathname.replace(/^\/admin\//, "/");
+      }
+      return url.toString();
+    } catch (_error) {
+      return src;
+    }
+  }
+  if (src.startsWith("//")) {
+    return src;
+  }
+  if (src.startsWith("/admin/assets/")) {
+    return src.replace(/^\/admin\//, "/");
+  }
+  if (src.startsWith("admin/assets/")) {
+    return `/${src.replace(/^admin\//, "")}`;
+  }
+  if (src.startsWith("/assets/")) {
+    return src;
+  }
+  if (src.startsWith("assets/")) {
+    return `/${src}`;
+  }
+  return src;
+}
+
 function setStatus(text, isError = false) {
   const node = document.querySelector("#saveStatus");
   if (!node) return;
+  node.classList.remove("is-hidden");
   node.textContent = text;
   node.style.color = isError ? "#8f3f39" : "";
+  node.classList.remove("is-saved");
+  if (statusFlashTimer) {
+    clearTimeout(statusFlashTimer);
+    statusFlashTimer = null;
+  }
+  if (statusHideTimer) {
+    clearTimeout(statusHideTimer);
+    statusHideTimer = null;
+  }
+
+  const normalizedText = String(text || "").toLowerCase();
+  const shouldFlashSaved = !isError && normalizedText.includes("сохран");
+  if (shouldFlashSaved) {
+    node.classList.add("is-saved");
+    statusFlashTimer = setTimeout(() => {
+      node.classList.remove("is-saved");
+      statusFlashTimer = null;
+    }, 2000);
+    statusHideTimer = setTimeout(() => {
+      node.classList.add("is-hidden");
+      statusHideTimer = null;
+    }, 2000);
+  } else if (!isError && !normalizedText.includes("...")) {
+    statusHideTimer = setTimeout(() => {
+      node.classList.add("is-hidden");
+      statusHideTimer = null;
+    }, 2000);
+  }
+}
+
+function flashSavedButton(button) {
+  if (!(button instanceof HTMLElement)) {
+    return;
+  }
+
+  const prevTimer = saveFlashTimers.get(button);
+  if (prevTimer) {
+    clearTimeout(prevTimer);
+  }
+
+  button.classList.add("is-saved");
+  const timer = setTimeout(() => {
+    button.classList.remove("is-saved");
+    saveFlashTimers.delete(button);
+  }, 2000);
+  saveFlashTimers.set(button, timer);
+}
+
+function bindSaveButton(selector, action) {
+  const button = document.querySelector(selector);
+  if (!button) {
+    return;
+  }
+
+  button.addEventListener("click", async () => {
+    try {
+      await action();
+      flashSavedButton(button);
+    } catch (error) {
+      handleError(error);
+    }
+  });
 }
 
 function getMediaMap() {
@@ -232,6 +334,7 @@ function renderAll() {
   renderDashboard();
   renderNewsAdmin();
   renderRequests();
+  renderSeasons();
   renderWorks();
   renderCollections();
   renderContacts();
@@ -952,6 +1055,474 @@ function renderCollectionImages(collection) {
   });
 }
 
+function ensureSeasonsState() {
+  if (!state.browseSections) {
+    state.browseSections = {};
+  }
+  if (!state.browseSections.collections) {
+    state.browseSections.collections = {};
+  }
+  if (!state.browseSections.collections.section) {
+    state.browseSections.collections.section = {};
+  }
+  if (!state.browseSections.collections.page) {
+    state.browseSections.collections.page = {};
+  }
+  if (!state.collectionPage) {
+    state.collectionPage = {};
+  }
+  if (!state.collectionPage.hero) {
+    state.collectionPage.hero = {};
+  }
+  if (!state.collectionPage.body) {
+    state.collectionPage.body = {};
+  }
+}
+
+function renderSeasons() {
+  const sectionForm = document.querySelector("#seasonSectionForm");
+  const collectionPageForm = document.querySelector("#seasonCollectionPageForm");
+  if (!sectionForm || !collectionPageForm) {
+    return;
+  }
+
+  ensureSeasonsState();
+  if (!currentCollectionId && state.collections.length) {
+    currentCollectionId = state.collections[0].id;
+  }
+
+  const section = state.browseSections.collections.section || {};
+  const page = state.browseSections.collections.page || {};
+  sectionForm.elements.kicker.value = section.kicker || "";
+  sectionForm.elements.title.value = section.title || "";
+  sectionForm.elements.text.value = section.text || "";
+  sectionForm.elements.pageTitle.value = page.title || "";
+  sectionForm.elements.pageLead.value = page.lead || "";
+  sectionForm.elements.pageNote.value = page.note || "";
+  sectionForm.elements.cardMetaLabel.value = state.browseSections.collections.cardMetaLabel || "";
+  sectionForm.elements.workCountLabel.value = state.browseSections.collections.workCountLabel || "";
+
+  const hero = state.collectionPage.hero || {};
+  const body = state.collectionPage.body || {};
+  collectionPageForm.elements.heroTitleTemplate.value = hero.titleTemplate || "";
+  collectionPageForm.elements.heroSubtitleTemplate.value = hero.subtitleTemplate || "";
+  collectionPageForm.elements.heroDescriptionTemplate.value = hero.descriptionTemplate || "";
+  collectionPageForm.elements.leadTitle.value = body.leadTitle || "";
+  collectionPageForm.elements.leadText.value = body.leadText || "";
+  collectionPageForm.elements.worksTitle.value = body.worksTitle || "";
+  collectionPageForm.elements.worksText.value = body.worksText || "";
+
+  renderSeasonCollectionsList();
+  populateSeasonCollectionForm();
+  renderSeasonWorks();
+  populateSeasonWorkForm();
+}
+
+function syncSeasonSectionFormsToState() {
+  const sectionForm = document.querySelector("#seasonSectionForm");
+  const collectionPageForm = document.querySelector("#seasonCollectionPageForm");
+  if (!sectionForm || !collectionPageForm) {
+    return;
+  }
+
+  ensureSeasonsState();
+
+  Object.assign(state.browseSections.collections.section, {
+    kicker: sectionForm.elements.kicker.value.trim(),
+    title: sectionForm.elements.title.value.trim(),
+    text: sectionForm.elements.text.value.trim(),
+  });
+  Object.assign(state.browseSections.collections.page, {
+    title: sectionForm.elements.pageTitle.value.trim(),
+    lead: sectionForm.elements.pageLead.value.trim(),
+    note: sectionForm.elements.pageNote.value.trim(),
+  });
+  state.browseSections.collections.cardMetaLabel = sectionForm.elements.cardMetaLabel.value.trim();
+  state.browseSections.collections.workCountLabel = sectionForm.elements.workCountLabel.value.trim();
+
+  Object.assign(state.collectionPage.hero, {
+    titleTemplate: collectionPageForm.elements.heroTitleTemplate.value.trim(),
+    subtitleTemplate: collectionPageForm.elements.heroSubtitleTemplate.value.trim(),
+    descriptionTemplate: collectionPageForm.elements.heroDescriptionTemplate.value.trim(),
+  });
+  Object.assign(state.collectionPage.body, {
+    leadTitle: collectionPageForm.elements.leadTitle.value.trim(),
+    leadText: collectionPageForm.elements.leadText.value.trim(),
+    worksTitle: collectionPageForm.elements.worksTitle.value.trim(),
+    worksText: collectionPageForm.elements.worksText.value.trim(),
+  });
+}
+
+function renderSeasonCollectionsList() {
+  const listNode = document.querySelector("#seasonCollectionsList");
+  if (!listNode) {
+    return;
+  }
+
+  const query = (document.querySelector("#seasonCollectionSearch")?.value || "").toLowerCase();
+  const items = state.collections
+    .slice()
+    .sort((a, b) => (a.order ?? 999) - (b.order ?? 999))
+    .filter((collection) => {
+      const haystack = `${collection.title} ${collection.theme} ${collection.slug}`.toLowerCase();
+      return !query || haystack.includes(query);
+    });
+
+  listNode.innerHTML = items
+    .map((collection) => {
+      const metaParts = [collection.season || "", collection.yearStart || ""].filter(Boolean);
+      return `
+        <button class="item-card ${collection.id === currentCollectionId ? "is-active" : ""}" type="button" data-season-collection-id="${escapeHtml(collection.id)}">
+          <strong>${escapeHtml(collection.title)}</strong>
+          <span class="item-card__meta">${escapeHtml(metaParts.join(" • "))}</span>
+        </button>
+      `;
+    })
+    .join("");
+
+  listNode.querySelectorAll("[data-season-collection-id]").forEach((button) => {
+    button.addEventListener("click", () => {
+      currentCollectionId = button.dataset.seasonCollectionId;
+      renderSeasons();
+      scrollToAdminEditor("seasonCollectionEditorTitle");
+    });
+  });
+}
+
+function populateSeasonCollectionForm() {
+  const collection = getCollectionById(currentCollectionId);
+  const form = document.querySelector("#seasonCollectionForm");
+  const titleNode = document.querySelector("#seasonCollectionEditorTitle");
+  if (!form || !titleNode) {
+    return;
+  }
+
+  if (!collection) {
+    form.reset();
+    titleNode.textContent = "Выберите или создайте сезон";
+    renderSeasonCollectionImages(null);
+    return;
+  }
+
+  titleNode.textContent = collection.title || "Новый сезон";
+  form.elements.id.value = collection.id || "";
+  form.elements.title.value = collection.title || "";
+  form.elements.slug.value = collection.slug || "";
+  form.elements.season.value = collection.season || "";
+  form.elements.theme.value = collection.theme || "";
+  form.elements.period.value = collection.period || "";
+  form.elements.yearStart.value = collection.yearStart ?? "";
+  form.elements.yearEnd.value = collection.yearEnd ?? "";
+  form.elements.featured.checked = Boolean(collection.featured);
+  form.elements.order.value = collection.order ?? "";
+  form.elements.shortDescription.value = collection.shortDescription || "";
+  form.elements.fullDescription.value = collection.fullDescription || "";
+  form.elements.detailLeadText.value = collection.detailLeadText || "";
+  form.elements.detailCuratorText.value = collection.detailCuratorText || "";
+  form.elements.detailProcessText.value = collection.detailProcessText || "";
+  form.elements.sourceLinks.value = (collection.sourceLinks || []).join("\n");
+
+  renderSeasonCollectionImages(collection);
+}
+
+function syncSeasonCollectionFormToState() {
+  const form = document.querySelector("#seasonCollectionForm");
+  const collection = getCollectionById(currentCollectionId);
+  if (!form || !collection) {
+    return;
+  }
+
+  const previousId = collection.id;
+  collection.id = form.elements.id.value.trim();
+  collection.title = form.elements.title.value.trim();
+  collection.slug = form.elements.slug.value.trim();
+  collection.season = form.elements.season.value.trim();
+  collection.theme = form.elements.theme.value.trim();
+  collection.period = form.elements.period.value.trim();
+  collection.yearStart = form.elements.yearStart.value ? Number(form.elements.yearStart.value) : null;
+  collection.yearEnd = form.elements.yearEnd.value ? Number(form.elements.yearEnd.value) : null;
+  collection.featured = form.elements.featured.checked;
+  collection.order = form.elements.order.value ? Number(form.elements.order.value) : null;
+  collection.shortDescription = form.elements.shortDescription.value.trim();
+  collection.fullDescription = form.elements.fullDescription.value.trim();
+  collection.detailLeadText = form.elements.detailLeadText.value.trim();
+  collection.detailCuratorText = form.elements.detailCuratorText.value.trim();
+  collection.detailProcessText = form.elements.detailProcessText.value.trim();
+  collection.sourceLinks = form.elements.sourceLinks.value
+    .split("\n")
+    .map((item) => item.trim())
+    .filter(Boolean);
+
+  if (previousId && collection.id && previousId !== collection.id) {
+    state.works.forEach((work) => {
+      if (work.collectionId === previousId) {
+        work.collectionId = collection.id;
+      }
+    });
+    currentCollectionId = collection.id;
+  }
+}
+
+function renderSeasonCollectionImages(collection) {
+  const node = document.querySelector("#seasonCollectionImagePreview");
+  if (!node) {
+    return;
+  }
+
+  if (!collection) {
+    node.innerHTML = `<div class="note-card"><p>Выберите сезон, чтобы работать с его изображениями.</p></div>`;
+    return;
+  }
+
+  const images = state.media.filter(
+    (item) => item.relatedEntityType === "collection" && item.relatedEntityId === collection.id,
+  );
+
+  node.innerHTML = images.length
+    ? images
+        .map((image) => {
+          const isCover = collection.coverImageId === image.id;
+          return `
+            <article class="image-preview__card">
+              <img src="/${escapeHtml(image.src)}" alt="${escapeHtml(image.alt || image.title || "")}" />
+              <div class="image-preview__caption">
+                <span>${escapeHtml(getMediaDisplayTitle(image))}${isCover ? " • обложка" : ""}</span>
+                <button class="button ${isCover ? "button--ghost" : "button--primary"} button--tiny" type="button" data-season-set-cover-image-id="${escapeHtml(image.id)}" ${isCover ? "disabled" : ""}>
+                  ${isCover ? "Обложка" : "Сделать обложкой"}
+                </button>
+                <button class="button button--danger button--tiny" type="button" data-season-delete-image-id="${escapeHtml(image.id)}">Удалить</button>
+              </div>
+            </article>
+          `;
+        })
+        .join("")
+    : `<div class="note-card"><p>У этого сезона пока нет загруженных изображений.</p></div>`;
+
+  node.querySelectorAll("[data-season-set-cover-image-id]").forEach((button) => {
+    button.addEventListener("click", async () => {
+      const mediaId = button.dataset.seasonSetCoverImageId;
+      try {
+        setStatus("Смена обложки сезона...");
+        const result = await apiSetCollectionCover(collection.id, mediaId);
+        state.collections = result.data.collections;
+        renderAll();
+        setStatus("Обложка сезона обновлена");
+      } catch (error) {
+        handleError(error);
+      }
+    });
+  });
+
+  node.querySelectorAll("[data-season-delete-image-id]").forEach((button) => {
+    button.addEventListener("click", async () => {
+      const mediaId = button.dataset.seasonDeleteImageId;
+      const image = images.find((item) => item.id === mediaId);
+      const ok = window.confirm(
+        `Удалить изображение${image ? ` «${getMediaDisplayTitle(image)}»` : ""}? Оно будет удалено и с сервера, и из базы сайта.`,
+      );
+      if (!ok) return;
+      try {
+        setStatus("Удаление изображения...");
+        const result = await apiDeleteImage(mediaId);
+        state.media = result.data.media;
+        state.works = result.data.works;
+        state.collections = result.data.collections;
+        if (result.data.workshop) {
+          state.workshop = result.data.workshop;
+        }
+        if (result.data.news) {
+          state.news = result.data.news;
+        }
+        renderAll();
+        setStatus("Изображение удалено");
+      } catch (error) {
+        handleError(error);
+      }
+    });
+  });
+}
+
+function getSeasonWorksForCurrentCollection() {
+  return state.works.filter((work) => work.collectionId === currentCollectionId);
+}
+
+function renderSeasonWorks() {
+  const listNode = document.querySelector("#seasonWorksList");
+  if (!listNode) {
+    return;
+  }
+
+  const collection = getCollectionById(currentCollectionId);
+  const query = (document.querySelector("#seasonWorkSearch")?.value || "").toLowerCase();
+  const works = getSeasonWorksForCurrentCollection()
+    .slice()
+    .sort((a, b) => (a.order ?? 999) - (b.order ?? 999) || (b.year ?? 0) - (a.year ?? 0))
+    .filter((work) => {
+      const haystack = `${work.title} ${work.shortDescription} ${work.slug}`.toLowerCase();
+      return !query || haystack.includes(query);
+    });
+
+  if (!works.some((work) => work.id === currentWorkId)) {
+    currentWorkId = works[0]?.id || null;
+  }
+
+  listNode.innerHTML = collection
+    ? works.length
+      ? works
+          .map((work) => {
+            const meta = [work.year || "", work.technique || ""].filter(Boolean).join(" • ");
+            return `
+              <button class="item-card ${work.id === currentWorkId ? "is-active" : ""}" type="button" data-season-work-id="${escapeHtml(work.id)}">
+                <strong>${escapeHtml(work.title)}</strong>
+                <span class="item-card__meta">${escapeHtml(meta)}</span>
+              </button>
+            `;
+          })
+          .join("")
+      : `<div class="note-card"><p>В этом сезоне пока нет работ.</p></div>`
+    : `<div class="note-card"><p>Сначала выберите сезон.</p></div>`;
+
+  listNode.querySelectorAll("[data-season-work-id]").forEach((button) => {
+    button.addEventListener("click", () => {
+      currentWorkId = button.dataset.seasonWorkId;
+      renderSeasonWorks();
+      populateSeasonWorkForm();
+      scrollToAdminEditor("seasonWorkEditorTitle");
+    });
+  });
+}
+
+function populateSeasonWorkForm() {
+  const form = document.querySelector("#seasonWorkForm");
+  const titleNode = document.querySelector("#seasonWorkEditorTitle");
+  if (!form || !titleNode) {
+    return;
+  }
+
+  const work = getWorkById(currentWorkId);
+  if (!work || work.collectionId !== currentCollectionId) {
+    form.reset();
+    titleNode.textContent = "Выберите работу";
+    return;
+  }
+
+  titleNode.textContent = work.title || "Новая работа";
+  form.elements.id.value = work.id || "";
+  form.elements.title.value = work.title || "";
+  form.elements.slug.value = work.slug || "";
+  form.elements.year.value = work.year ?? "";
+  form.elements.technique.value = work.technique || "";
+  form.elements.order.value = work.order ?? "";
+  form.elements.status.value = work.status || "unknown";
+  form.elements.featured.checked = Boolean(work.featured);
+  form.elements.materials.value = (work.materials || []).join(", ");
+  form.elements.shortDescription.value = work.shortDescription || "";
+  form.elements.fullDescription.value = work.fullDescription || "";
+  form.elements.sourceLinks.value = (work.sourceLinks || []).join("\n");
+}
+
+function syncSeasonWorkFormToState() {
+  const form = document.querySelector("#seasonWorkForm");
+  const work = getWorkById(currentWorkId);
+  if (!form || !work || work.collectionId !== currentCollectionId) {
+    return;
+  }
+
+  work.id = form.elements.id.value.trim();
+  work.title = form.elements.title.value.trim();
+  work.slug = form.elements.slug.value.trim();
+  work.collectionId = currentCollectionId;
+  work.year = form.elements.year.value ? Number(form.elements.year.value) : null;
+  work.technique = form.elements.technique.value.trim();
+  work.order = form.elements.order.value ? Number(form.elements.order.value) : null;
+  work.status = form.elements.status.value;
+  work.featured = form.elements.featured.checked;
+  work.materials = form.elements.materials.value
+    .split(",")
+    .map((item) => item.trim())
+    .filter(Boolean);
+  work.shortDescription = form.elements.shortDescription.value.trim();
+  work.fullDescription = form.elements.fullDescription.value.trim();
+  work.sourceLinks = form.elements.sourceLinks.value
+    .split("\n")
+    .map((item) => item.trim())
+    .filter(Boolean);
+}
+
+async function saveSeasons() {
+  syncSeasonSectionFormsToState();
+  syncSeasonCollectionFormToState();
+  syncSeasonWorkFormToState();
+  syncCollectionWorkIds();
+
+  setStatus("Сохранение сезона...");
+  await saveSection("browseSections", state.browseSections);
+  await saveSection("collectionPage", state.collectionPage);
+  await saveSection("collections", state.collections);
+  await saveSection("works", state.works);
+  renderAll();
+  setStatus("Сезоны сохранены");
+}
+
+async function uploadSeasonCollectionImage() {
+  syncSeasonCollectionFormToState();
+  const collection = getCollectionById(currentCollectionId);
+  if (!collection) {
+    setStatus("Сначала выберите сезон, а затем загрузите изображение.", true);
+    return;
+  }
+
+  const fileInput = document.querySelector("#seasonCollectionImageFile");
+  const file = fileInput?.files?.[0];
+  if (!file) {
+    setStatus("Выберите файл изображения.", true);
+    return;
+  }
+
+  const formData = new FormData();
+  formData.append("file", file);
+  formData.append("entityType", "collection");
+  formData.append("entityId", collection.id);
+  formData.append("title", document.querySelector("#seasonCollectionImageTitle").value.trim() || collection.title);
+  formData.append(
+    "alt",
+    document.querySelector("#seasonCollectionImageAlt").value.trim() || `Изображение для коллекции «${collection.title}».`,
+  );
+
+  setStatus("Загрузка изображения...");
+  const result = await apiUpload(formData);
+  state.media = result.data.media;
+  state.collections = result.data.collections;
+  renderAll();
+  fileInput.value = "";
+  document.querySelector("#seasonCollectionImageTitle").value = "";
+  document.querySelector("#seasonCollectionImageAlt").value = "";
+  setStatus("Изображение загружено");
+}
+
+async function deleteCurrentSeasonWork() {
+  const work = getWorkById(currentWorkId);
+  if (!work || work.collectionId !== currentCollectionId) {
+    return;
+  }
+
+  const ok = window.confirm(
+    `Удалить работу «${work.title}»? Она исчезнет из каталога и из сезона. Изображения останутся в медиатеке.`,
+  );
+  if (!ok) {
+    return;
+  }
+
+  state.works = state.works.filter((item) => item.id !== currentWorkId);
+  currentWorkId = getSeasonWorksForCurrentCollection()[0]?.id || null;
+  syncCollectionWorkIds();
+  renderAll();
+  setStatus("Сохранение после удаления...");
+  await saveSection("works", state.works);
+  await saveSection("collections", state.collections);
+  setStatus("Работа удалена");
+}
+
 function renderContacts() {
   const node = document.querySelector("#contactsEditor");
   if (!node) return;
@@ -997,6 +1568,7 @@ function renderSettings() {
   const heroForm = document.querySelector("#heroForm");
   const brandForm = document.querySelector("#brandForm");
   const heroNotesForm = document.querySelector("#heroNotesForm");
+  const workshopIntroLogoForm = document.querySelector("#workshopIntroLogoForm");
   const visibilityForm = document.querySelector("#visibilityForm");
 
   if (artistForm && state.artist) {
@@ -1033,6 +1605,28 @@ function renderSettings() {
     heroNotesForm.elements.collectionsLabel.value = heroNotes.collectionsLabel || "";
     heroNotesForm.elements.collectionsText.value = heroNotes.collectionsText || "";
   }
+  if (workshopIntroLogoForm) {
+    const intro = state.siteSections?.home?.intro || {};
+    const fallbackLogo = getMediaMap().get(state.workshop?.imageIds?.[0] || "");
+    const logoSrc = normalizePublicAssetPath(intro.workshopLogoSrc || fallbackLogo?.src || "");
+    const logoAlt = intro.workshopLogoAlt || fallbackLogo?.alt || "Логотип мастерской";
+
+    workshopIntroLogoForm.elements.workshopLogoSrc.value = normalizePublicAssetPath(intro.workshopLogoSrc || "");
+    workshopIntroLogoForm.elements.workshopLogoAlt.value = intro.workshopLogoAlt || "";
+
+    const previewNode = document.querySelector("#workshopIntroLogoPreview");
+    if (previewNode) {
+      if (logoSrc) {
+        previewNode.classList.remove("is-hidden");
+        previewNode.innerHTML = `
+          <img src="${escapeHtml(logoSrc)}" alt="${escapeHtml(logoAlt)}" loading="lazy" />
+        `;
+      } else {
+        previewNode.classList.add("is-hidden");
+        previewNode.innerHTML = "";
+      }
+    }
+  }
   if (visibilityForm) {
     visibilityForm.elements.featuredCollectionsEnabled.checked = state.browseSections?.featuredCollectionsEnabled !== false;
   }
@@ -1044,6 +1638,7 @@ function syncSettingsFormsToState() {
   const heroForm = document.querySelector("#heroForm");
   const brandForm = document.querySelector("#brandForm");
   const heroNotesForm = document.querySelector("#heroNotesForm");
+  const workshopIntroLogoForm = document.querySelector("#workshopIntroLogoForm");
   const visibilityForm = document.querySelector("#visibilityForm");
 
   Object.assign(state.artist, {
@@ -1080,6 +1675,9 @@ function syncSettingsFormsToState() {
   });
 
   // Hero notes settings
+  if (!state.siteSections.home) {
+    state.siteSections.home = {};
+  }
   if (!state.siteSections.home.heroNotes) {
     state.siteSections.home.heroNotes = {};
   }
@@ -1089,6 +1687,17 @@ function syncSettingsFormsToState() {
     collectionsLabel: heroNotesForm.elements.collectionsLabel.value.trim(),
     collectionsText: heroNotesForm.elements.collectionsText.value.trim(),
   });
+
+  // Intro workshop logo settings
+  if (workshopIntroLogoForm) {
+    if (!state.siteSections.home.intro) {
+      state.siteSections.home.intro = {};
+    }
+    Object.assign(state.siteSections.home.intro, {
+      workshopLogoSrc: normalizePublicAssetPath(workshopIntroLogoForm.elements.workshopLogoSrc.value),
+      workshopLogoAlt: workshopIntroLogoForm.elements.workshopLogoAlt.value.trim(),
+    });
+  }
 
   // Browse sections settings
   if (!state.browseSections) {
@@ -1202,6 +1811,9 @@ function createEmptyCollection() {
     coverImageId: "",
     shortDescription: "",
     fullDescription: "",
+    detailLeadText: "",
+    detailCuratorText: "",
+    detailProcessText: "",
     theme: "",
     season: "сезон",
     period: "",
@@ -1278,6 +1890,62 @@ async function uploadCollectionImage() {
   setStatus("Изображение загружено и назначено обложкой");
 }
 
+async function uploadWorkshopIntroLogo() {
+  const fileInput = document.querySelector("#workshopIntroLogoFile");
+  const file = fileInput?.files?.[0];
+  if (!file) {
+    setStatus("Выберите файл логотипа.", true);
+    return;
+  }
+
+  const workshop = state.workshop || {};
+  const formData = new FormData();
+  formData.append("file", file);
+  formData.append("entityType", "workshop");
+  formData.append("entityId", workshop.id || "workshop");
+  formData.append("title", document.querySelector("#workshopIntroLogoTitle")?.value.trim() || workshop.name || "Логотип мастерской");
+  formData.append(
+    "alt",
+    document.querySelector("#workshopIntroLogoAlt")?.value.trim() ||
+      document.querySelector("#workshopIntroLogoForm")?.elements?.workshopLogoAlt?.value?.trim() ||
+      "Логотип мастерской",
+  );
+
+  setStatus("Загрузка логотипа...");
+  const result = await apiUpload(formData);
+
+  state.media = result.data.media || state.media;
+  if (result.data.workshop) {
+    state.workshop = result.data.workshop;
+  }
+
+  if (!state.siteSections) {
+    state.siteSections = {};
+  }
+  if (!state.siteSections.home) {
+    state.siteSections.home = {};
+  }
+  if (!state.siteSections.home.intro) {
+    state.siteSections.home.intro = {};
+  }
+
+  state.siteSections.home.intro.workshopLogoSrc = normalizePublicAssetPath(result.data.mediaItem?.src || "");
+  state.siteSections.home.intro.workshopLogoAlt =
+    result.data.mediaItem?.alt || document.querySelector("#workshopIntroLogoAlt")?.value.trim() || "Логотип мастерской";
+
+  await saveSection("siteSections", state.siteSections);
+  renderSettings();
+  renderDashboard();
+
+  fileInput.value = "";
+  const titleInput = document.querySelector("#workshopIntroLogoTitle");
+  const altInput = document.querySelector("#workshopIntroLogoAlt");
+  if (titleInput) titleInput.value = "";
+  if (altInput) altInput.value = "";
+
+  setStatus("Логотип загружен и сохранён.");
+}
+
 function bindTabs() {
   const tabs = document.querySelectorAll("[data-tab]");
   tabs.forEach((button) => {
@@ -1294,23 +1962,37 @@ function bindActions() {
   document.querySelector("#reloadData").addEventListener("click", loadBootstrap);
   document.querySelector("#newsSearch").addEventListener("input", renderNewsAdmin);
   document.querySelector("#requestSearch")?.addEventListener("input", renderRequests);
+  document.querySelector("#seasonCollectionSearch")?.addEventListener("input", renderSeasonCollectionsList);
+  document.querySelector("#seasonWorkSearch")?.addEventListener("input", () => {
+    renderSeasonWorks();
+    populateSeasonWorkForm();
+  });
   document.querySelector("#workSearch").addEventListener("input", renderWorks);
   document.querySelector("#collectionSearch").addEventListener("input", renderCollections);
   document.querySelector("#newsSectionForm").addEventListener("input", syncNewsSectionFormToState);
   document.querySelector("#newsForm").addEventListener("input", syncNewsFormToState);
   document.querySelector("#requestForm")?.addEventListener("input", syncRequestFormToState);
+  document.querySelector("#seasonSectionForm")?.addEventListener("input", syncSeasonSectionFormsToState);
+  document.querySelector("#seasonCollectionPageForm")?.addEventListener("input", syncSeasonSectionFormsToState);
+  document.querySelector("#seasonCollectionForm")?.addEventListener("input", syncSeasonCollectionFormToState);
+  document.querySelector("#seasonWorkForm")?.addEventListener("input", syncSeasonWorkFormToState);
   document.querySelector("#workForm").addEventListener("input", syncWorkFormToState);
   document.querySelector("#collectionForm").addEventListener("input", syncCollectionFormToState);
-  document.querySelector("#saveNews").addEventListener("click", () => saveNews().catch(handleError));
-  document.querySelector("#saveRequests")?.addEventListener("click", () => saveRequests().catch(handleError));
+  bindSaveButton("#saveSeasons", saveSeasons);
+  bindSaveButton("#saveNews", saveNews);
+  bindSaveButton("#saveRequests", saveRequests);
   document.querySelector("#deleteRequest")?.addEventListener("click", () => deleteCurrentRequest().catch(handleError));
-  document.querySelector("#saveWorks").addEventListener("click", () => saveWorks().catch(handleError));
-  document.querySelector("#saveCollections").addEventListener("click", () => saveCollections().catch(handleError));
-  document.querySelector("#saveContacts").addEventListener("click", () => saveContacts().catch(handleError));
-  document.querySelector("#saveSettings").addEventListener("click", () => saveSettings().catch(handleError));
+  bindSaveButton("#saveWorks", saveWorks);
+  bindSaveButton("#saveCollections", saveCollections);
+  bindSaveButton("#saveContacts", saveContacts);
+  bindSaveButton("#saveSettings", saveSettings);
   document.querySelector("#uploadNewsImage").addEventListener("click", () => uploadNewsImage().catch(handleError));
   document.querySelector("#uploadWorkImage").addEventListener("click", () => uploadWorkImage().catch(handleError));
   document.querySelector("#uploadCollectionImage").addEventListener("click", () => uploadCollectionImage().catch(handleError));
+  document
+    .querySelector("#uploadSeasonCollectionImage")
+    ?.addEventListener("click", () => uploadSeasonCollectionImage().catch(handleError));
+  document.querySelector("#uploadWorkshopIntroLogo")?.addEventListener("click", () => uploadWorkshopIntroLogo().catch(handleError));
 
   document.querySelector("#addNews").addEventListener("click", () => {
     state.news.items.unshift(createEmptyNews());
@@ -1321,6 +2003,46 @@ function bindActions() {
 
   document.querySelector("#deleteNews").addEventListener("click", () => {
     deleteCurrentNews().catch(handleError);
+  });
+
+  document.querySelector("#addSeasonCollection")?.addEventListener("click", () => {
+    const collection = createEmptyCollection();
+    state.collections.push(collection);
+    currentCollectionId = collection.id;
+    renderAll();
+  });
+
+  document.querySelector("#deleteSeasonCollection")?.addEventListener("click", () => {
+    if (!currentCollectionId) return;
+    state.collections = state.collections.filter((item) => item.id !== currentCollectionId);
+    if (state.collections.length) {
+      const fallbackId = state.collections[0].id;
+      state.works.forEach((work) => {
+        if (work.collectionId === currentCollectionId) {
+          work.collectionId = fallbackId;
+        }
+      });
+    }
+    currentCollectionId = state.collections[0]?.id || null;
+    syncCollectionWorkIds();
+    renderAll();
+  });
+
+  document.querySelector("#addSeasonWork")?.addEventListener("click", () => {
+    if (!currentCollectionId) {
+      setStatus("Сначала выберите сезон.", true);
+      return;
+    }
+    const work = createEmptyWork();
+    work.collectionId = currentCollectionId;
+    state.works.unshift(work);
+    currentWorkId = work.id;
+    syncCollectionWorkIds();
+    renderAll();
+  });
+
+  document.querySelector("#deleteSeasonWork")?.addEventListener("click", () => {
+    deleteCurrentSeasonWork().catch(handleError);
   });
 
   document.querySelector("#addWork").addEventListener("click", () => {

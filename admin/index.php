@@ -20,6 +20,7 @@
           <button class="admin-nav__item is-active" type="button" data-tab="dashboard">Обзор</button>
           <button class="admin-nav__item" type="button" data-tab="news">Новости</button>
           <button class="admin-nav__item" type="button" data-tab="requests">Заявки</button>
+          <button class="admin-nav__item" type="button" data-tab="seasons">Сезоны</button>
           <button class="admin-nav__item" type="button" data-tab="works">Гравюры</button>
           <button class="admin-nav__item" type="button" data-tab="collections">Коллекции</button>
           <button class="admin-nav__item" type="button" data-tab="contacts">Контакты</button>
@@ -231,6 +232,266 @@
                 </label>
               </form>
 
+            </div>
+          </div>
+        </section>
+
+        <section class="admin-panel" data-panel="seasons">
+          <div class="editor-card">
+            <div class="editor-card__header">
+              <div>
+                <p class="admin-kicker">Сезоны и коллекции</p>
+                <h3>Блок на главной и страница коллекции</h3>
+              </div>
+              <div class="editor-card__actions">
+                <button class="button button--primary" type="button" id="saveSeasons">Сохранить Сезоны</button>
+              </div>
+            </div>
+
+            <div class="settings-grid">
+              <form class="form-grid" id="seasonSectionForm">
+                <h4>Блок «Сезоны, серии и авторские циклы»</h4>
+                <label>
+                  Kicker
+                  <input name="kicker" type="text" />
+                </label>
+                <label>
+                  Заголовок
+                  <input name="title" type="text" />
+                </label>
+                <label class="full-width">
+                  Описание
+                  <textarea name="text" rows="3"></textarea>
+                </label>
+                <label>
+                  Заголовок страницы коллекций
+                  <input name="pageTitle" type="text" />
+                </label>
+                <label class="full-width">
+                  Лид страницы коллекций
+                  <textarea name="pageLead" rows="3"></textarea>
+                </label>
+                <label class="full-width">
+                  Примечание страницы коллекций
+                  <textarea name="pageNote" rows="2"></textarea>
+                </label>
+                <label>
+                  Метка карточки
+                  <input name="cardMetaLabel" type="text" />
+                </label>
+                <label>
+                  Подпись количества работ
+                  <input name="workCountLabel" type="text" />
+                </label>
+              </form>
+
+              <form class="form-grid" id="seasonCollectionPageForm">
+                <h4>Шаблон страницы коллекции</h4>
+                <label>
+                  Заголовок (шаблон)
+                  <input name="heroTitleTemplate" type="text" />
+                </label>
+                <label>
+                  Подзаголовок (шаблон)
+                  <input name="heroSubtitleTemplate" type="text" />
+                </label>
+                <label class="full-width">
+                  Описание (шаблон)
+                  <textarea name="heroDescriptionTemplate" rows="3"></textarea>
+                </label>
+                <label>
+                  Заголовок блока «О коллекции»
+                  <input name="leadTitle" type="text" />
+                </label>
+                <label class="full-width">
+                  Текст блока «О коллекции»
+                  <textarea name="leadText" rows="3"></textarea>
+                </label>
+                <label>
+                  Заголовок блока «Работы внутри коллекции»
+                  <input name="worksTitle" type="text" />
+                </label>
+                <label class="full-width">
+                  Текст блока «Работы внутри коллекции»
+                  <textarea name="worksText" rows="3"></textarea>
+                </label>
+              </form>
+            </div>
+          </div>
+
+          <div class="split-layout" style="margin-top: 1.2rem;">
+            <div class="list-card">
+              <div class="list-card__top">
+                <input class="search-input" id="seasonCollectionSearch" type="search" placeholder="Поиск по сезонам и коллекциям" />
+                <button class="button button--primary" type="button" id="addSeasonCollection">Новый сезон</button>
+              </div>
+              <div class="item-list" id="seasonCollectionsList"></div>
+            </div>
+
+            <div class="editor-card">
+              <div class="editor-card__header">
+                <div>
+                  <p class="admin-kicker">Редактор сезона</p>
+                  <h3 id="seasonCollectionEditorTitle">Выберите сезон</h3>
+                </div>
+                <div class="editor-card__actions">
+                  <button class="button button--ghost" type="button" id="deleteSeasonCollection">Удалить сезон</button>
+                </div>
+              </div>
+
+              <form class="form-grid" id="seasonCollectionForm">
+                <label>
+                  Название
+                  <input name="title" type="text" />
+                </label>
+                <label>
+                  Slug
+                  <input name="slug" type="text" />
+                </label>
+                <label>
+                  ID
+                  <input name="id" type="text" />
+                </label>
+                <label>
+                  Тип
+                  <input name="season" type="text" />
+                </label>
+                <label>
+                  Тема
+                  <input name="theme" type="text" />
+                </label>
+                <label>
+                  Период
+                  <input name="period" type="text" />
+                </label>
+                <label>
+                  Год начала
+                  <input name="yearStart" type="number" />
+                </label>
+                <label>
+                  Год окончания
+                  <input name="yearEnd" type="number" />
+                </label>
+                <label class="checkbox-field">
+                  <input name="featured" type="checkbox" />
+                  <span>Показывать на главной</span>
+                </label>
+                <label>
+                  Порядок
+                  <input name="order" type="number" />
+                </label>
+                <label class="full-width">
+                  Краткое описание
+                  <textarea name="shortDescription" rows="3"></textarea>
+                </label>
+                <label class="full-width">
+                  Полное описание
+                  <textarea name="fullDescription" rows="5"></textarea>
+                </label>
+                <label class="full-width">
+                  Лид на странице коллекции (персональный)
+                  <textarea name="detailLeadText" rows="3"></textarea>
+                </label>
+                <label class="full-width">
+                  Кураторский текст (персональный)
+                  <textarea name="detailCuratorText" rows="4"></textarea>
+                </label>
+                <label class="full-width">
+                  Текст про технику/характер цикла (персональный)
+                  <textarea name="detailProcessText" rows="4"></textarea>
+                </label>
+                <label class="full-width">
+                  Источники через новую строку
+                  <textarea name="sourceLinks" rows="3"></textarea>
+                </label>
+              </form>
+
+              <div class="upload-card">
+                <div>
+                  <p class="admin-kicker">Изображения сезона</p>
+                  <h4>Обложка и галерея</h4>
+                </div>
+                <div class="upload-grid">
+                  <input id="seasonCollectionImageFile" type="file" accept="image/*" />
+                  <input id="seasonCollectionImageTitle" type="text" placeholder="Заголовок изображения" />
+                  <input id="seasonCollectionImageAlt" type="text" placeholder="Alt-текст" />
+                  <button class="button button--primary" type="button" id="uploadSeasonCollectionImage">Загрузить изображение</button>
+                </div>
+                <div class="image-preview" id="seasonCollectionImagePreview"></div>
+              </div>
+
+              <div class="upload-card">
+                <div class="list-card__top" style="padding: 0;">
+                  <div>
+                    <p class="admin-kicker">Работы внутри сезона</p>
+                    <h4 id="seasonWorkEditorTitle">Выберите работу</h4>
+                  </div>
+                  <div class="editor-card__actions">
+                    <button class="button button--ghost" type="button" id="deleteSeasonWork">Удалить работу</button>
+                    <button class="button button--primary" type="button" id="addSeasonWork">Добавить работу</button>
+                  </div>
+                </div>
+                <div style="margin-top: 0.75rem;">
+                  <input class="search-input" id="seasonWorkSearch" type="search" placeholder="Поиск работ внутри сезона" />
+                </div>
+                <div class="item-list" id="seasonWorksList" style="max-height: 320px;"></div>
+
+                <form class="form-grid" id="seasonWorkForm">
+                  <label>
+                    Название
+                    <input name="title" type="text" />
+                  </label>
+                  <label>
+                    Slug
+                    <input name="slug" type="text" />
+                  </label>
+                  <label>
+                    ID
+                    <input name="id" type="text" />
+                  </label>
+                  <label>
+                    Год
+                    <input name="year" type="number" />
+                  </label>
+                  <label>
+                    Техника
+                    <input name="technique" type="text" />
+                  </label>
+                  <label>
+                    Порядок
+                    <input name="order" type="number" />
+                  </label>
+                  <label>
+                    Статус
+                    <select name="status">
+                      <option value="unknown">Статус уточняется</option>
+                      <option value="available">В наличии</option>
+                      <option value="on_request">По запросу</option>
+                      <option value="private_collection">В частной коллекции</option>
+                    </select>
+                  </label>
+                  <label class="checkbox-field">
+                    <input name="featured" type="checkbox" />
+                    <span>Показывать в избранном</span>
+                  </label>
+                  <label class="full-width">
+                    Материалы через запятую
+                    <input name="materials" type="text" />
+                  </label>
+                  <label class="full-width">
+                    Короткое описание
+                    <textarea name="shortDescription" rows="3"></textarea>
+                  </label>
+                  <label class="full-width">
+                    Полное описание
+                    <textarea name="fullDescription" rows="4"></textarea>
+                  </label>
+                  <label class="full-width">
+                    Источники через новую строку
+                    <textarea name="sourceLinks" rows="3"></textarea>
+                  </label>
+                </form>
+              </div>
             </div>
           </div>
         </section>
