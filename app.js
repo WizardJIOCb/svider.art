@@ -517,7 +517,7 @@ function renderHero(artist, mediaMap, siteSections, collections, works) {
     mediaMap.get(artist.portraitImageId);
   const currentCollection = featuredWork ? collectionMap.get(featuredWork.collectionId) : featuredCollection;
   const heroMeta = [
-    formatCount(collections.length, "коллекция", "коллекции", "коллекций"),
+    formatCount(collections.length, "сезон", "сезона", "сезонов"),
     formatCount(works.length, "работа", "работы", "работ"),
     `${collections.filter((item) => item.featured).length || Math.min(collections.length, 4)} ключевых цикла`,
   ];
