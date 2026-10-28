@@ -488,6 +488,29 @@ function renderBrand(siteSections) {
   }
 }
 
+function renderFooter(siteSections) {
+  const footer = siteSections?.footer || {};
+  const kicker = document.querySelector("#footerKicker");
+  const text = document.querySelector("#footerText");
+  const creditLabel = document.querySelector("#footerCreditLabel");
+  const creditLink = document.querySelector("#footerCreditLink");
+
+  if (kicker) {
+    kicker.textContent = footer.kicker || "SVIDER.ART";
+  }
+  if (text) {
+    text.textContent = footer.text || "Авторская гравюрная мастерская Сергея Михайловича Свидера.";
+  }
+  if (creditLabel) {
+    creditLabel.textContent = footer.creditLabel || "Сайт разработан Родионом";
+  }
+  if (creditLink) {
+    const href = footer.creditLinkHref || "https://rodion.pro";
+    creditLink.textContent = footer.creditLinkText || "rodion.pro";
+    creditLink.href = href;
+  }
+}
+
 function renderHeroNotes(siteSections) {
   const notes = siteSections?.home?.heroNotes || {};
   const notesSection = document.querySelector(".hero-notes");
@@ -553,7 +576,7 @@ function renderHero(artist, mediaMap, siteSections, collections, works) {
   visual.innerHTML = `
     <figure class="hero-figure">
       <div class="hero-figure__topline">
-        <span class="hero-figure__label">Лист из каталога</span>
+        <span class="hero-figure__label">Гравюра из каталога</span>
         ${artworkMeta.length ? `<span class="hero-figure__meta">${escapeHtml(artworkMeta.join(" • "))}</span>` : ""}
       </div>
       <div class="hero-figure__artwork">
@@ -575,7 +598,18 @@ function renderHero(artist, mediaMap, siteSections, collections, works) {
   `;
 }
 
-function renderIntro(artist, workshop, exhibitions) {
+function renderIntro(artist, workshop, exhibitions, siteSections) {
+  const intro = siteSections?.home?.intro || {};
+  const workshopLogoSrc = intro.workshopLogoSrc ? withCacheBuster(intro.workshopLogoSrc) : "";
+  const workshopLogoAlt = intro.workshopLogoAlt || workshop.name || "Логотип мастерской";
+  const workshopLogoMarkup = workshopLogoSrc
+    ? `
+      <div class="intro-card__logo">
+        <img src="${escapeHtml(workshopLogoSrc)}" alt="${escapeHtml(workshopLogoAlt)}" loading="lazy" />
+      </div>
+    `
+    : "";
+
   document.querySelector("#artistSummary").innerHTML = `
     <h3>${escapeHtml(artist.fullName)}</h3>
     <p>${escapeHtml(artist.shortBio)}</p>
@@ -583,6 +617,7 @@ function renderIntro(artist, workshop, exhibitions) {
   `;
 
   document.querySelector("#workshopSummary").innerHTML = `
+    ${workshopLogoMarkup}
     <h3>${escapeHtml(workshop.name)}</h3>
     <p>${escapeHtml(workshop.descriptionShort)}</p>
     <p>${escapeHtml(workshop.processText)}</p>
@@ -1169,6 +1204,9 @@ function renderOrder(contacts) {
 function renderWorkshop(workshop, mediaMap, siteSections) {
   const page = siteSections?.workshop || {};
   const blocks = page.blocks || [];
+  const mediaCaption =
+    page.mediaCaption ||
+    "Пространство мастерской, где пластина, краска и бумага становятся единым художественным листом.";
   const blocksMarkup = blocks
     .map(
       (block) => `
@@ -1194,7 +1232,7 @@ function renderWorkshop(workshop, mediaMap, siteSections) {
     ? `
       <figure class="workshop-figure">
         <img src="${media.src}" alt="${escapeHtml(media.alt || workshop.name)}" />
-        <figcaption>Пространство мастерской, где пластина, краска и бумага становятся единым художественным листом.</figcaption>
+        <figcaption>${escapeHtml(mediaCaption)}</figcaption>
       </figure>
     `
     : "";
@@ -1552,16 +1590,17 @@ async function main() {
     const mediaMap = makeMediaMap(mediaPrepared);
 
     renderBrand(siteSections);
+    renderFooter(siteSections);
     renderHeroNotes(siteSections);
     renderHero(artist, mediaMap, siteSections, collections, works);
-    renderIntro(artist, workshop, exhibitions);
+    renderIntro(artist, workshop, exhibitions, siteSections);
     renderSectionCopy(siteSections, browseSections, works);
     renderNews(news, mediaMap);
 
-    // Featured works section visibility
-    const featuredSection = document.querySelector("#featured");
-    if (featuredSection) {
-      featuredSection.hidden = browseSections?.featuredCollectionsEnabled === false;
+    // Featured collections section visibility
+    const featuredCollectionsSection = document.querySelector(".featured-collections");
+    if (featuredCollectionsSection) {
+      featuredCollectionsSection.hidden = browseSections?.featuredCollectionsEnabled === false;
     }
 
     renderFeaturedCollections(collections, mediaMap);

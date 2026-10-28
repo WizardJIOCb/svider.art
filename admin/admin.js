@@ -336,9 +336,11 @@ function renderAll() {
   renderNewsAdmin();
   renderRequests();
   renderSeasons();
+  renderCatalogSettings();
   renderWorks();
   renderCollections();
   renderContacts();
+  renderAboutWorkshop();
   renderSettings();
 }
 
@@ -1186,6 +1188,49 @@ function renderSeasons() {
   setSeasonEditorMode(seasonEditorMode);
 }
 
+function ensureCatalogState() {
+  if (!state.browseSections || typeof state.browseSections !== "object") {
+    state.browseSections = {};
+  }
+  if (!state.browseSections.catalog || typeof state.browseSections.catalog !== "object") {
+    state.browseSections.catalog = {};
+  }
+  if (!state.browseSections.catalog.page || typeof state.browseSections.catalog.page !== "object") {
+    state.browseSections.catalog.page = {};
+  }
+}
+
+function renderCatalogSettings() {
+  const form = document.querySelector("#catalogPageForm");
+  if (!form) {
+    return;
+  }
+
+  ensureCatalogState();
+  const page = state.browseSections.catalog.page || {};
+  form.elements.title.value = page.title || "";
+  form.elements.lead.value = page.lead || "";
+  form.elements.note.value = page.note || "";
+  form.elements.pageStatTemplate.value = state.browseSections.catalog.pageStatTemplate || "";
+  form.elements.emptyText.value = state.browseSections.catalog.emptyText || "";
+}
+
+function syncCatalogFormToState() {
+  const form = document.querySelector("#catalogPageForm");
+  if (!form) {
+    return;
+  }
+
+  ensureCatalogState();
+  Object.assign(state.browseSections.catalog.page, {
+    title: form.elements.title.value.trim(),
+    lead: form.elements.lead.value.trim(),
+    note: form.elements.note.value.trim(),
+  });
+  state.browseSections.catalog.pageStatTemplate = form.elements.pageStatTemplate.value.trim();
+  state.browseSections.catalog.emptyText = form.elements.emptyText.value.trim();
+}
+
 function syncSeasonSectionFormsToState() {
   const sectionForm = document.querySelector("#seasonSectionForm");
   const collectionPageForm = document.querySelector("#seasonCollectionPageForm");
@@ -1617,6 +1662,14 @@ async function saveSeasons() {
   setStatus("Сезоны сохранены");
 }
 
+async function saveCatalog() {
+  syncCatalogFormToState();
+  setStatus("Сохранение каталога...");
+  await saveSection("browseSections", state.browseSections);
+  renderCatalogSettings();
+  setStatus("Каталог сохранён");
+}
+
 async function uploadSeasonCollectionImage() {
   syncSeasonCollectionFormToState();
   const collection = getCollectionById(currentCollectionId);
@@ -1765,11 +1818,142 @@ function syncContactRow(index, row) {
   });
 }
 
+function ensureAboutWorkshopState() {
+  if (!state.workshop || typeof state.workshop !== "object") {
+    state.workshop = {};
+  }
+  if (!Array.isArray(state.workshop.techniques)) {
+    state.workshop.techniques = [];
+  }
+
+  if (!state.siteSections || typeof state.siteSections !== "object") {
+    state.siteSections = {};
+  }
+  if (!state.siteSections.workshop || typeof state.siteSections.workshop !== "object") {
+    state.siteSections.workshop = {};
+  }
+  if (!Array.isArray(state.siteSections.workshop.blocks)) {
+    state.siteSections.workshop.blocks = [];
+  }
+}
+
+function syncWorkshopBlockRow(index, row) {
+  ensureAboutWorkshopState();
+  const block = state.siteSections.workshop.blocks[index];
+  if (!block) return;
+
+  const titleInput = row.querySelector('[data-field="title"]');
+  const textInput = row.querySelector('[data-field="text"]');
+  block.title = titleInput?.value.trim() || "";
+  block.text = textInput?.value.trim() || "";
+}
+
+function renderAboutWorkshopBlocksEditor() {
+  const node = document.querySelector("#workshopBlocksEditor");
+  if (!node) return;
+
+  ensureAboutWorkshopState();
+  const blocks = state.siteSections.workshop.blocks;
+
+  node.innerHTML = blocks.length
+    ? blocks
+        .map(
+          (block, index) => `
+            <div class="workshop-block-row" data-workshop-block-index="${index}">
+              <input data-field="title" type="text" value="${escapeHtml(block.title || "")}" placeholder="Заголовок блока" />
+              <textarea data-field="text" rows="4" placeholder="Текст блока">${escapeHtml(block.text || "")}</textarea>
+              <button class="button button--danger button--tiny" type="button" data-delete-workshop-block="${index}">Удалить</button>
+            </div>
+          `,
+        )
+        .join("")
+    : `<div class="note-card"><p>Пока нет дополнительных блоков. Добавьте первый блок кнопкой ниже.</p></div>`;
+
+  node.querySelectorAll("[data-workshop-block-index]").forEach((row) => {
+    const index = Number(row.dataset.workshopBlockIndex);
+    row.querySelectorAll("[data-field]").forEach((input) => {
+      input.addEventListener("input", () => syncWorkshopBlockRow(index, row));
+      input.addEventListener("change", () => syncWorkshopBlockRow(index, row));
+    });
+  });
+
+  node.querySelectorAll("[data-delete-workshop-block]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const index = Number(button.dataset.deleteWorkshopBlock);
+      if (!Number.isInteger(index) || index < 0) {
+        return;
+      }
+      state.siteSections.workshop.blocks.splice(index, 1);
+      renderAboutWorkshopBlocksEditor();
+    });
+  });
+}
+
+function renderAboutWorkshop() {
+  const form = document.querySelector("#aboutWorkshopSectionForm");
+  if (!form) {
+    return;
+  }
+
+  ensureAboutWorkshopState();
+  const workshopSection = state.siteSections.workshop;
+
+  form.elements.kicker.value = workshopSection.kicker || "";
+  form.elements.pageTitle.value = workshopSection.pageTitle || "";
+  form.elements.lead.value = workshopSection.lead || "";
+  form.elements.processText.value = state.workshop.processText || "";
+  form.elements.techniquesText.value = (state.workshop.techniques || []).join("\n");
+  form.elements.mediaCaption.value = workshopSection.mediaCaption || "";
+
+  renderAboutWorkshopBlocksEditor();
+}
+
+function syncAboutWorkshopFormToState() {
+  const form = document.querySelector("#aboutWorkshopSectionForm");
+  if (!form) {
+    return;
+  }
+
+  ensureAboutWorkshopState();
+  state.siteSections.workshop.kicker = form.elements.kicker.value.trim();
+  state.siteSections.workshop.pageTitle = form.elements.pageTitle.value.trim();
+  state.siteSections.workshop.lead = form.elements.lead.value.trim();
+  state.workshop.processText = form.elements.processText.value.trim();
+  state.workshop.techniques = form.elements.techniquesText.value
+    .split("\n")
+    .map((item) => item.trim())
+    .filter(Boolean);
+  state.siteSections.workshop.mediaCaption = form.elements.mediaCaption.value.trim();
+
+  const workshopIntroLogoForm = document.querySelector("#workshopIntroLogoForm");
+  if (workshopIntroLogoForm) {
+    if (!state.siteSections.home) {
+      state.siteSections.home = {};
+    }
+    if (!state.siteSections.home.intro) {
+      state.siteSections.home.intro = {};
+    }
+    Object.assign(state.siteSections.home.intro, {
+      workshopLogoSrc: normalizePublicAssetPath(workshopIntroLogoForm.elements.workshopLogoSrc.value),
+      workshopLogoAlt: workshopIntroLogoForm.elements.workshopLogoAlt.value.trim(),
+    });
+  }
+}
+
+function addAboutWorkshopBlock() {
+  ensureAboutWorkshopState();
+  state.siteSections.workshop.blocks.push({
+    title: "Новый блок",
+    text: "",
+  });
+  renderAboutWorkshopBlocksEditor();
+}
+
 function renderSettings() {
   const artistForm = document.querySelector("#artistForm");
-  const workshopForm = document.querySelector("#workshopForm");
   const heroForm = document.querySelector("#heroForm");
   const brandForm = document.querySelector("#brandForm");
+  const footerForm = document.querySelector("#footerForm");
   const heroNotesForm = document.querySelector("#heroNotesForm");
   const workshopIntroLogoForm = document.querySelector("#workshopIntroLogoForm");
   const visibilityForm = document.querySelector("#visibilityForm");
@@ -1783,24 +1967,26 @@ function renderSettings() {
     artistForm.elements.shortBio.value = state.artist.shortBio || "";
     artistForm.elements.fullBio.value = state.artist.fullBio || "";
   }
-  if (workshopForm && state.workshop) {
-    workshopForm.elements.name.value = state.workshop.name || "";
-    workshopForm.elements.city.value = state.workshop.city || "";
-    workshopForm.elements.descriptionShort.value = state.workshop.descriptionShort || "";
-    workshopForm.elements.descriptionFull.value = state.workshop.descriptionFull || "";
-    workshopForm.elements.processText.value = state.workshop.processText || "";
-  }
   if (heroForm && state.siteSections?.home?.hero) {
     const hero = state.siteSections.home.hero;
     heroForm.elements.kicker.value = hero.kicker || "";
     heroForm.elements.title.value = hero.title || "";
     heroForm.elements.text.value = hero.text || "";
     heroForm.elements.supportText.value = hero.supportText || "";
+    heroForm.elements.pointsText.value = (hero.points || []).join("\n");
   }
   if (brandForm) {
     const brand = state.siteSections?.brand || {};
     brandForm.elements.eyebrow.value = brand.eyebrow || "";
     brandForm.elements.name.value = brand.name || "";
+  }
+  if (footerForm) {
+    const footer = state.siteSections?.footer || {};
+    footerForm.elements.kicker.value = footer.kicker || "";
+    footerForm.elements.text.value = footer.text || "";
+    footerForm.elements.creditLabel.value = footer.creditLabel || "";
+    footerForm.elements.creditLinkText.value = footer.creditLinkText || "";
+    footerForm.elements.creditLinkHref.value = footer.creditLinkHref || "";
   }
   if (heroNotesForm) {
     const heroNotes = state.siteSections?.home?.heroNotes || {};
@@ -1848,9 +2034,9 @@ function renderSettings() {
 
 function syncSettingsFormsToState() {
   const artistForm = document.querySelector("#artistForm");
-  const workshopForm = document.querySelector("#workshopForm");
   const heroForm = document.querySelector("#heroForm");
   const brandForm = document.querySelector("#brandForm");
+  const footerForm = document.querySelector("#footerForm");
   const heroNotesForm = document.querySelector("#heroNotesForm");
   const workshopIntroLogoForm = document.querySelector("#workshopIntroLogoForm");
   const visibilityForm = document.querySelector("#visibilityForm");
@@ -1865,19 +2051,15 @@ function syncSettingsFormsToState() {
     fullBio: artistForm.elements.fullBio.value.trim(),
   });
 
-  Object.assign(state.workshop, {
-    name: workshopForm.elements.name.value.trim(),
-    city: workshopForm.elements.city.value.trim(),
-    descriptionShort: workshopForm.elements.descriptionShort.value.trim(),
-    descriptionFull: workshopForm.elements.descriptionFull.value.trim(),
-    processText: workshopForm.elements.processText.value.trim(),
-  });
-
   Object.assign(state.siteSections.home.hero, {
     kicker: heroForm.elements.kicker.value.trim(),
     title: heroForm.elements.title.value.trim(),
     text: heroForm.elements.text.value.trim(),
     supportText: heroForm.elements.supportText.value.trim(),
+    points: heroForm.elements.pointsText.value
+      .split("\n")
+      .map((item) => item.trim())
+      .filter(Boolean),
   });
 
   // Brand settings
@@ -1887,6 +2069,17 @@ function syncSettingsFormsToState() {
   Object.assign(state.siteSections.brand, {
     eyebrow: brandForm.elements.eyebrow.value.trim(),
     name: brandForm.elements.name.value.trim(),
+  });
+
+  if (!state.siteSections.footer) {
+    state.siteSections.footer = {};
+  }
+  Object.assign(state.siteSections.footer, {
+    kicker: footerForm.elements.kicker.value.trim(),
+    text: footerForm.elements.text.value.trim(),
+    creditLabel: footerForm.elements.creditLabel.value.trim(),
+    creditLinkText: footerForm.elements.creditLinkText.value.trim(),
+    creditLinkHref: footerForm.elements.creditLinkHref.value.trim(),
   });
 
   // Hero notes settings
@@ -1993,11 +2186,19 @@ async function saveContacts() {
   setStatus("Контакты сохранены");
 }
 
+async function saveAboutWorkshop() {
+  syncAboutWorkshopFormToState();
+  setStatus("Сохранение блока «О Мастерской»...");
+  await saveSection("workshop", state.workshop);
+  await saveSection("siteSections", state.siteSections);
+  renderAboutWorkshop();
+  setStatus("Блок «О Мастерской» сохранён");
+}
+
 async function saveSettings() {
   syncSettingsFormsToState();
   setStatus("Сохранение настроек...");
   await saveSection("artist", state.artist);
-  await saveSection("workshop", state.workshop);
   await saveSection("siteSections", state.siteSections);
   await saveSection("browseSections", state.browseSections);
   setStatus("Настройки сохранены");
@@ -2201,20 +2402,25 @@ function bindActions() {
   document.querySelector("#collectionSearch").addEventListener("input", renderCollections);
   document.querySelector("#newsSectionForm").addEventListener("input", syncNewsSectionFormToState);
   document.querySelector("#newsForm").addEventListener("input", syncNewsFormToState);
+  document.querySelector("#aboutWorkshopSectionForm")?.addEventListener("input", syncAboutWorkshopFormToState);
+  document.querySelector("#workshopIntroLogoForm")?.addEventListener("input", syncAboutWorkshopFormToState);
   document.querySelector("#requestForm")?.addEventListener("input", syncRequestFormToState);
   document.querySelector("#seasonSectionForm")?.addEventListener("input", syncSeasonSectionFormsToState);
   document.querySelector("#seasonCollectionPageForm")?.addEventListener("input", syncSeasonSectionFormsToState);
+  document.querySelector("#catalogPageForm")?.addEventListener("input", syncCatalogFormToState);
   document.querySelector("#seasonCollectionForm")?.addEventListener("input", syncSeasonCollectionFormToState);
   document.querySelector("#seasonWorkForm")?.addEventListener("input", syncSeasonWorkFormToState);
   document.querySelector("#workForm").addEventListener("input", syncWorkFormToState);
   document.querySelector("#collectionForm").addEventListener("input", syncCollectionFormToState);
   bindSaveButton("#saveSeasons", saveSeasons);
+  bindSaveButton("#saveCatalog", saveCatalog);
   bindSaveButton("#saveNews", saveNews);
   bindSaveButton("#saveRequests", saveRequests);
   document.querySelector("#deleteRequest")?.addEventListener("click", () => deleteCurrentRequest().catch(handleError));
   bindSaveButton("#saveWorks", saveWorks);
   bindSaveButton("#saveCollections", saveCollections);
   bindSaveButton("#saveContacts", saveContacts);
+  bindSaveButton("#saveAboutWorkshop", saveAboutWorkshop);
   bindSaveButton("#saveSettings", saveSettings);
   document.querySelector("#uploadNewsImage").addEventListener("click", () => uploadNewsImage().catch(handleError));
   document.querySelector("#uploadWorkImage").addEventListener("click", () => uploadWorkImage().catch(handleError));
@@ -2224,6 +2430,7 @@ function bindActions() {
     ?.addEventListener("click", () => uploadSeasonCollectionImage().catch(handleError));
   document.querySelector("#uploadSeasonWorkImage")?.addEventListener("click", () => uploadSeasonWorkImage().catch(handleError));
   document.querySelector("#uploadWorkshopIntroLogo")?.addEventListener("click", () => uploadWorkshopIntroLogo().catch(handleError));
+  document.querySelector("#addWorkshopBlock")?.addEventListener("click", () => addAboutWorkshopBlock());
 
   document.querySelector("#addNews").addEventListener("click", () => {
     state.news.items.unshift(createEmptyNews());

@@ -21,9 +21,11 @@
           <button class="admin-nav__item" type="button" data-tab="news">Новости</button>
           <button class="admin-nav__item" type="button" data-tab="requests">Заявки</button>
           <button class="admin-nav__item" type="button" data-tab="seasons">Сезоны</button>
+          <button class="admin-nav__item" type="button" data-tab="catalog">Каталог</button>
           <button class="admin-nav__item" type="button" data-tab="works">Гравюры</button>
           <button class="admin-nav__item" type="button" data-tab="collections">Коллекции</button>
           <button class="admin-nav__item" type="button" data-tab="contacts">Контакты</button>
+          <button class="admin-nav__item" type="button" data-tab="aboutWorkshop">О Мастерской</button>
           <button class="admin-nav__item" type="button" data-tab="settings">Настройки</button>
         </nav>
 
@@ -510,6 +512,46 @@
           </div>
         </section>
 
+        <section class="admin-panel" data-panel="catalog">
+          <div class="editor-card">
+            <div class="editor-card__header">
+              <div>
+                <p class="admin-kicker">Каталог</p>
+                <h3>Страница каталога</h3>
+              </div>
+              <div class="editor-card__actions">
+                <button class="button button--primary" type="button" id="saveCatalog">Сохранить каталог</button>
+              </div>
+            </div>
+
+            <div class="settings-grid">
+              <form class="form-grid full-span" id="catalogPageForm">
+                <h4>Тексты страницы каталога</h4>
+                <label>
+                  Заголовок страницы
+                  <input name="title" type="text" />
+                </label>
+                <label class="full-width">
+                  Лид страницы
+                  <textarea name="lead" rows="4"></textarea>
+                </label>
+                <label class="full-width">
+                  Текст блока «О просмотре»
+                  <textarea name="note" rows="3"></textarea>
+                </label>
+                <label>
+                  Шаблон счётчика
+                  <input name="pageStatTemplate" type="text" />
+                </label>
+                <label class="full-width">
+                  Текст при пустой выдаче
+                  <textarea name="emptyText" rows="2"></textarea>
+                </label>
+              </form>
+            </div>
+          </div>
+        </section>
+
         <section class="admin-panel" data-panel="works">
           <div class="split-layout">
             <div class="list-card">
@@ -731,6 +773,77 @@
           </div>
         </section>
 
+        <section class="admin-panel" data-panel="aboutWorkshop">
+          <div class="editor-card">
+            <div class="editor-card__header">
+              <div>
+                <p class="admin-kicker">О Мастерской</p>
+                <h3>Редактор текста блока на сайте</h3>
+              </div>
+              <div class="editor-card__actions">
+                <button class="button button--primary" type="button" id="saveAboutWorkshop">Сохранить блок «О Мастерской»</button>
+              </div>
+            </div>
+
+            <div class="settings-grid">
+              <form class="form-grid full-span" id="aboutWorkshopSectionForm">
+                <h4>Основной текст блока</h4>
+                <label>
+                  Kicker
+                  <input name="kicker" type="text" />
+                </label>
+                <label>
+                  Заголовок
+                  <input name="pageTitle" type="text" />
+                </label>
+                <label class="full-width">
+                  Лид блока
+                  <textarea name="lead" rows="4"></textarea>
+                </label>
+                <label class="full-width">
+                  Текст о процессе
+                  <textarea name="processText" rows="5"></textarea>
+                </label>
+                <label class="full-width">
+                  Техники (каждая с новой строки)
+                  <textarea name="techniquesText" rows="4"></textarea>
+                </label>
+                <label class="full-width">
+                  Подпись под изображением
+                  <textarea name="mediaCaption" rows="3"></textarea>
+                </label>
+              </form>
+
+              <form class="form-grid full-span" id="workshopIntroLogoForm">
+                <h4>Логотип блока «О Мастерской»</h4>
+                <label class="full-width">
+                  Ссылка на логотип
+                  <input name="workshopLogoSrc" type="text" placeholder="/assets/media/workshop/..." />
+                </label>
+                <label class="full-width">
+                  Alt логотипа
+                  <input name="workshopLogoAlt" type="text" placeholder="Логотип мастерской" />
+                </label>
+                <div class="settings-logo-preview is-hidden full-width" id="workshopIntroLogoPreview"></div>
+                <div class="upload-grid full-width">
+                  <input id="workshopIntroLogoFile" type="file" accept="image/*" />
+                  <input id="workshopIntroLogoTitle" type="text" placeholder="Заголовок изображения" />
+                  <input id="workshopIntroLogoAlt" type="text" placeholder="Alt-текст для загружаемого файла" />
+                  <button class="button button--primary" type="button" id="uploadWorkshopIntroLogo">Загрузить логотип</button>
+                </div>
+              </form>
+
+              <form class="form-grid full-span" id="aboutWorkshopBlocksForm">
+                <h4>Дополнительные текстовые блоки</h4>
+                <div class="workshop-blocks-editor full-width" id="workshopBlocksEditor"></div>
+                <div class="full-width">
+                  <button class="button button--ghost" type="button" id="addWorkshopBlock">Добавить блок</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </section>
+
         <section class="admin-panel" data-panel="settings">
           <div class="editor-card">
             <div class="editor-card__header">
@@ -772,30 +885,6 @@
                 </label>
               </form>
 
-              <form class="form-grid" id="workshopForm">
-                <h4>Мастерская</h4>
-                <label>
-                  Название
-                  <input name="name" type="text" />
-                </label>
-                <label>
-                  Город
-                  <input name="city" type="text" />
-                </label>
-                <label class="full-width">
-                  Короткое описание
-                  <textarea name="descriptionShort" rows="3"></textarea>
-                </label>
-                <label class="full-width">
-                  Полное описание
-                  <textarea name="descriptionFull" rows="6"></textarea>
-                </label>
-                <label class="full-width">
-                  Текст о процессе
-                  <textarea name="processText" rows="5"></textarea>
-                </label>
-              </form>
-
               <form class="form-grid full-span" id="heroForm">
                 <h4>Главный экран</h4>
                 <label>
@@ -814,6 +903,10 @@
                   Дополнительный текст
                   <textarea name="supportText" rows="4"></textarea>
                 </label>
+                <label class="full-width">
+                  Акценты под заголовком (по одному на строку)
+                  <textarea name="pointsText" rows="4"></textarea>
+                </label>
               </form>
 
               <form class="form-grid" id="brandForm">
@@ -825,6 +918,30 @@
                 <label class="full-width">
                   Имя мастера
                   <input name="name" type="text" />
+                </label>
+              </form>
+
+              <form class="form-grid full-span" id="footerForm">
+                <h4>Футер сайта</h4>
+                <label>
+                  Короткая подпись
+                  <input name="kicker" type="text" />
+                </label>
+                <label class="full-width">
+                  Основной текст
+                  <textarea name="text" rows="3"></textarea>
+                </label>
+                <label>
+                  Подпись справа
+                  <input name="creditLabel" type="text" />
+                </label>
+                <label>
+                  Текст ссылки справа
+                  <input name="creditLinkText" type="text" />
+                </label>
+                <label class="full-width">
+                  Ссылка справа
+                  <input name="creditLinkHref" type="url" />
                 </label>
               </form>
 
@@ -852,26 +969,29 @@
                 <h4>Отображение блоков</h4>
                 <label class="checkbox-field">
                   <input name="featuredCollectionsEnabled" type="checkbox" />
-                  <span>Показывать блок «Избранные работы» на главной</span>
+                  <span>Показывать верхний блок «Сезоны, серии и ключевые циклы» на главной</span>
                 </label>
               </form>
 
               <form class="form-grid full-span" id="collectionsBlocksForm">
-                <h4>Блоки сезонов на главной</h4>
+                <h4>Два блока коллекций на главной</h4>
+                <p class="form-grid__hint full-width">
+                  На главной подряд идут два разных блока: сначала верхний акцентный блок с двумя карточками коллекций, ниже основной раздел «Коллекции» со всей сеткой.
+                </p>
                 <label class="full-width">
-                  Заголовок «Сезоны, серии и ключевые циклы»
+                  Заголовок верхнего блока «Сезоны, серии и ключевые циклы»
                   <input name="featuredTitle" type="text" />
                 </label>
                 <label class="full-width">
-                  Описание «Сезоны, серии и ключевые циклы»
+                  Описание верхнего блока «Сезоны, серии и ключевые циклы»
                   <textarea name="featuredText" rows="3"></textarea>
                 </label>
                 <label class="full-width">
-                  Заголовок «Сезоны, серии и авторские циклы»
+                  Заголовок основного раздела «Сезоны, серии и авторские циклы»
                   <input name="collectionsTitle" type="text" />
                 </label>
                 <label class="full-width">
-                  Описание «Сезоны, серии и авторские циклы»
+                  Описание основного раздела «Сезоны, серии и авторские циклы»
                   <textarea name="collectionsText" rows="3"></textarea>
                 </label>
               </form>
